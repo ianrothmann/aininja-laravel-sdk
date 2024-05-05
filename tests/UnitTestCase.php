@@ -27,9 +27,6 @@ class UnitTestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__.'/../', '.env.testing');
-        $dotenv->load();
-        config()->set('aininja.token', env('AININJA_TOKEN'));
         config()->set('aininja.should_mock', true);
     }
 }
