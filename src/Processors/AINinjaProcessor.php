@@ -20,12 +20,14 @@ abstract class AINinjaProcessor
     public function get(): AINinjaResult
     {
         $runner = new AINinjaRunner();
+
         return $this->hydrateResult($runner->invoke($this));
     }
 
     protected function createResult($content): AINinjaResult
     {
-        $class=$this->getResultClass();
+        $class = $this->getResultClass();
+
         return new $class($content);
     }
 
@@ -39,7 +41,7 @@ abstract class AINinjaProcessor
         return [
             'endpoint' => $this->getEndpoint(),
             'input' => $this->input,
-            'mocked' => $this->getMocked()
+            'mocked' => $this->getMocked(),
         ];
     }
 
@@ -47,9 +49,9 @@ abstract class AINinjaProcessor
     {
         $content = $response->getContent();
         $decoded = json_decode($content, true);
-        if(json_last_error() !== JSON_ERROR_NONE){
+        if (json_last_error() !== JSON_ERROR_NONE) {
             return $this->createResult($content);
-        }else{
+        } else {
             return $this->createResult($decoded);
         }
     }

@@ -2,9 +2,9 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Commands\AINinjaCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IanRothmann\AINinja\Commands\AINinjaCommand;
 
 class AINinjaServiceProvider extends PackageServiceProvider
 {

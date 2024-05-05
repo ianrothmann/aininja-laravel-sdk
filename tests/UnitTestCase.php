@@ -3,9 +3,9 @@
 namespace IanRothmann\AINinja\Tests;
 
 use Dotenv\Dotenv;
+use IanRothmann\AINinja\AINinjaServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use IanRothmann\AINinja\AINinjaServiceProvider;
 
 class UnitTestCase extends Orchestra
 {
@@ -27,7 +27,7 @@ class UnitTestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../', '.env.testing');
+        $dotenv = Dotenv::createImmutable(__DIR__.'/../', '.env.testing');
         $dotenv->load();
         config()->set('aininja.token', env('AININJA_TOKEN'));
         config()->set('aininja.should_mock', true);
