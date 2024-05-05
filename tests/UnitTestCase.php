@@ -2,7 +2,6 @@
 
 namespace IanRothmann\AINinja\Tests;
 
-use Dotenv\Dotenv;
 use IanRothmann\AINinja\AINinjaServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
