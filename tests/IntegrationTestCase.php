@@ -28,10 +28,10 @@ class IntegrationTestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         // Check if AININJA_TOKEN is not already set
-        if (!env('AININJA_TOKEN')) {
+        if (! env('AININJA_TOKEN')) {
             // Define the path to the .env.testing file
             $envPath = __DIR__.'/../';
-            $envFile = $envPath . '.env.testing';
+            $envFile = $envPath.'.env.testing';
 
             // Check if .env.testing file exists
             if (file_exists($envFile)) {
