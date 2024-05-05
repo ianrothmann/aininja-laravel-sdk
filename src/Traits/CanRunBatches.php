@@ -12,25 +12,26 @@ trait CanRunBatches
     public function batch($processors): Collection
     {
         foreach ($processors as $processor) {
-            if(!$processor instanceof AINinjaProcessor){
+            if (! $processor instanceof AINinjaProcessor) {
                 throw new \Exception('The processor must be an instance of AINinjaProcessor');
             }
         }
 
-        if($processors instanceof Collection){
+        if ($processors instanceof Collection) {
             $processors = $processors->toArray();
         }
 
-        if(sizeof($processors)==0){
+        if (count($processors) == 0) {
             return collect();
         }
 
         $templateProcessor = $processors[0];
 
         $runner = new AINinjaRunner();
+
         return collect($runner->batch($processors)
             ->getResponses())
-            ->map(function(RemoteRunnableResponse $response) use($templateProcessor){
+            ->map(function (RemoteRunnableResponse $response) use ($templateProcessor) {
                 return $templateProcessor->hydrateResult($response);
             });
     }

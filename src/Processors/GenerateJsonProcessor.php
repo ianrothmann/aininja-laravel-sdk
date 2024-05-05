@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaResult;
 
 class GenerateJsonProcessor extends AINinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return 'generate_json';
@@ -19,17 +18,19 @@ class GenerateJsonProcessor extends AINinjaProcessor
 
     public function addInstruction(string $instruction): self
     {
-        if(!array_key_exists('instructions', $this->input)){
+        if (! array_key_exists('instructions', $this->input)) {
             $this->input['instructions'] = [];
         }
 
         $this->input['instructions'][] = $instruction;
+
         return $this;
     }
 
     public function expectJsonStructure(array $structure): self
     {
         $this->input['json_structure'] = json_encode($structure);
+
         return $this;
     }
 
@@ -37,7 +38,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
     {
         return [
             'key1' => 'value',
-            'key2' => 'value'
+            'key2' => 'value',
         ];
     }
 }
