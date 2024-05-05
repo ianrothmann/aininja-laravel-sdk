@@ -1,5 +1,7 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use IanRothmann\AINinja\Tests\IntegrationTestCase;
+use IanRothmann\AINinja\Tests\UnitTestCase;
 
-uses(TestCase::class)->in(__DIR__);
+uses(IntegrationTestCase::class)->in('Integration');
+uses(UnitTestCase::class)->in('Unit');

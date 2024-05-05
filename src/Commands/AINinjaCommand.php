@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IanRothmann\AINinja\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class AINinjaCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'aininja-laravel-sdk';
 
     public $description = 'My command';
 
