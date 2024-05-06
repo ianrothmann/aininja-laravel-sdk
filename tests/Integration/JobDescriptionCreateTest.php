@@ -1,11 +1,10 @@
 <?php
 
-
 use IanRothmann\AINinja\AINinja;
 
-it('can generate a job description',function(){
+it('can generate a job description', function () {
     $handler = new AINinja();
-    $result=$handler->generateJobDescription()
+    $result = $handler->generateJobDescription()
         ->basedOn('A Laravel Developer in PHP')
         ->dd()
         ->get();

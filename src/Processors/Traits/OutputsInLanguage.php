@@ -8,6 +8,7 @@ trait OutputsInLanguage
     {
         $this->setInputParameter('output_language_name', $language);
         $this->setInputParameter('output_language_code', $code);
+
         return $this;
     }
 }
