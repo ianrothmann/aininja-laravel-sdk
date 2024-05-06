@@ -5,6 +5,7 @@ namespace IanRothmann\AINinja;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
+use IanRothmann\AINinja\Processors\TLDRProcessor;
 use IanRothmann\AINinja\Traits\CanRunBatches;
 
 class AINinja
@@ -24,5 +25,10 @@ class AINinja
     public function generateJobDescription(): JobDescriptionCreateProcessor
     {
         return new JobDescriptionCreateProcessor();
+    }
+
+    public function summarizeText(): TLDRProcessor
+    {
+        return new TLDRProcessor();
     }
 }
