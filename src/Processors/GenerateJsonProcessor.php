@@ -34,6 +34,11 @@ class GenerateJsonProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function get(): AINinjaResult
+    {
+        return parent::get();
+    }
+
     protected function getMocked(): array
     {
         return [
