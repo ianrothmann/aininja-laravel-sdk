@@ -13,7 +13,7 @@ class AINinjaRunner
 {
     protected string $url;
 
-    protected string $token;
+    protected ?string $token;
 
     protected bool $shouldMock = false;
 

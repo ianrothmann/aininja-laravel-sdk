@@ -2,6 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
@@ -11,13 +12,21 @@ abstract class AINinjaProcessor
 {
     protected $input = [];
 
-    abstract protected function getEndpoint(): string;
+    public function __construct()
+    {
+        if($this->hasTrait(OutputsInLanguage::class)){
+            $this->input['output_language_name'] = 'English';
+            $this->input['output_language_code'] = 'en';
+        }
+    }
 
-    abstract protected function getMocked(): mixed;
+    abstract protected function getEndpoint(): string;
 
     abstract protected function getResultClass(): string;
 
-    public function get(): AINinjaResult
+    abstract protected function getMocked(): mixed;
+
+    public function get(): mixed
     {
         $runner = new AINinjaRunner();
 
@@ -45,6 +54,12 @@ abstract class AINinjaProcessor
         ];
     }
 
+    protected function hasTrait($traitName): bool
+    {
+        $traits = class_uses($this);
+        return in_array($traitName, $traits);
+    }
+
     public function hydrateResult(RemoteRunnableResponse|RemoteRunnableStreamResponse $response): AINinjaResult
     {
         $content = $response->getContent();
@@ -54,5 +69,11 @@ abstract class AINinjaProcessor
         } else {
             return $this->createResult($decoded);
         }
+    }
+
+    public function dd(): self
+    {
+        dd($this->toArray());
+        return $this;
     }
 }
