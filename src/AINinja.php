@@ -5,6 +5,8 @@ namespace IanRothmann\AINinja;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
+use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
+use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
@@ -66,5 +68,15 @@ class AINinja
     public function generateSlug(): SlugProcessor
     {
         return new SlugProcessor();
+    }
+
+    public function refineConversationSummary(): RefineConversationSummaryProcessor
+    {
+        return new RefineConversationSummaryProcessor();
+    }
+
+    public function navigateQuestionChat(): QuestionChatNavigatorProcessor
+    {
+        return new QuestionChatNavigatorProcessor();
     }
 }
