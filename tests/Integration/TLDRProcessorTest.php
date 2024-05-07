@@ -5,7 +5,7 @@ use IanRothmann\AINinja\AINinja;
 it('can generate a TLDR summary', function () {
     $handler = new AINinja();
 
-    $result = $handler->summarizeText()
+    $result = $handler->summarizeTLDR()
         ->basedOn('The Data Scientist role is pivotal in crafting machine learning models and analytics solutions that have a profound
   impact on business outcomes. This role encompasses the design and implementation of cloud-based ML production
   pipelines, ensuring data quality, and developing predictive models to inform strategic decisions. Key responsibilities

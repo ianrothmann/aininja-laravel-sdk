@@ -18,7 +18,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
 
     public function addInstruction(string $instruction): self
     {
-        if (! array_key_exists('instructions', $this->input)) {
+        if (!array_key_exists('instructions', $this->input)) {
             $this->input['instructions'] = [];
         }
 
@@ -37,6 +37,11 @@ class GenerateJsonProcessor extends AINinjaProcessor
     public function get(): AINinjaResult
     {
         return parent::get();
+    }
+
+    public function stream($callback = null): AINinjaResult
+    {
+        return parent::stream($callback);
     }
 
     protected function getMocked(): array

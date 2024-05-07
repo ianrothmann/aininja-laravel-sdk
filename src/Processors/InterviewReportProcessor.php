@@ -50,6 +50,11 @@ class InterviewReportProcessor extends AINinjaProcessor
         return parent::get();
     }
 
+    public function stream($callback = null): AINinjaResult
+    {
+        return parent::stream($callback);
+    }
+
     protected function getMocked(): string
     {
         return 'Ian Rothmann, a candidate for the Data Scientist position, brings a notable 15 years of experience in the field, emphasizing his passion for leveraging artificial intelligence (AI) and machine learning (ML) to enhance business value. His introduction during the asynchronous interview via a chatbot underscores his enthusiasm for applying his expertise to solve complex business problems, providing a brief insight into his professional demeanor and communication skills. Ian mentioned a specific instance where he utilized his skills to analyze customer support calls in real-time, which helped a company provide valuable feedback to their support agency. This example, although briefly touched upon, hints at his capability to drive results and add value through practical applications of AI and ML in a business context.';
