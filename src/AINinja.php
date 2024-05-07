@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
+use IanRothmann\AINinja\Processors\ImageDescribeProcessor;
 use IanRothmann\AINinja\Processors\InterviewQualityProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProcessor;
@@ -96,5 +97,10 @@ class AINinja
     public function reviewInterviewQuality(): InterviewQualityProcessor
     {
         return new InterviewQualityProcessor();
+    }
+
+    public function describeImage(): ImageDescribeProcessor
+    {
+        return new ImageDescribeProcessor();
     }
 }
