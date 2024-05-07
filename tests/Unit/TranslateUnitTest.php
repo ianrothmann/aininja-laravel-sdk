@@ -15,6 +15,9 @@ it('can translate', function () {
             'language_name' => "Spanish",
             "language_code" => "es"
         ])
+        ->withParameters([
+            ":era"
+        ])
         ->get();
 
     expect($result->getTranslation())->toBeArray();
@@ -30,6 +33,9 @@ it('can translate', function () {
                 'language_name' => "Spanish",
                 "language_code" => "es"
             ]
+        ])
+        ->withParameters([
+            ":era"
         ])
         ->get();
 

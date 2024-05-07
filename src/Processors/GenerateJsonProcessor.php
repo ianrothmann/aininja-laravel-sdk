@@ -18,7 +18,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
 
     public function addInstruction(string $instruction): self
     {
-        if (!array_key_exists('instructions', $this->input)) {
+        if (! array_key_exists('instructions', $this->input)) {
             $this->input['instructions'] = [];
         }
 

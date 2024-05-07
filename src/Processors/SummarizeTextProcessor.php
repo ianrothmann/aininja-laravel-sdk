@@ -3,7 +3,6 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Results\AINinjaSummarizeTextResult;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class SummarizeTextProcessor extends AINinjaProcessor
 {
