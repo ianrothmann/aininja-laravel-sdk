@@ -4,7 +4,6 @@ namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaResult;
-use Illuminate\Support\Collection;
 
 class InterviewReportProcessor extends AINinjaProcessor
 {
@@ -22,24 +21,27 @@ class InterviewReportProcessor extends AINinjaProcessor
 
     public function withContext($context): self
     {
-        if(is_array($context)){
-            $context=json_encode($context);
+        if (is_array($context)) {
+            $context = json_encode($context);
         }
 
-        $this->setInputParameter('context',$context);
+        $this->setInputParameter('context', $context);
+
         return $this;
     }
 
     public function forInterviewTranscript(array $questionsAndAnswersArray): self
     {
-        $transcript=json_encode($questionsAndAnswersArray);
-        $this->setInputParameter('transcript',$transcript);
+        $transcript = json_encode($questionsAndAnswersArray);
+        $this->setInputParameter('transcript', $transcript);
+
         return $this;
     }
 
     public function givenRequirements(string $requirements): self
     {
-        $this->setInputParameter('job_description',$requirements);
+        $this->setInputParameter('job_description', $requirements);
+
         return $this;
     }
 

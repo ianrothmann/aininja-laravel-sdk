@@ -7,7 +7,6 @@ use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
-use JetBrains\PhpStorm\NoReturn;
 
 abstract class AINinjaProcessor
 {
@@ -15,7 +14,7 @@ abstract class AINinjaProcessor
 
     public function __construct()
     {
-        if($this->hasTrait(OutputsInLanguage::class)){
+        if ($this->hasTrait(OutputsInLanguage::class)) {
             $this->input['output_language_name'] = 'English';
             $this->input['output_language_code'] = 'en';
         }
@@ -65,13 +64,19 @@ abstract class AINinjaProcessor
     protected function hasTrait($traitName): bool
     {
         $traits = class_uses($this);
+
         return in_array($traitName, $traits);
     }
 
     public function hydrateResult(RemoteRunnableResponse|RemoteRunnableStreamResponse $response): AINinjaResult
     {
         $content = $response->getContent();
-        return $this->createResult($content);
+        $decoded = json_decode($content, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return $this->createResult($content);
+        } else {
+            return $this->createResult($decoded);
+        }
     }
 
     public function dd()
