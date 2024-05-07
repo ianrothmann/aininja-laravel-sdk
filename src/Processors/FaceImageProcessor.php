@@ -22,9 +22,9 @@ class FaceImageProcessor extends AIninjaProcessor
     protected function getMocked(): mixed
     {
         return [
-            "error" => null,
-            "description" => "The person is a man who appears muscular and fit, photographed against a neutral background. He has short, textured hair and a neatly groomed beard. He is wearing a green and gold rugby jersey, which suggests he might be an athlete, possibly linked to a team represented by these colors. His expression is serious and poised, conveying a sense of confidence and determination.",
-            "complement" => "You look incredibly strong and focused, definitely someone who brings his A-game on and off the field! Keep shining with that confidence!"
+            'error' => null,
+            'description' => 'The person is a man who appears muscular and fit, photographed against a neutral background. He has short, textured hair and a neatly groomed beard. He is wearing a green and gold rugby jersey, which suggests he might be an athlete, possibly linked to a team represented by these colors. His expression is serious and poised, conveying a sense of confidence and determination.',
+            'complement' => 'You look incredibly strong and focused, definitely someone who brings his A-game on and off the field! Keep shining with that confidence!',
         ];
     }
 

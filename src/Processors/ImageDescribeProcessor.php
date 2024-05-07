@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaImageDescribeResult;
 
 class ImageDescribeProcessor extends AINinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return '/describe_image';
@@ -20,8 +19,8 @@ class ImageDescribeProcessor extends AINinjaProcessor
     protected function getMocked(): mixed
     {
         return [
-            "description" => "This image captures a triumphant moment for a rugby team, celebrating their victory in what appears to be an important tournament, indicated by their joy in lifting a significant trophy — likely from a major event such as the Rugby World Cup. The team is surrounded by confetti, enhancing the festive atmosphere of their achievement. The players are visibly elated, with some raising their fists in victory, and others smiling broadly or cheering. The scene is filled with a sense of camaraderie and shared accomplishment among the team members.",
-            "complement" => "This team exemplifies resilience and unity in achieving their goals. Their ability to work together under pressure and come out as champions is truly inspiring. Congratulations on a well-deserved victory!"
+            'description' => 'This image captures a triumphant moment for a rugby team, celebrating their victory in what appears to be an important tournament, indicated by their joy in lifting a significant trophy — likely from a major event such as the Rugby World Cup. The team is surrounded by confetti, enhancing the festive atmosphere of their achievement. The players are visibly elated, with some raising their fists in victory, and others smiling broadly or cheering. The scene is filled with a sense of camaraderie and shared accomplishment among the team members.',
+            'complement' => 'This team exemplifies resilience and unity in achieving their goals. Their ability to work together under pressure and come out as champions is truly inspiring. Congratulations on a well-deserved victory!',
         ];
     }
 

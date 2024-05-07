@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaSlugResult;
 
 class SlugProcessor extends AINinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return '/generate_slug';
