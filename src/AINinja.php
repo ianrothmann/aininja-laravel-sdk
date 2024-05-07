@@ -2,6 +2,8 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Processors\FaceImageProcessor;
+use IanRothmann\AINinja\Processors\FileSummaryProcessor;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\GenerateTextProcessor;
 use IanRothmann\AINinja\Processors\ImageDescribeProcessor;
@@ -108,5 +110,15 @@ class AINinja
     public function generateText(): GenerateTextProcessor
     {
         return new GenerateTextProcessor();
+    }
+
+    public function summarizeFile(): FileSummaryProcessor
+    {
+        return new FileSummaryProcessor();
+    }
+
+    public function processFaceImage(): FaceImageProcessor
+    {
+        return new FaceImageProcessor();
     }
 }
