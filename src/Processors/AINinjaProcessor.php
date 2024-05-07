@@ -33,11 +33,11 @@ abstract class AINinjaProcessor
         return $this->hydrateResult($runner->invoke($this));
     }
 
-    public function stream($callback=null): mixed
+    public function stream($callback = null): mixed
     {
         $runner = new AINinjaRunner();
 
-        return $this->hydrateResult($runner->stream($this,$callback));
+        return $this->hydrateResult($runner->stream($this, $callback));
     }
 
     protected function createResult($content): AINinjaResult

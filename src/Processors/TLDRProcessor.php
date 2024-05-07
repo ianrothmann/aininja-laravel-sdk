@@ -35,4 +35,9 @@ class TLDRProcessor extends AINinjaProcessor
     {
         return parent::get();
     }
+
+    public function stream($callback = null): AINinjaTLDRResult
+    {
+        return parent::stream($callback);
+    }
 }

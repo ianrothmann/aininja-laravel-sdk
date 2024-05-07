@@ -49,7 +49,7 @@ class AINinjaRunner
         }
     }
 
-    public function stream(AINinjaProcessor $processor, $callback=null): RemoteRunnableStreamResponse
+    public function stream(AINinjaProcessor $processor, $callback = null): RemoteRunnableStreamResponse
     {
         $config = $processor->toArray();
         $endpoint = $this->url.ltrim($config['endpoint'], '/');

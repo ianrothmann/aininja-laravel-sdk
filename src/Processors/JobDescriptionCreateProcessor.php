@@ -31,7 +31,7 @@ class JobDescriptionCreateProcessor extends AINinjaProcessor
         return parent::get();
     }
 
-    public function stream($callback=null): AINinjaJobDescriptionResult
+    public function stream($callback = null): AINinjaJobDescriptionResult
     {
         return parent::stream($callback);
     }
