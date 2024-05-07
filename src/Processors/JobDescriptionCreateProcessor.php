@@ -31,6 +31,11 @@ class JobDescriptionCreateProcessor extends AINinjaProcessor
         return parent::get();
     }
 
+    public function stream($callback=null): AINinjaJobDescriptionResult
+    {
+        return parent::stream($callback);
+    }
+
     protected function getMocked(): array
     {
         return [

@@ -49,7 +49,7 @@ class AINinjaRunner
         }
     }
 
-    public function stream(AINinjaProcessor $processor): RemoteRunnableStreamResponse
+    public function stream(AINinjaProcessor $processor, $callback=null): RemoteRunnableStreamResponse
     {
         $config = $processor->toArray();
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
@@ -59,7 +59,7 @@ class AINinjaRunner
         if ($this->shouldMock) {
             return RemoteRunnableStreamResponse::mock($config['mocked']);
         } else {
-            return $runnable->stream($config['input'], $config['stream_callback']);
+            return $runnable->stream($config['input'], $callback);
         }
     }
 

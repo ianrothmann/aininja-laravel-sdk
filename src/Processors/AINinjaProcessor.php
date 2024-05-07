@@ -7,6 +7,7 @@ use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
+use JetBrains\PhpStorm\NoReturn;
 
 abstract class AINinjaProcessor
 {
@@ -31,6 +32,13 @@ abstract class AINinjaProcessor
         $runner = new AINinjaRunner();
 
         return $this->hydrateResult($runner->invoke($this));
+    }
+
+    public function stream($callback=null): mixed
+    {
+        $runner = new AINinjaRunner();
+
+        return $this->hydrateResult($runner->stream($this,$callback));
     }
 
     protected function createResult($content): AINinjaResult
@@ -63,17 +71,11 @@ abstract class AINinjaProcessor
     public function hydrateResult(RemoteRunnableResponse|RemoteRunnableStreamResponse $response): AINinjaResult
     {
         $content = $response->getContent();
-        $decoded = json_decode($content, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            return $this->createResult($content);
-        } else {
-            return $this->createResult($decoded);
-        }
+        return $this->createResult($content);
     }
 
-    public function dd(): self
+    public function dd()
     {
         dd($this->toArray());
-        return $this;
     }
 }
