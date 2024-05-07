@@ -8,7 +8,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
 {
     protected function getEndpoint(): string
     {
-        return 'generate_json';
+        return '/generate_json';
     }
 
     protected function getResultClass(): string

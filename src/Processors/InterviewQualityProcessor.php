@@ -42,12 +42,8 @@ class InterviewQualityProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withRequirements($requirements): self
+    public function withRequirements(array $requirements): self
     {
-        if (is_array($requirements)) {
-            $requirements = json_encode($requirements);
-        }
-
         $this->setInputParameter('requirements', $requirements);
 
         return $this;
