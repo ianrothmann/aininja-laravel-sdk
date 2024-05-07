@@ -5,6 +5,7 @@ namespace IanRothmann\AINinja;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
+use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
@@ -60,5 +61,10 @@ class AINinja
     public function transcribeURL(): TranscribeURLProcessor
     {
         return new TranscribeURLProcessor();
+    }
+
+    public function generateSlug(): SlugProcessor
+    {
+        return new SlugProcessor();
     }
 }
