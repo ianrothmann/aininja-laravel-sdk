@@ -4,6 +4,7 @@ namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
+use IanRothmann\AINinja\Processors\InterviewQuestionProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
@@ -84,5 +85,10 @@ class AINinja
     public function probeInterviewQuestion(): InterviewQuestionProbingProcessor
     {
         return new InterviewQuestionProbingProcessor();
+    }
+
+    public function generateInterviewQuestions(): InterviewQuestionProcessor
+    {
+        return new InterviewQuestionProcessor();
     }
 }
