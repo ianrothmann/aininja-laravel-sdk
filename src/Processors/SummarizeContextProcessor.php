@@ -21,7 +21,7 @@ class SummarizeContextProcessor extends AINinjaProcessor
 
     protected function getMocked(): mixed
     {
-        return "The JSON provided contains information about an individual named Ian Rothmann, who is of South African nationality.";
+        return 'The JSON provided contains information about an individual named Ian Rothmann, who is of South African nationality.';
     }
 
     public function withContext($context): self
