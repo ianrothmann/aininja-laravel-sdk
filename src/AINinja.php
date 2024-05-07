@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
+use IanRothmann\AINinja\Processors\GenerateTextProcessor;
 use IanRothmann\AINinja\Processors\ImageDescribeProcessor;
 use IanRothmann\AINinja\Processors\InterviewQualityProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
@@ -102,5 +103,10 @@ class AINinja
     public function describeImage(): ImageDescribeProcessor
     {
         return new ImageDescribeProcessor();
+    }
+
+    public function generateText(): GenerateTextProcessor
+    {
+        return new GenerateTextProcessor();
     }
 }
