@@ -71,11 +71,16 @@ abstract class AINinjaProcessor
     public function hydrateResult(RemoteRunnableResponse|RemoteRunnableStreamResponse $response): AINinjaResult
     {
         $content = $response->getContent();
-        $decoded = json_decode($content, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        
+        if (is_array($content)) {
             return $this->createResult($content);
         } else {
-            return $this->createResult($decoded);
+            $decoded = json_decode($content, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                return $this->createResult($content);
+            } else {
+                return $this->createResult($decoded);
+            }
         }
     }
 

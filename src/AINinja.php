@@ -9,6 +9,7 @@ use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
 use IanRothmann\AINinja\Processors\TLDRProcessor;
+use IanRothmann\AINinja\Processors\TranslateProcessor;
 use IanRothmann\AINinja\Traits\CanRunBatches;
 
 class AINinja
@@ -48,5 +49,10 @@ class AINinja
     public function summarizeContext(): SummarizeContextProcessor
     {
         return new SummarizeContextProcessor();
+    }
+
+    public function translate(): TranslateProcessor
+    {
+        return new TranslateProcessor();
     }
 }
