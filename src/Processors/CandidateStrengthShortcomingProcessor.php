@@ -50,7 +50,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
 
     public function addRating($question, $score, $reason): self
     {
-        $this->addToInputArray('rating_table',[
+        $this->addToInputArray('rating_table', [
             'question' => $question,
             'score' => $score,
             'reason' => $reason,
@@ -63,6 +63,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
     {
         $input = parent::transformInputForTransport();
         $input['rating_table'] = json_encode($input['rating_table']);
+
         return $input;
     }
 
