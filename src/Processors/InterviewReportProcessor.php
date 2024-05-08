@@ -4,7 +4,6 @@ namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaInterviewReportResult;
-use IanRothmann\AINinja\Results\AINinjaResult;
 
 class InterviewReportProcessor extends AINinjaProcessor
 {
@@ -27,10 +26,10 @@ class InterviewReportProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function forInterviewTranscript(string $question, string $answer = null): self
+    public function forInterviewTranscript(string $question, ?string $answer = null): self
     {
         $this->addToInputArray('transcript', [
-            $question => $answer
+            $question => $answer,
         ]);
 
         return $this;

@@ -37,7 +37,7 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         ];
     }
 
-    public function forQuestion(string $question, string $answerFormat = 'text', string $options = null): self
+    public function forQuestion(string $question, string $answerFormat = 'text', ?string $options = null): self
     {
         $this->addToInputArray('questions', [
             'question' => $question,
@@ -59,7 +59,7 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
     {
         $this->addToInputArray('existing_ideal_answers', [
             'question' => $answer,
-            'ideal_response' => $idealResponse
+            'ideal_response' => $idealResponse,
         ]);
 
         return $this;

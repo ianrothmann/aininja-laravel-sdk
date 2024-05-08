@@ -28,7 +28,7 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
     {
         $this->addToInputArray('text', [
             'speaker' => $speaker,
-            'text' => $text
+            'text' => $text,
         ]);
 
         return $this;
