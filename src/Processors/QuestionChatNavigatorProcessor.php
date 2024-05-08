@@ -28,7 +28,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
     {
         $this->addToInputArray('questions', [
             'question_number' => $questionNumber,
-            'question' => $question
+            'question' => $question,
         ]);
 
         return $this;
