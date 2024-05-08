@@ -62,7 +62,7 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function rubric(string $rubric): self
+    public function rubric(array $rubric): self
     {
         $this->setInputParameter('rubric', $rubric);
 

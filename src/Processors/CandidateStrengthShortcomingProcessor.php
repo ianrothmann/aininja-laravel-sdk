@@ -34,25 +34,36 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function whereContrext(string $context): self
+    public function withCandidateContext(string $context): self
     {
         $this->setInputParameter('context', $context);
 
         return $this;
     }
 
-    public function rubric(string $rubric): self
+    public function withRatingRubric(array $labelsByScores): self
     {
-        $this->setInputParameter('rubric', $rubric);
+        $this->setInputParameter('rubric', json_encode($labelsByScores));
 
         return $this;
     }
 
-    public function whereRatingTable(string $ratingTable): self
+    public function addRating($question, $score, $reason): self
     {
-        $this->setInputParameter('rating_table', $ratingTable);
+        $this->addToInputArray('rating_table',[
+            'question' => $question,
+            'score' => $score,
+            'reason' => $reason,
+        ]);
 
         return $this;
+    }
+
+    protected function transformInputForTransport(): array
+    {
+        $input = parent::transformInputForTransport();
+        $input['rating_table'] = json_encode($input['rating_table']);
+        return $input;
     }
 
     public function get(): AINinjaCandidateStrengthShortcomingResult
