@@ -24,9 +24,9 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
         return "Sure, let's revisit the first question: What is your name?";
     }
 
-    public function withQuestion(int $questionNumber, string $question): self
+    public function withQuestion(string $questionNumber, string $question): self
     {
-        $this->addToInputArray('questions', [
+        $this->addToInputArray('questions_by_number', [
             'question_number' => $questionNumber,
             'question' => $question,
         ]);
