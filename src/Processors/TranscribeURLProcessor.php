@@ -22,23 +22,23 @@ class TranscribeURLProcessor extends AINinjaProcessor
     protected function getMocked(): array
     {
         return [
-            "transcription" => "Dogs are sitting by the door.",
-            "srt" => [
+            'transcription' => 'Dogs are sitting by the door.',
+            'srt' => [
                 [
-                    "text" => "Dogs are sitting by the door.",
-                    "start" => "00:00:00,000",
-                    "end" => "00:00:05,000"
-                ]
+                    'text' => 'Dogs are sitting by the door.',
+                    'start' => '00:00:00,000',
+                    'end' => '00:00:05,000',
+                ],
             ],
-            "complement" => "You have such well-behaved dogs!",
-            "summary" => "Reinhardt mentioned that dogs are sitting by the door.",
-            "topics" => [
+            'complement' => 'You have such well-behaved dogs!',
+            'summary' => 'Reinhardt mentioned that dogs are sitting by the door.',
+            'topics' => [
                 [
-                    "topic" => "Dogs sitting by the door",
-                    "start" => "00:00:00,000",
-                    "end" => "00:00:05,000"
-                ]
-            ]
+                    'topic' => 'Dogs sitting by the door',
+                    'start' => '00:00:00,000',
+                    'end' => '00:00:05,000',
+                ],
+            ],
         ];
     }
 

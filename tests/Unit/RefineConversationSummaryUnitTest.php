@@ -12,7 +12,7 @@ it('can refine a conversation summary', function () {
                 ['speaker' => 'Ian', 'text' => 'Pepperoni'],
                 ['speaker' => 'Bot', 'text' => 'Anything else?'],
                 ['speaker' => 'Ian', 'text' => 'No'],
-                ['speaker' => 'Bot', 'text' => 'Your order will be ready in 30 minutes.']
+                ['speaker' => 'Bot', 'text' => 'Your order will be ready in 30 minutes.'],
             ]
         )
 //        ->withPreviousSummary()

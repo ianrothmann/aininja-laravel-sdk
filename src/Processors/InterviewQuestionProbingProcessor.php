@@ -22,8 +22,8 @@ class InterviewQuestionProbingProcessor extends AINinjaProcessor
     protected function getMocked(): array
     {
         return [
-            "answer_sufficient" => 0,
-            "probing_question" => "Could you elaborate on your experience in high-end or luxury establishments, and discuss any unique cocktails you've created or any special training or certifications you've received in bartending?"
+            'answer_sufficient' => 0,
+            'probing_question' => "Could you elaborate on your experience in high-end or luxury establishments, and discuss any unique cocktails you've created or any special training or certifications you've received in bartending?",
         ];
     }
 

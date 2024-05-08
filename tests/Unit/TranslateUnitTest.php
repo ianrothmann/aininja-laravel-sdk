@@ -8,15 +8,15 @@ it('can translate', function () {
     $result = $handler->translate()
         ->text('What is your favorite movie of :era?')
         ->to([
-            'language_name' => "Afrikaans",
-            "language_code" => "af"
+            'language_name' => 'Afrikaans',
+            'language_code' => 'af',
         ])
         ->to([
-            'language_name' => "Spanish",
-            "language_code" => "es"
+            'language_name' => 'Spanish',
+            'language_code' => 'es',
         ])
         ->withParameters([
-            ":era"
+            ':era',
         ])
         ->get();
 
@@ -26,16 +26,16 @@ it('can translate', function () {
         ->text('What is your favorite movie of :era?')
         ->toLanguages([
             [
-                'language_name' => "Afrikaans",
-                "language_code" => "af"
+                'language_name' => 'Afrikaans',
+                'language_code' => 'af',
             ],
             [
-                'language_name' => "Spanish",
-                "language_code" => "es"
-            ]
+                'language_name' => 'Spanish',
+                'language_code' => 'es',
+            ],
         ])
         ->withParameters([
-            ":era"
+            ':era',
         ])
         ->get();
 

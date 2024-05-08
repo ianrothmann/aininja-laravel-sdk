@@ -15,7 +15,7 @@ it('can generate text', function () {
     $result = $handler->generateText()
         ->withInstructions([
             'Write five names for babies',
-            'The babies are African'
+            'The babies are African',
         ])
         ->get();
 

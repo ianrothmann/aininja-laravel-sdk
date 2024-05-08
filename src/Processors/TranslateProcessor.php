@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaTranslateResult;
 
 class TranslateProcessor extends AiNinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return '/translate';
@@ -20,16 +19,16 @@ class TranslateProcessor extends AiNinjaProcessor
     protected function getMocked(): array
     {
         return [
-            "translations" => [
+            'translations' => [
                 [
-                    "code" => "af",
-                    "translation" => "Wat is jou gunsteling fliek van :era?"
+                    'code' => 'af',
+                    'translation' => 'Wat is jou gunsteling fliek van :era?',
                 ],
                 [
-                    "code" => "es",
-                    "translation" => "¿Cuál es tu película favorita de :era?"
-                ]
-            ]
+                    'code' => 'es',
+                    'translation' => '¿Cuál es tu película favorita de :era?',
+                ],
+            ],
         ];
     }
 

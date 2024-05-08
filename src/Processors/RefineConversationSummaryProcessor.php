@@ -21,7 +21,7 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
 
     protected function getMocked(): string
     {
-        return "Ian wants to order a large pizza with pepperoni and is interacting with a bot for assistance. The bot confirms his order will be ready in 30 minutes.";
+        return 'Ian wants to order a large pizza with pepperoni and is interacting with a bot for assistance. The bot confirms his order will be ready in 30 minutes.';
     }
 
     public function basedOn($content): self
