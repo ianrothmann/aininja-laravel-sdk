@@ -35,7 +35,7 @@ class InterviewQualityProcessor extends AINinjaProcessor
     {
         $this->addToInputArray('questions', [
             'question' => $question,
-            'expected_answer' => $expectedAnswer,
+            'expected_response' => $expectedAnswer,
             'response_type' => $response_type,
         ]);
 

@@ -2,7 +2,7 @@
 
 // config for IanRothmann/AINinja
 return [
-    'url' => env('AININJA_URL', 'https://api2.aininja.dev'),
+    'url' => env('AININJA_URL', 'http://localhost:8100'), //'https://api2.aininja.dev'),
     'token' => env('AININJA_TOKEN'),
     'should_cache' => env('AININJA_SHOULD_CACHE', false),
     'should_mock' => env('AININJA_SHOULD_MOCK', false),

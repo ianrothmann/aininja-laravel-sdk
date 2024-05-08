@@ -17,6 +17,7 @@ it('can review the quality of the interview', function () {
             'text',
         )
         ->withRequirement('A head barman at an upmarket cocktail restaurant in Dubai')
+        ->dd()
         ->get();
 
     expect($result->getOverallRating())->toBeInt()
