@@ -44,7 +44,7 @@ class InterviewQualityProcessor extends AINinjaProcessor
 
     public function withRequirement(string $requirement): self
     {
-        $this->setInputParameter('requirements', $requirement);
+        $this->addToInputArray('requirements', $requirement);
 
         return $this;
     }
