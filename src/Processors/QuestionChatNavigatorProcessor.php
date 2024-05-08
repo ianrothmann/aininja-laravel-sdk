@@ -24,7 +24,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
         return "Sure, let's revisit the first question: What is your name?";
     }
 
-    public function withQuestions($questions): self
+    public function withQuestions(array $questions): self
     {
         $this->setInputParameter('questions', $questions);
 

@@ -31,12 +31,8 @@ class InterviewQualityProcessor extends AINinjaProcessor
         ];
     }
 
-    public function forQuestions($questions): self
+    public function forQuestions(array $questions): self
     {
-        if (is_array($questions)) {
-            $questions = json_encode($questions);
-        }
-
         $this->setInputParameter('questions', $questions);
 
         return $this;

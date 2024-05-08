@@ -2,9 +2,9 @@
 
 use IanRothmann\AINinja\AINinja;
 
-it('can generate an candidate strength shortcoming', function () {
-    $handler = new AINinja();
-
+//it('can generate an candidate strength shortcoming', function () {
+//    $handler = new AINinja();
+//
 //    $result = $handler->generateStrengthShortcoming()
 //        ->forJobDescription()
 //        ->whereContrext()
@@ -14,4 +14,4 @@ it('can generate an candidate strength shortcoming', function () {
 //
 //    expect($result->getStrengths())->toBeString()
 //        ->and($result->getShortcomings())->toBeString();
-});
+//});

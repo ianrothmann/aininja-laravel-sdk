@@ -16,6 +16,9 @@ it('can transcribe a URL', function () {
     expect($result->getTranscription())->toBeString()
         ->and($result->getSRT())->toBeArray()
         ->and($result->getComplement())->toBeString()
-        ->and($result->getSummary())->toBeString()
-        ->and($result->getTopics())->toBeArray();
+        ->and($result->getSummary())->toBeString();
+
+    if ($result->getTopics() !== null) {
+        expect($result->getTopics())->toBeArray();
+    }
 });

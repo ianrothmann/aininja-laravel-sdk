@@ -49,6 +49,20 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         return parent::get();
     }
 
+    public function withRequirments(string $requirements): self
+    {
+        $this->setInputParameter('requirements', $requirements);
+
+        return $this;
+    }
+
+    public function withExistingIdealAnswers(array $idealAnswers): self
+    {
+        $this->setInputParameter('existing_ideal_answers', $idealAnswers);
+
+        return $this;
+    }
+
     public function stream($callback = null): AINinjaIdealResponseMultipleResult
     {
         return parent::stream($callback);

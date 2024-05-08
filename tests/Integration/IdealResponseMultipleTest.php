@@ -23,6 +23,13 @@ it('can generate multiple ideal responses', function () {
                 "options" => "Beginner, Intermediate, Advanced, Expert"
             ]
         ])
+//        ->withRequirments()
+        ->withExistingIdealAnswers([
+            [
+                "question" => "Please describe your experience with machine learning frameworks and libraries. Which ones have you worked with most extensively",
+                "ideal_response" => "The candidate has extensive experience with TensorFlow and PyTorch for building and deploying machine learning models, and has also utilized scikit-learn for more traditional statistical model building."
+            ]
+        ])
         ->get();
 
     expect($result->getResult())->toBeArray();
