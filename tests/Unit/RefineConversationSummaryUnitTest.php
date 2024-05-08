@@ -6,15 +6,11 @@ it('can refine a conversation summary', function () {
     $handler = new AINinja();
 
     $result = $handler->refineConversationSummary()
-        ->basedOn(
-            [
-                ['speaker' => 'Bot', 'text' => 'What toppings?'],
-                ['speaker' => 'Ian', 'text' => 'Pepperoni'],
-                ['speaker' => 'Bot', 'text' => 'Anything else?'],
-                ['speaker' => 'Ian', 'text' => 'No'],
-                ['speaker' => 'Bot', 'text' => 'Your order will be ready in 30 minutes.'],
-            ]
-        )
+        ->forSpeaker('Bot', 'What toppings?')
+        ->forSpeaker('Ian', 'Pepperoni')
+        ->forSpeaker('Bot', 'Anything else?')
+        ->forSpeaker('Ian', 'No')
+        ->forSpeaker('Bot', 'Your order will be ready in 30 minutes.')
 //        ->withPreviousSummary()
         ->get();
 

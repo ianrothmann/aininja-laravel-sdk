@@ -37,30 +37,30 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         ];
     }
 
-    public function basedOn(array $questions): self
+    public function forQuestion(string $question, string $answerFormat = 'text', string $options = null): self
     {
-        $this->setInputParameter('questions', $questions);
+        $this->addToInputArray('questions', [
+            'question' => $question,
+            'answer_format' => $answerFormat,
+            'options' => $options,
+        ]);
 
         return $this;
     }
 
-    public function forQuestion(): self
+    public function withRequirement(string $requirement): self
     {
-
+        $this->addToInputArray('requirements', $requirement);
 
         return $this;
     }
 
-    public function withRequirements(string $requirements): self
+    public function withExistingIdealAnswer(string $answer, string $idealResponse): self
     {
-        $this->setInputParameter('requirements', $requirements);
-
-        return $this;
-    }
-
-    public function withExistingIdealAnswers(array $idealAnswers): self
-    {
-        $this->setInputParameter('existing_ideal_answers', $idealAnswers);
+        $this->addToInputArray('existing_ideal_answers', [
+            'question' => $answer,
+            'ideal_response' => $idealResponse
+        ]);
 
         return $this;
     }

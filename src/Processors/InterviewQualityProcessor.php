@@ -31,16 +31,20 @@ class InterviewQualityProcessor extends AINinjaProcessor
         ];
     }
 
-    public function forQuestions(array $questions): self
+    public function forQuestion(string $question, string $expectedAnswer, string $response_type): self
     {
-        $this->setInputParameter('questions', $questions);
+        $this->addToInputArray('questions', [
+            'question' => $question,
+            'expected_answer' => $expectedAnswer,
+            'response_type' => $response_type,
+        ]);
 
         return $this;
     }
 
-    public function withRequirements(array $requirements): self
+    public function withRequirement(string $requirement): self
     {
-        $this->setInputParameter('requirements', $requirements);
+        $this->setInputParameter('requirements', $requirement);
 
         return $this;
     }

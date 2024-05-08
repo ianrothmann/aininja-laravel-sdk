@@ -24,13 +24,12 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
         return 'Ian wants to order a large pizza with pepperoni and is interacting with a bot for assistance. The bot confirms his order will be ready in 30 minutes.';
     }
 
-    public function basedOn($content): self
+    public function forSpeaker(string $speaker, string $text): self
     {
-        if (is_array($content)) {
-            $content = json_encode($content);
-        }
-
-        $this->setInputParameter('text', $content);
+        $this->addToInputArray('text', [
+            'speaker' => $speaker,
+            'text' => $text
+        ]);
 
         return $this;
     }
@@ -40,6 +39,14 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
         $this->setInputParameter('previous_summary', $summary);
 
         return $this;
+    }
+
+    protected function transformInputForTransport(): array
+    {
+        $input = parent::transformInputForTransport();
+        $input['text'] = json_encode($input['text']);
+
+        return $input;
     }
 
     public function get(): AINinjaRefineConversationSummaryResult

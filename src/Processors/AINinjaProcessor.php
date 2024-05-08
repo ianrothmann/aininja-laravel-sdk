@@ -52,11 +52,25 @@ abstract class AINinjaProcessor
         $this->input[$key] = $value;
     }
 
+    protected function addToInputArray($key, $value): void
+    {
+        if (! array_key_exists($key, $this->input)) {
+            $this->input[$key] = [];
+        }
+
+        $this->input[$key][] = $value;
+    }
+
+    protected function transformInputForTransport(): array
+    {
+        return $this->input;
+    }
+
     public function toArray(): array
     {
         return [
             'endpoint' => $this->getEndpoint(),
-            'input' => $this->input,
+            'input' => $this->transformInputForTransport(),
             'mocked' => $this->getMocked(),
         ];
     }

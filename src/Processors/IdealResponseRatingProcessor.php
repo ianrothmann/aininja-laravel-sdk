@@ -34,9 +34,9 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withContext(string $context): self
+    public function withCandidateContext(string $context): self
     {
-        $this->setInputParameter('context', $context);
+        $this->setInputParameter('candidate_context', $context);
 
         return $this;
     }
@@ -62,9 +62,9 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function rubric(string $rubric): self
+    public function withRatingRubric(array $labelsByScores): self
     {
-        $this->setInputParameter('rubric', $rubric);
+        $this->setInputParameter('rubric', json_encode($labelsByScores));
 
         return $this;
     }

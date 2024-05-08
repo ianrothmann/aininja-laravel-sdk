@@ -55,16 +55,16 @@ class InterviewQuestionProbingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withContext(string $context): self
+    public function withCandidateContext(string $context): self
     {
-        $this->setInputParameter('context', $context);
+        $this->setInputParameter('candidate_context', $context);
 
         return $this;
     }
 
-    public function withOtherQuestions(array $questions): self
+    public function withOtherQuestion(string $question): self
     {
-        $this->setInputParameter('other_questions', $questions);
+        $this->addToInputArray('other_questions', $question);
 
         return $this;
     }

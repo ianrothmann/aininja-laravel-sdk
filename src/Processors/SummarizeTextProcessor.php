@@ -42,7 +42,7 @@ class SummarizeTextProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withWordLimit(int $limit)
+    public function withWordLimit(int $limit): self
     {
         $this->setInputParameter('word_limit', $limit);
 

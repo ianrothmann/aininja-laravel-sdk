@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
+use IanRothmann\AINinja\Results\AINinjaInterviewReportResult;
 use IanRothmann\AINinja\Results\AINinjaResult;
 
 class InterviewReportProcessor extends AINinjaProcessor
@@ -11,29 +12,26 @@ class InterviewReportProcessor extends AINinjaProcessor
 
     protected function getEndpoint(): string
     {
-        return 'get_interview_report';
+        return '/get_interview_report';
     }
 
     protected function getResultClass(): string
     {
-        return AINinjaResult::class;
+        return AINinjaInterviewReportResult::class;
     }
 
-    public function withContext($context): self
+    public function withContext(string $context): self
     {
-        if (is_array($context)) {
-            $context = json_encode($context);
-        }
-
         $this->setInputParameter('context', $context);
 
         return $this;
     }
 
-    public function forInterviewTranscript(array $questionsAndAnswersArray): self
+    public function forInterviewTranscript(string $question, string $answer = null): self
     {
-        $transcript = json_encode($questionsAndAnswersArray);
-        $this->setInputParameter('transcript', $transcript);
+        $this->addToInputArray('transcript', [
+            $question => $answer
+        ]);
 
         return $this;
     }
@@ -45,12 +43,20 @@ class InterviewReportProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function get(): AINinjaResult
+    public function transformInputForTransport(): array
+    {
+        $input = parent::transformInputForTransport();
+        $input['transcript'] = json_encode($input['transcript']);
+
+        return $input;
+    }
+
+    public function get(): AINinjaInterviewReportResult
     {
         return parent::get();
     }
 
-    public function stream($callback = null): AINinjaResult
+    public function stream($callback = null): AINinjaInterviewReportResult
     {
         return parent::stream($callback);
     }
