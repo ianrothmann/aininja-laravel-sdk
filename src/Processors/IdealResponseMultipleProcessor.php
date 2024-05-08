@@ -23,18 +23,18 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
     {
         return [
             [
-                "question" => "Please describe your experience with machine learning frameworks and libraries. Which ones have you worked with most extensively?",
-                "ideal_response" => "The candidate has extensive experience with TensorFlow and PyTorch, having developed multiple projects that leverage deep learning to solve complex problems."
+                'question' => 'Please describe your experience with machine learning frameworks and libraries. Which ones have you worked with most extensively?',
+                'ideal_response' => 'The candidate has extensive experience with TensorFlow and PyTorch, having developed multiple projects that leverage deep learning to solve complex problems.',
             ],
             [
-                "question" => "Discuss a project where you were responsible for developing and deploying a machine learning model. What was your role, and what were the outcomes?",
-                "ideal_response" => "In a recent project, the candidate was tasked with developing and deploying a machine learning model to predict customer churn. They handled data preprocessing, feature engineering, model selection, and deployment, which resulted in a 15% improvement in prediction accuracy compared to the previous system."
+                'question' => 'Discuss a project where you were responsible for developing and deploying a machine learning model. What was your role, and what were the outcomes?',
+                'ideal_response' => 'In a recent project, the candidate was tasked with developing and deploying a machine learning model to predict customer churn. They handled data preprocessing, feature engineering, model selection, and deployment, which resulted in a 15% improvement in prediction accuracy compared to the previous system.',
             ],
             [
-                "question" => "Which of the following best describes your level of proficiency with data visualization tools?",
-                "ideal_response" => "Intermediate"
-            ]
-        ];;
+                'question' => 'Which of the following best describes your level of proficiency with data visualization tools?',
+                'ideal_response' => 'Intermediate',
+            ],
+        ];
     }
 
     public function basedOn(array $questions): self

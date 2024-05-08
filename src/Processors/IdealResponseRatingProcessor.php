@@ -22,8 +22,8 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
     protected function getMocked(): array
     {
         return [
-            "score" => 2,
-            "reason" => "The candidate's response only tangentially addresses the aspects of the ideal answer by mentioning a general approach to problem-solving without delving into specifics about evaluating the model's assumptions, data quality, or feature selection. There is a lack of comprehensive coverage on iterating the model with new data, adjusting hyperparameters, or trying alternative modelling techniques. Furthermore, the response lacks clarity due to its vague nature and does not offer original thoughts or examples that align with the ideal answer. The context of applying real-world applications or examples closely aligned with the ideal answer is also missing, demonstrating a limited understanding of the context."
+            'score' => 2,
+            'reason' => "The candidate's response only tangentially addresses the aspects of the ideal answer by mentioning a general approach to problem-solving without delving into specifics about evaluating the model's assumptions, data quality, or feature selection. There is a lack of comprehensive coverage on iterating the model with new data, adjusting hyperparameters, or trying alternative modelling techniques. Furthermore, the response lacks clarity due to its vague nature and does not offer original thoughts or examples that align with the ideal answer. The context of applying real-world applications or examples closely aligned with the ideal answer is also missing, demonstrating a limited understanding of the context.",
         ];
     }
 
