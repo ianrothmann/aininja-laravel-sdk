@@ -22,32 +22,36 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
     protected function getMocked(): mixed
     {
         return [
-            "strengths" => "Ian Rothmann's strengths are evident in his ability to clearly and concisely introduce himself and highlight his relevant experience and achievements, which earned him an exemplary score in the video introduction question. His response was direct, addressing all aspects of the ideal answer, such as his current role, experience, and a brief example of how he applied his skills to solve a significant business problem. This showcases Ian's strong communication skills and his ability to articulate his thoughts in a clear and structured manner. Furthermore, Ian demonstrates satisfactory problem-solving skills by outlining a general approach to addressing issues when predictive models do not deliver the expected outcomes, indicating his proficiency in data manipulation and model adjustment.",
-            "shortcomings" => "Despite his strengths, Ian Rothmann's application reveals significant shortcomings, particularly in his inability to provide detailed examples of using machine learning and AI to drive business results, which resulted in a low score for that question. This indicates a gap in demonstrating applied knowledge and the impact of his work, which are crucial for the Data Scientist role. Additionally, while he acknowledges the importance of communication when models fail to deliver, his response lacked depth and failed to elaborate on specific steps for diagnosing model issues or how he would engage with stakeholders during such challenges. This suggests a need for improvement in detailing methodologies and stakeholder management strategies."
+            'strengths' => "Ian Rothmann's strengths are evident in his ability to clearly and concisely introduce himself and highlight his relevant experience and achievements, which earned him an exemplary score in the video introduction question. His response was direct, addressing all aspects of the ideal answer, such as his current role, experience, and a brief example of how he applied his skills to solve a significant business problem. This showcases Ian's strong communication skills and his ability to articulate his thoughts in a clear and structured manner. Furthermore, Ian demonstrates satisfactory problem-solving skills by outlining a general approach to addressing issues when predictive models do not deliver the expected outcomes, indicating his proficiency in data manipulation and model adjustment.",
+            'shortcomings' => "Despite his strengths, Ian Rothmann's application reveals significant shortcomings, particularly in his inability to provide detailed examples of using machine learning and AI to drive business results, which resulted in a low score for that question. This indicates a gap in demonstrating applied knowledge and the impact of his work, which are crucial for the Data Scientist role. Additionally, while he acknowledges the importance of communication when models fail to deliver, his response lacked depth and failed to elaborate on specific steps for diagnosing model issues or how he would engage with stakeholders during such challenges. This suggests a need for improvement in detailing methodologies and stakeholder management strategies.",
         ];
     }
 
     public function forJobDescription(string $jobDescription): self
     {
         $this->setInputParameter('job_description', $jobDescription);
+
         return $this;
     }
 
-    public function whereContrext(string $context): self
+    public function whereContext(string $context): self
     {
         $this->setInputParameter('context', $context);
+
         return $this;
     }
 
     public function rubric(string $rubric): self
     {
         $this->setInputParameter('rubric', $rubric);
+
         return $this;
     }
 
     public function whereRatingTable(string $ratingTable): self
     {
         $this->setInputParameter('rating_table', $ratingTable);
+
         return $this;
     }
 

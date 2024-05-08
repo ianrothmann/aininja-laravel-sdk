@@ -7,7 +7,7 @@ use IanRothmann\AINinja\AINinja;
 //
 //    $result = $handler->generateStrengthShortcoming()
 //        ->forJobDescription()
-//        ->whereContrext()
+//        ->whereContext()
 //        ->rubric()
 //        ->whereRatingTable()
 //        ->get();

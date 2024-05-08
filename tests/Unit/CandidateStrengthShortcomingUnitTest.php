@@ -4,7 +4,6 @@ use IanRothmann\AINinja\AINinja;
 
 it('can generate an candidate strength shortcoming', function () {
     $handler = new AINinja();
-
     $result = $handler->generateStrengthShortcoming()
         ->forJobDescription("Title:
   Data Scientist
@@ -14,7 +13,7 @@ it('can generate an candidate strength shortcoming', function () {
 
   Requirements:
   Master's degree in Computer Science, Statistics, Applied Math, or related field; 3-5 years of experience in data manipulation and statistical model building; proficiency in statistical analysis, quantitative analytics, and optimization algorithms; experience with ML frameworks and libraries; strong programming skills, including SQL, Python, TensorFlow, and C/C++; familiarity with distributed data/computing tools; adept at large dataset manipulation; expertise in data visualization tools; excellent communication, a drive for continuous learning, ability to work in a fast-paced environment, strong project management, organizational skills; understanding of design principles; experience in data architecture; proven use of ML and AI to drive business results.")
-        ->whereContrext("Title: Data Scientist
+        ->whereContext("Title: Data Scientist
 
   Summary:
   The Data Scientist role is pivotal in crafting machine learning models and analytics solutions that have a profound impact on business outcomes. This role encompasses the design and implementation of cloud-based ML production pipelines, ensuring data quality, and developing predictive models to inform strategic decisions. Key responsibilities include data acquisition, processing, model development, and in-depth analysis. The position demands close collaboration with cross-functional teams to deploy models effectively and monitor their performance, as well as leading large-scale projects that leverage data insights to address complex business challenges. Responsibilities also include optimizing data model performance, developing databases and analytics strategies, conducting trend analysis, and upholding a strict model quality testing framework.

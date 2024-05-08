@@ -28,32 +28,13 @@ class GenerateTextProcessor extends AiNinjaProcessor
         return $this;
     }
 
-    public function withInstructions($instructions): self
-    {
-        if (is_array($instructions)) {
-            $instructions = json_encode($instructions);
-        }
-
-        $this->input['instructions'] = $instructions;
-
-        return $this;
-    }
-
     public function get(): AINinjaGenerateTextResult
     {
-        if (is_array($this->input['instructions'])) {
-            $this->input['instructions'] = json_encode($this->input['instructions']);
-        }
-
         return parent::get();
     }
 
     public function stream($callback = null): AINinjaGenerateTextResult
     {
-        if (is_array($this->input['instructions'])) {
-            $this->input['instructions'] = json_encode($this->input['instructions']);
-        }
-
         return parent::stream($callback);
     }
 }
