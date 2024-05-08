@@ -12,6 +12,7 @@ it('can navigate the question chat', function () {
         ->withQuestion(4, 'What is your favourite animal')
         ->withResponse('Can I go back to the first question?')
         ->withContext('The user is Ian Rothmann and he is a software developer')
+        ->dd()
         ->get();
 
     expect($result->getResult())->toBeString();
