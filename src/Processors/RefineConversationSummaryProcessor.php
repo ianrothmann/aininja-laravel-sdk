@@ -11,7 +11,7 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
 
     protected function getEndpoint(): string
     {
-        return '';
+        return '/refine_conversation_summary';
     }
 
     protected function getResultClass(): string

@@ -2,10 +2,13 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Processors\CandidateStrengthShortcomingProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
 use IanRothmann\AINinja\Processors\FileSummaryProcessor;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\GenerateTextProcessor;
+use IanRothmann\AINinja\Processors\IdealResponseMultipleProcessor;
+use IanRothmann\AINinja\Processors\IdealResponseRatingProcessor;
 use IanRothmann\AINinja\Processors\ImageDescribeProcessor;
 use IanRothmann\AINinja\Processors\InterviewQualityProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
@@ -120,5 +123,20 @@ class AINinja
     public function processFaceImage(): FaceImageProcessor
     {
         return new FaceImageProcessor();
+    }
+
+    public function generateIdealResponses(): IdealResponseMultipleProcessor
+    {
+        return new IdealResponseMultipleProcessor();
+    }
+
+    public function generateIdealResponseRating(): IdealResponseRatingProcessor
+    {
+        return new IdealResponseRatingProcessor();
+    }
+
+    public function generateStrengthShortcoming(): CandidateStrengthShortcomingProcessor
+    {
+        return new CandidateStrengthShortcomingProcessor();
     }
 }
