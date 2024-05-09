@@ -28,6 +28,14 @@ class GenerateTextProcessor extends AiNinjaProcessor
         return $this;
     }
 
+    public function getValidationRules(): array
+    {
+        return [
+            'instructions' => 'required|array',
+            'instructions.*' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaGenerateTextResult
     {
         return parent::get();

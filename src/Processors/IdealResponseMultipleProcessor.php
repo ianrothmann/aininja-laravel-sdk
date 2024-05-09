@@ -65,6 +65,20 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function getValidationRules(): array
+    {
+        return [
+            'questions' => 'required|array',
+            'questions.*.question' => 'required|string',
+            'questions.*.answer_format' => 'required|string',
+            'questions.*.options' => 'nullable|string',
+            'requirements' => 'required|string',
+            'existing_ideal_answers' => 'sometimes|array',
+            'existing_ideal_answers.*.question' => 'required|string',
+            'existing_ideal_answers.*.ideal_response' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaIdealResponseMultipleResult
     {
         return parent::get();

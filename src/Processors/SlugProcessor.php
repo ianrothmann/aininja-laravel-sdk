@@ -28,6 +28,13 @@ class SlugProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaSlugResult
     {
         return parent::get();

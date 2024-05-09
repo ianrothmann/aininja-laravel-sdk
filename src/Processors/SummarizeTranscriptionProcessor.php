@@ -45,6 +45,15 @@ class SummarizeTranscriptionProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+            'name' => 'required|string',
+            'gender' => 'sometimes|string',
+        ];
+    }
+
     public function get(): AINinjaSummarizeTranscriptionResult
     {
         return parent::get();

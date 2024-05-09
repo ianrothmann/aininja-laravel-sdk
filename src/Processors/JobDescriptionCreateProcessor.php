@@ -11,7 +11,7 @@ class JobDescriptionCreateProcessor extends AINinjaProcessor
 
     protected function getEndpoint(): string
     {
-        return 'create_job_description';
+        return '/create_job_description';
     }
 
     protected function getResultClass(): string
@@ -24,6 +24,13 @@ class JobDescriptionCreateProcessor extends AINinjaProcessor
         $this->setInputParameter('text', $text);
 
         return $this;
+    }
+
+    public function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+        ];
     }
 
     public function get(): AINinjaJobDescriptionResult

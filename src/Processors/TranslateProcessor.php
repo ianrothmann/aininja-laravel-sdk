@@ -56,6 +56,18 @@ class TranslateProcessor extends AiNinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+            'languages' => 'required|array',
+            'languages.*.language_name' => 'required|string',
+            'languages.*.language_code' => 'required|string',
+            'parameters' => 'sometimes|array',
+            'parameters.*' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaTranslateResult
     {
         return parent::get();

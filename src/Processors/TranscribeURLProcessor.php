@@ -77,6 +77,17 @@ class TranscribeURLProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'url' => 'required|url',
+            'summary_option' => 'sometimes|boolean',
+            'complement_option' => 'sometimes|boolean',
+            'topics_option' => 'sometimes|boolean',
+            'context' => 'sometimes|string',
+        ];
+    }
+
     public function get(): AINinjaTranscribeURLResult
     {
         return parent::get();

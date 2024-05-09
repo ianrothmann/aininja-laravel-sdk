@@ -38,6 +38,14 @@ class ImageDescribeProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function getValidationRules(): array
+    {
+        return [
+            'url' => 'required|url',
+            'context' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaImageDescribeResult
     {
         return parent::get();

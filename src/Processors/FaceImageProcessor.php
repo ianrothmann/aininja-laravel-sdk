@@ -49,6 +49,13 @@ class FaceImageProcessor extends AIninjaProcessor
         return $this;
     }
 
+    public function getValidationRules(): array
+    {
+        return [
+            'url' => 'required|url',
+        ];
+    }
+
     public function get(): AINinjaFaceImageResult
     {
         return parent::get();

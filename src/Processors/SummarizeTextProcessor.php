@@ -49,6 +49,16 @@ class SummarizeTextProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+            'target_grade_level' => 'sometimes|integer',
+            'first_person' => 'sometimes|boolean',
+            'word_limit' => 'sometimes|integer',
+        ];
+    }
+
     public function get(): AINinjaSummarizeTextResult
     {
         return parent::get();

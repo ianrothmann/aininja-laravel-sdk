@@ -69,6 +69,19 @@ class InterviewQuestionProbingProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'question' => 'required|string',
+            'response_text' => 'required|string',
+            'response_type' => 'required|string',
+            'ideal_answer' => 'required|string',
+            'candidate_context' => 'required|string',
+            'other_questions' => 'sometimes|array',
+            'other_questions.*' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaInterviewQuestionProbingResult
     {
         return parent::get();

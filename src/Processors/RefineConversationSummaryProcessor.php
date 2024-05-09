@@ -49,6 +49,16 @@ class RefineConversationSummaryProcessor extends AINinjaProcessor
         return $input;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|array',
+            'text.*.speaker' => 'required|string',
+            'text.*.text' => 'required|string',
+            'previous_summary' => 'sometimes|string',
+        ];
+    }
+
     public function get(): AINinjaRefineConversationSummaryResult
     {
         return parent::get();

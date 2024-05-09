@@ -50,6 +50,15 @@ class InterviewReportProcessor extends AINinjaProcessor
         return $input;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'job_description' => 'required|string',
+            'context' => 'required|string',
+            'transcript' => 'required|array',
+        ];
+    }
+
     public function get(): AINinjaInterviewReportResult
     {
         return parent::get();

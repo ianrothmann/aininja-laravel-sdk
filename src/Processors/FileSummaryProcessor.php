@@ -41,6 +41,13 @@ class FileSummaryProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function getValidationRules(): array
+    {
+        return [
+            'url' => 'required|url',
+        ];
+    }
+
     public function get(): AINinjaFileSummaryResult
     {
         return parent::get();

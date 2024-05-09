@@ -109,6 +109,13 @@ class InterviewQuestionProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'text' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaInterviewQuestionResult
     {
         return parent::get();

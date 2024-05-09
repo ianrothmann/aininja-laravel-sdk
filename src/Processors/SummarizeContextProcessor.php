@@ -35,6 +35,13 @@ class SummarizeContextProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'context' => 'required|string',
+        ];
+    }
+
     public function get(): AINinjaSummarizeContextResult
     {
         return parent::get();
