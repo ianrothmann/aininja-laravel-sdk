@@ -22,21 +22,21 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
     protected function getMocked(): mixed
     {
         return [
-            "type" => "BackToPreviousQuestion",
-            "args" => [
-                "question" => "What is your name",
-                "question_number" => 1,
-                "complement" => null,
-                "comment" => null,
-                "clarification" => null
-            ]
+            'type' => 'BackToPreviousQuestion',
+            'args' => [
+                'question' => 'What is your name',
+                'question_number' => 1,
+                'complement' => null,
+                'comment' => null,
+                'clarification' => null,
+            ],
         ];
     }
 
     public function withQuestion(string|int $questionNumber, string $question): self
     {
         $this->addToInputArray('questions_by_number', [
-            'question_number' => (string)$questionNumber,
+            'question_number' => (string) $questionNumber,
             'question' => $question,
         ]);
 
