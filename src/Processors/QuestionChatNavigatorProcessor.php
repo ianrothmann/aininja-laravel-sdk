@@ -26,7 +26,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
 
     public function withQuestion(string|int $questionNumber, string $question): self
     {
-        $this->addToInputArray('questions', [
+        $this->addToInputArray('questions_by_number', [
             'question_number' => (string) $questionNumber,
             'question' => $question,
         ]);
@@ -51,9 +51,9 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
     public function getValidationRules(): array
     {
         return [
-            'questions' => 'required|array',
-            'questions.*.question_number' => 'required|string',
-            'questions.*.question' => 'required|string',
+            'questions_by_number' => 'required|array',
+            'questions_by_number.*.question_number' => 'required|string',
+            'questions_by_number.*.question' => 'required|string',
             'user_response' => 'required|string',
             'context' => 'sometimes|string',
         ];

@@ -4,8 +4,6 @@ use IanRothmann\AINinja\AINinja;
 
 it('can navigate the question chat', function () {
     $handler = new AINinja();
-
-    return;
     $result = $handler->navigateQuestionChat()
         ->withQuestion('1', 'What is your name')
         ->withQuestion('2', 'Where have you worked before')
@@ -13,7 +11,7 @@ it('can navigate the question chat', function () {
         ->withQuestion('4', 'What is your favourite animal')
         ->withResponse('Can I go back to the first question?')
         ->withContext('The user is Ian Rothmann and he is a software developer')
-        ->dd()
+        //->dd()
         ->get();
 
     expect($result->getResult())->toBeString();
