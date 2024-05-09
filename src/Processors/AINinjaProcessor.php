@@ -54,7 +54,7 @@ abstract class AINinjaProcessor
 
     protected function addToInputArray($key, $value): void
     {
-        if (!array_key_exists($key, $this->input)) {
+        if (! array_key_exists($key, $this->input)) {
             $this->input[$key] = [];
         }
 
@@ -74,7 +74,7 @@ abstract class AINinjaProcessor
     protected function validate(): void
     {
         $rules = $this->getValidationRules();
-        
+
         $validator = validator($this->input, $rules);
 
         if ($validator->fails()) {
