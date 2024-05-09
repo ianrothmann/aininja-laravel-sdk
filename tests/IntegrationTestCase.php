@@ -41,7 +41,7 @@ class IntegrationTestCase extends Orchestra
         }
         config()->set('aininja.token', env('AININJA_TOKEN'));
 
-        if(env('AININJA_URL')){
+        if (env('AININJA_URL')) {
             config()->set('aininja.url', env('AININJA_URL'));
         }
     }

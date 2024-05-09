@@ -4,7 +4,8 @@ use IanRothmann\AINinja\AINinja;
 
 it('can navigate the question chat', function () {
     $handler = new AINinja();
-return;
+
+    return;
     $result = $handler->navigateQuestionChat()
         ->withQuestion('1', 'What is your name')
         ->withQuestion('2', 'Where have you worked before')
