@@ -6,7 +6,7 @@ class AINinjaInterviewQuestionProbingResult extends AINinjaResult
 {
     public function getAnswerSufficient(): bool
     {
-        return !!$this->result['answer_sufficient'];
+        return (bool) $this->result['answer_sufficient'];
     }
 
     public function getProbingQuestion(): string
