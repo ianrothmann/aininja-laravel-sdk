@@ -69,6 +69,18 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [
+            'job_description' => 'required|string',
+            'candidate_context' => 'required|string',
+            'question' => 'required|string',
+            'ideal_answer' => 'required|string',
+            'candidate_answer' => 'required|string',
+            'rubric' => 'sometimes|string',
+        ];
+    }
+
     public function get(): AINinjaIdealResponseRatingResult
     {
         return parent::get();
