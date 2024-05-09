@@ -4,7 +4,7 @@ use IanRothmann\AINinja\AINinja;
 
 it('can generate an candidate strength shortcoming', function () {
     $handler = new AINinja();
-    $result = $handler->generateStrengthShortcoming()
+    $result = $handler->generateStrengthShortcomingsForRatedInterview()
         ->forJobDescription("Title:
   Data Scientist
 

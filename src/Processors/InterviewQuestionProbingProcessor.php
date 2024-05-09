@@ -27,21 +27,21 @@ class InterviewQuestionProbingProcessor extends AINinjaProcessor
         ];
     }
 
-    public function withQuestion(string $question): self
+    public function givenQuestion(string $question): self
     {
         $this->setInputParameter('question', $question);
 
         return $this;
     }
 
-    public function forAnswer(string $answer): self
+    public function withAnswer(string $answer): self
     {
         $this->setInputParameter('response_text', $answer);
 
         return $this;
     }
 
-    public function withResponseType(string $type): self
+    public function wasResponseType(string $type): self
     {
         $this->setInputParameter('response_type', $type);
 
@@ -62,7 +62,7 @@ class InterviewQuestionProbingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withOtherQuestion(string $question): self
+    public function addOtherQuestion(string $question): self
     {
         $this->addToInputArray('other_questions', $question);
 

@@ -13,7 +13,7 @@ it('can generate an Interview Report', function () {
         'Share a research paper that was accepted for publication on which you are an author (to be answered as file)' => null,
     ];
 
-    $requirements = <<<TOC
+    $requirements = <<<'TOC'
     Title:
     Data Scientist
 
@@ -30,7 +30,7 @@ TOC;
         ->withContext('The candidate is Ian Rothmann');
 
     foreach ($transcript as $question => $answer) {
-        $result->forInterviewTranscript($question, $answer);
+        $result->givenQuestionAndAnswer($question, $answer);
     }
 
     $result = $result->get();

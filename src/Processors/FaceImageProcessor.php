@@ -28,7 +28,7 @@ class FaceImageProcessor extends AIninjaProcessor
         ];
     }
 
-    public function whereUrl(string $url): self
+    public function forUrl(string $url): self
     {
         $this->setInputParameter('url', $url);
 

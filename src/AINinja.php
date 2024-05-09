@@ -135,7 +135,7 @@ class AINinja
         return new IdealResponseRatingProcessor();
     }
 
-    public function generateStrengthShortcoming(): CandidateStrengthShortcomingProcessor
+    public function generateStrengthShortcomingsForRatedInterview(): CandidateStrengthShortcomingProcessor
     {
         return new CandidateStrengthShortcomingProcessor();
     }

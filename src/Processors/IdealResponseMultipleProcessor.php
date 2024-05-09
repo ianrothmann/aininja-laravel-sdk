@@ -48,14 +48,14 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withRequirement(string $requirement): self
+    public function givenRequirements(string $requirement): self
     {
-        $this->addToInputArray('requirements', $requirement);
+        $this->setInputParameter('requirements', $requirement);
 
         return $this;
     }
 
-    public function withExistingIdealAnswer(string $answer, string $idealResponse): self
+    public function addExistingIdealAnswer(string $answer, string $idealResponse): self
     {
         $this->addToInputArray('existing_ideal_answers', [
             'question' => $answer,

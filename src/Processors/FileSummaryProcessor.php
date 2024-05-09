@@ -27,14 +27,14 @@ class FileSummaryProcessor extends AINinjaProcessor
         ];
     }
 
-    public function whereUrl(string $url): self
+    public function forUrl(string $url): self
     {
         $this->setInputParameter('url', $url);
 
         return $this;
     }
 
-    public function whereContext(string $context): self
+    public function withContext(string $context): self
     {
         $this->setInputParameter('context', $context);
 

@@ -26,7 +26,7 @@ class InterviewReportProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function forInterviewTranscript(string $question, ?string $answer = null): self
+    public function givenQuestionAndAnswer(string $question, ?string $answer = null): self
     {
         $this->addToInputArray('transcript', [
             $question => $answer,

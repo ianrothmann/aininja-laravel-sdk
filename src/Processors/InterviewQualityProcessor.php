@@ -31,7 +31,7 @@ class InterviewQualityProcessor extends AINinjaProcessor
         ];
     }
 
-    public function forQuestion(string $question, string $expectedAnswer, string $response_type): self
+    public function addQuestion(string $question, string $expectedAnswer, string $response_type): self
     {
         $this->addToInputArray('questions', [
             'question' => $question,

@@ -66,8 +66,26 @@ abstract class AINinjaProcessor
         return $this->input;
     }
 
+    protected function getValidationRules(): array
+    {
+        return [];
+    }
+
+    protected function validate(): void
+    {
+        $rules = $this->getValidationRules();
+
+        $validator = validator($this->input, $rules);
+
+        if ($validator->fails()) {
+            throw new \Exception($validator->errors()->first());
+        }
+    }
+
     public function toArray(): array
     {
+        $this->validate();
+
         return [
             'endpoint' => $this->getEndpoint(),
             'input' => $this->transformInputForTransport(),

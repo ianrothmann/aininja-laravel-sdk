@@ -19,11 +19,12 @@ it('can generate multiple ideal responses', function () {
             'options',
             'Beginner, Intermediate, Advanced, Expert',
         )
-//        ->withRequirement()
-        ->withExistingIdealAnswer(
+        ->givenRequirements("The candidate should have experience with deep learning frameworks and libraries.")
+        ->addExistingIdealAnswer(
             'Please describe your experience with machine learning frameworks and libraries. Which ones have you worked with most extensively',
             'The candidate has extensive experience with TensorFlow and PyTorch, having developed multiple projects that leverage deep learning to solve complex problems.'
         )
+        //->dd()
         ->get();
 
     expect($result->getResult())->toBeArray();

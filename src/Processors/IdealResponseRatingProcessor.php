@@ -41,7 +41,7 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withQuestion(string $question): self
+    public function forQuestion(string $question): self
     {
         $this->setInputParameter('question', $question);
 

@@ -6,10 +6,10 @@ it('can navigate the question chat', function () {
     $handler = new AINinja();
 
     $result = $handler->navigateQuestionChat()
-        ->withQuestion(1, 'What is your name')
-        ->withQuestion(2, 'Where have you worked before')
-        ->withQuestion(3, 'What is your favourite colour')
-        ->withQuestion(4, 'What is your favourite animal')
+        ->withQuestion('1', 'What is your name')
+        ->withQuestion('2', 'Where have you worked before')
+        ->withQuestion('3', 'What is your favourite colour')
+        ->withQuestion('4', 'What is your favourite animal')
         ->withResponse('Can I go back to the first question?')
         ->withContext('The user is Ian Rothmann and he is a software developer')
         ->get();

@@ -29,7 +29,7 @@ TOC;
         ->withContext('The candidate is Ian Rothmann');
 
     foreach ($transcript as $question => $answer) {
-        $result->forInterviewTranscript($question, $answer);
+        $result->givenQuestionAndAnswer($question, $answer);
     }
 
     $result = $result->get();

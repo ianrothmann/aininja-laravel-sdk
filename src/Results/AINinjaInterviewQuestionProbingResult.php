@@ -4,9 +4,9 @@ namespace IanRothmann\AINinja\Results;
 
 class AINinjaInterviewQuestionProbingResult extends AINinjaResult
 {
-    public function getAnswerSufficient(): int
+    public function getAnswerSufficient(): bool
     {
-        return $this->result['answer_sufficient'];
+        return !!$this->result['answer_sufficient'];
     }
 
     public function getProbingQuestion(): string

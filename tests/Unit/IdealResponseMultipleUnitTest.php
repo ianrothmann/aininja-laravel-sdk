@@ -20,7 +20,7 @@ it('can generate multiple ideal responses', function () {
             'Beginner, Intermediate, Advanced, Expert',
         )
 //        ->withRequirement()
-        ->withExistingIdealAnswer(
+        ->addExistingIdealAnswer(
             'Please describe your experience with machine learning frameworks and libraries. Which ones have you worked with most extensively',
             'The candidate has extensive experience with TensorFlow and PyTorch, having developed multiple projects that leverage deep learning to solve complex problems.'
         )
