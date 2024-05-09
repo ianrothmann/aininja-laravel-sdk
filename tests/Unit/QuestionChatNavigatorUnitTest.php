@@ -14,5 +14,10 @@ it('can navigate the question chat', function () {
         ->withContext('The user is Ian Rothmann and he is a software developer')
         ->get();
 
-    expect($result->getResult())->toBeString();
+    expect($result->getType())->toBeString()
+        ->and($result->getQuestion())->toBeString()
+        ->and($result->getQuestionNumber())->toBeInt()
+        ->and($result->getComplement())->toBeNull()
+        ->and($result->getComment())->toBeNull()
+        ->and($result->getClarification())->toBeNull();
 });
