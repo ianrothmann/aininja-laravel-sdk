@@ -98,7 +98,8 @@ class AINinjaRunner
 
             return $response;
         } else {
-            return $runnable->batch($configs);
+            $batchInputs=collect($configs)->pluck('input')->toArray();
+            return $runnable->batch($batchInputs);
         }
     }
 }

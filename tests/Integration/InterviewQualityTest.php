@@ -22,7 +22,7 @@ it('can review the quality of the interview', function () {
     expect($result->getOverallRating())->toBeInt()
         ->and($result->getOverallComments())->toBeString()
         ->and($result->getGeneralSuggestions())->toBeString()
-        ->and($result->getAdditionalQuestions())->toBeString()
+        ->and($result->getAdditionalQuestions())->toBeArray()
         ->and($result->getExpectedResponseComment())->toBeString()
         ->and($result->getResponseTypeReview())->toBeString();
 });

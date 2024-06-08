@@ -21,10 +21,9 @@ class GenerateTextProcessor extends AiNinjaProcessor
         return '1. Kwame 2. Aisha 3. Simba 4. Nala 5. Kofi';
     }
 
-    public function withInstruction(string $instruction): self
+    public function addInstruction(string $instruction): self
     {
-        $this->input['instructions'][] = $instruction;
-
+        $this->addToInputArray('instructions', $instruction);
         return $this;
     }
 

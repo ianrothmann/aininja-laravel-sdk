@@ -19,7 +19,7 @@ class AINinjaInterviewQualityResult extends AINinjaResult
         return $this->result['general_suggestions'] ?? null;
     }
 
-    public function getAdditionalQuestions(): ?string
+    public function getAdditionalQuestions(): ?array
     {
         return $this->result['additional_questions'] ?? null;
     }
