@@ -21,12 +21,12 @@ class AINinjaRunner
 
     protected int $cacheDuration = 60;
 
-    public function __construct()
+    public function __construct($forceNoCache = false)
     {
         $this->url = rtrim(config('aininja.url'), '/').'/';
         $this->token = config('aininja.token');
         $this->shouldMock = config('aininja.should_mock');
-        $this->shouldCache = config('aininja.should_cache');
+        $this->shouldCache = $forceNoCache ? true : config('aininja.should_cache');
         $this->cacheDuration = config('aininja.cache_minutes');
     }
 

@@ -12,6 +12,8 @@ abstract class AINinjaProcessor
 {
     protected $input = [];
 
+    protected $forceNoCache = false;
+
     public function __construct()
     {
         if ($this->hasTrait(OutputsInLanguage::class)) {
@@ -26,16 +28,23 @@ abstract class AINinjaProcessor
 
     abstract protected function getMocked(): mixed;
 
+    public function forceNoCache(): self
+    {
+        $this->forceNoCache = true;
+
+        return $this;
+    }
+
     public function get(): mixed
     {
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner($this->forceNoCache);
 
         return $this->hydrateResult($runner->invoke($this));
     }
 
     public function stream($callback = null): mixed
     {
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner($this->forceNoCache);
 
         return $this->hydrateResult($runner->stream($this, $callback));
     }
