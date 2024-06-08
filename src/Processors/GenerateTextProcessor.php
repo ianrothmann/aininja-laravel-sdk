@@ -24,6 +24,7 @@ class GenerateTextProcessor extends AiNinjaProcessor
     public function addInstruction(string $instruction): self
     {
         $this->addToInputArray('instructions', $instruction);
+
         return $this;
     }
 
