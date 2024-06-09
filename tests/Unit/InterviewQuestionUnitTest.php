@@ -26,5 +26,5 @@ it('can generate interview questions', function () {
   experience in data architecture; proven use of ML and AI to drive business results.")
         ->get();
 
-    expect($result->getQuestions())->toBeArray();
+    expect($result->getQuestions()->toArray())->not->toBeEmpty();
 });
