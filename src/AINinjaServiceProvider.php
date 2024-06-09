@@ -18,6 +18,6 @@ class AINinjaServiceProvider extends PackageServiceProvider
         $package
             ->name('aininja-laravel-sdk')
             ->hasConfigFile('aininja');
-            //->hasCommand(AINinjaCommand::class);
+        //->hasCommand(AINinjaCommand::class);
     }
 }
