@@ -14,7 +14,8 @@ it('can review the quality of the interview', function () {
         ->addQuestion(
             'What are your specialities?',
             'Mixology, craft cocktails',
-            'text',
+            'option',
+            ['Whiskey', 'Vodka', 'Gin', 'Rum', 'Tequila', 'Brandy', 'Cognac', 'Liqueurs', 'Cocktails', 'Mocktails']
         )
         ->withRequirement('A head barman at an upmarket cocktail restaurant in Dubai')
         ->get();

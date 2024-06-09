@@ -48,6 +48,13 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function givenResponseType(string $responseType): self
+    {
+        $this->setInputParameter('answer_format', $responseType);
+
+        return $this;
+    }
+
     public function whereIdealAnswerIs(string $idealAnswer): self
     {
         $this->setInputParameter('ideal_answer', $idealAnswer);
@@ -75,6 +82,7 @@ class IdealResponseRatingProcessor extends AINinjaProcessor
             'job_description' => 'required|string',
             'candidate_context' => 'required|string',
             'question' => 'required|string',
+            'answer_format' => 'required|in:text,audio,video,image,file,option,contact,location', // 'text', 'audio', 'video', 'image', 'file' ,'option'
             'ideal_answer' => 'required|string',
             'candidate_answer' => 'required|string',
             'rubric' => 'sometimes|string',
