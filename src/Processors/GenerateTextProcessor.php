@@ -2,10 +2,13 @@
 
 namespace IanRothmann\AINinja\Processors;
 
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaGenerateTextResult;
 
 class GenerateTextProcessor extends AiNinjaProcessor
 {
+    use OutputsInLanguage;
+
     protected function getEndpoint(): string
     {
         return '/generate_text';
