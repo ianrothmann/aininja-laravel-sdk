@@ -15,6 +15,7 @@ use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
+use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
 use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
@@ -33,6 +34,11 @@ class AINinja
     public function generateJson(): GenerateJsonProcessor
     {
         return new GenerateJsonProcessor();
+    }
+
+    public function extractKeywords(): KeywordProcessor
+    {
+        return new KeywordProcessor();
     }
 
     public function writeInterviewReport(): InterviewReportProcessor
