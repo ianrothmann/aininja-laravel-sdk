@@ -64,7 +64,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
         return [
             'job_description' => 'required|string',
             'candidate_context' => 'required|string',
-            'rubric' => 'required|string',
+            'rubric' => 'sometimes|string',
             'rating_table' => 'required|array',
             'rating_table.*.question' => 'required|string',
             'rating_table.*.score' => 'required|integer',
