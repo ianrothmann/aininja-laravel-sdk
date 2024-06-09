@@ -60,7 +60,7 @@ class InterviewQualityProcessor extends AINinjaProcessor
             'questions.*.question' => 'required|string',
             'questions.*.expected_response' => 'required|string',
             'questions.*.response_type' => 'required|string',
-            'questions.*.options' => 'sometimes|array',
+            'questions.*.options' => 'sometimes|string',
             'requirements' => 'required|string',
         ];
     }
