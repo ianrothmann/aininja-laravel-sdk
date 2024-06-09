@@ -19,8 +19,8 @@ it('can generate multiple ideal responses', function () {
         ->forQuestion(
             3,
             'Which of the following best describes your level of proficiency with data visualization tools?',
-            'options',
-            ['Beginner', 'Intermediate', 'Advanced']
+            'option',
+            [78 => 'Beginner', 79 => 'Intermediate', 80 => 'Advanced']
         )
         ->givenRequirements('The candidate should have experience with deep learning frameworks and libraries.')
         ->addExistingIdealAnswer(
@@ -29,6 +29,6 @@ it('can generate multiple ideal responses', function () {
         )
         //->dd()
         ->get();
-
+dd($result->getResult());
     expect($result->getResult())->toBeArray();
 });

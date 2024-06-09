@@ -34,12 +34,13 @@ class InterviewQualityProcessor extends AINinjaProcessor
         ];
     }
 
-    public function addQuestion(string $question, string $expectedAnswer, string $response_type): self
+    public function addQuestion(string $question, string $expectedAnswer, string $response_type, ?array $options = null): self
     {
         $this->addToInputArray('questions', [
             'question' => $question,
             'expected_response' => $expectedAnswer,
             'response_type' => $response_type,
+            'options' => json_encode($options),
         ]);
 
         return $this;
@@ -59,6 +60,7 @@ class InterviewQualityProcessor extends AINinjaProcessor
             'questions.*.question' => 'required|string',
             'questions.*.expected_response' => 'required|string',
             'questions.*.response_type' => 'required|string',
+            'questions.*.options' => 'sometimes|array',
             'requirements' => 'required|string',
         ];
     }
