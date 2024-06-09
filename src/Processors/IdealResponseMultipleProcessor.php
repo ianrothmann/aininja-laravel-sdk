@@ -70,7 +70,7 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
     {
         return [
             'questions' => 'required|array',
-            'questions.*.question_number' => 'required',
+            'questions.*.id' => 'required',
             'questions.*.question' => 'required|string',
             'questions.*.answer_format' => 'required|string',
             'questions.*.options' => 'nullable|string',
