@@ -67,7 +67,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
             'rubric' => 'sometimes|string',
             'rating_table' => 'required|array',
             'rating_table.*.question' => 'required|string',
-            'rating_table.*.score' => 'required|number',
+            'rating_table.*.score' => 'required|numeric',
             'rating_table.*.reason' => 'required|string',
         ];
     }
