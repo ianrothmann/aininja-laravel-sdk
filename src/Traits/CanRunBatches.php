@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 trait CanRunBatches
 {
-    public function batch($processors, $forceNoCache=false): Collection
+    public function batch($processors, $forceNoCache = false): Collection
     {
         foreach ($processors as $processor) {
             if (! $processor instanceof AINinjaProcessor) {
