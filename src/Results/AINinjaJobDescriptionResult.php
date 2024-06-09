@@ -4,6 +4,11 @@ namespace IanRothmann\AINinja\Results;
 
 class AINinjaJobDescriptionResult extends AINinjaResult
 {
+    public function getTitle(): ?string
+    {
+        return $this->result['title'] ?? null;
+    }
+
     public function getSummary(): ?string
     {
         return $this->result['summary'] ?? null;
