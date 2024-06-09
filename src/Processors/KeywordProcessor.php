@@ -24,8 +24,8 @@ class KeywordProcessor extends AINinjaProcessor
         return [
             'keywords' => [
                 'keyword1',
-                'keyword2'
-            ]
+                'keyword2',
+            ],
         ];
     }
 
