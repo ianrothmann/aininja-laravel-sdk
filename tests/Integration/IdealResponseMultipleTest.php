@@ -20,7 +20,7 @@ it('can generate multiple ideal responses', function () {
             3,
             'Which of the following best describes your level of proficiency with data visualization tools?',
             'options',
-            'Beginner, Intermediate, Advanced, Expert',
+            ['Beginner', 'Intermediate', 'Advanced']
         )
         ->givenRequirements('The candidate should have experience with deep learning frameworks and libraries.')
         ->addExistingIdealAnswer(
