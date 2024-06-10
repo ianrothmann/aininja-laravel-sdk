@@ -9,8 +9,8 @@ it('can transcribe a URL', function () {
         ->forURL('https://kaggle-audio-files-2.s3.amazonaws.com/03-01-02-01-02-02-05.wav')
         ->withSummary()
         ->withComplement()
-        ->withTopic()
-        ->withContext('The person speaking is Reinhardt')
+        ->withTopics()
+        ->withSpeakerContext('The person speaking is Reinhardt')
         ->get();
 
     expect($result->getTranscription())->toBeString()

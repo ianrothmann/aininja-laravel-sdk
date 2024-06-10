@@ -63,14 +63,28 @@ class TranscribeURLProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function withTopic(bool $value = true): self
+    public function withTopics(bool $value = true): self
     {
-        $this->setInputParameter('topics_option', $value);
+        $this->setInputParameter('topic_option', $value);
 
         return $this;
     }
 
-    public function withContext(string $context): self
+    public function byName(string $name): self
+    {
+        $this->setInputParameter('name', $name);
+
+        return $this;
+    }
+
+    public function wasAskedAQuestion(string $question): self
+    {
+        $this->setInputParameter('question', $question);
+
+        return $this;
+    }
+
+    public function withSpeakerContext(string $context): self
     {
         $this->setInputParameter('context', $context);
 
@@ -81,6 +95,8 @@ class TranscribeURLProcessor extends AINinjaProcessor
     {
         return [
             'url' => 'required|url',
+            'name' => 'sometimes|string',
+            'question' => 'sometimes|string',
             'summary_option' => 'sometimes|boolean',
             'complement_option' => 'sometimes|boolean',
             'topics_option' => 'sometimes|boolean',
