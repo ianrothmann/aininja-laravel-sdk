@@ -2,10 +2,13 @@
 
 namespace IanRothmann\AINinja\Processors;
 
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaImageDescribeResult;
 
 class ImageDescribeProcessor extends AINinjaProcessor
 {
+    use OutputsInLanguage;
+
     protected function getEndpoint(): string
     {
         return '/describe_image';
