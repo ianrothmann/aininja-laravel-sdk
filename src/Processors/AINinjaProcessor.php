@@ -28,7 +28,7 @@ abstract class AINinjaProcessor
 
     abstract protected function getMocked(): mixed;
 
-    public function forceNoCache($force=true): self
+    public function forceNoCache($force = true): self
     {
         $this->forceNoCache = $force;
 
