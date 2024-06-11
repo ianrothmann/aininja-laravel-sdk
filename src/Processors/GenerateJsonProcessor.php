@@ -2,7 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Results\AINinjaResult;
+use IanRothmann\AINinja\Results\AINinjaJsonResult;
 
 class GenerateJsonProcessor extends AINinjaProcessor
 {
@@ -13,7 +13,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
 
     protected function getResultClass(): string
     {
-        return AINinjaResult::class;
+        return AINinjaJsonResult::class;
     }
 
     public function addInstruction(string $instruction): self
@@ -43,12 +43,12 @@ class GenerateJsonProcessor extends AINinjaProcessor
         ];
     }
 
-    public function get(): AINinjaResult
+    public function get(): AINinjaJsonResult
     {
         return parent::get();
     }
 
-    public function stream($callback = null): AINinjaResult
+    public function stream($callback = null): AINinjaJsonResult
     {
         return parent::stream($callback);
     }
