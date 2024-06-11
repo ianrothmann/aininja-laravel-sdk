@@ -23,6 +23,4 @@ class AINinjaFaceImageResult extends AINinjaResult
     {
         return $this->result['number_of_faces'] ?? null;
     }
-
-
 }
