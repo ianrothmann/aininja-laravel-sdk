@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\CandidateStrengthShortcomingProcessor;
+use IanRothmann\AINinja\Processors\EmbeddingsProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
 use IanRothmann\AINinja\Processors\FileSummaryProcessor;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
@@ -49,6 +50,11 @@ class AINinja
     public function generateJobDescription(): JobDescriptionCreateProcessor
     {
         return new JobDescriptionCreateProcessor();
+    }
+
+    public function embeddings(): EmbeddingsProcessor
+    {
+        return new EmbeddingsProcessor();
     }
 
     public function summarizeTLDR(): TLDRProcessor
