@@ -4,15 +4,8 @@ namespace IanRothmann\AINinja\Results;
 
 use Illuminate\Support\Collection;
 
-class AINinjaJsonResult
+class AINinjaJsonResult extends AINinjaResult
 {
-    protected $result;
-
-    public function __construct($result)
-    {
-        $this->result = $result;
-    }
-
     public function getResult(): Collection
     {
         return collect($this->result);
