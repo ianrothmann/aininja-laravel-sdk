@@ -44,10 +44,10 @@ class AINinjaQuestionChatNavigatorResult extends AINinjaResult
         return $this->result['args']['question_number'] ?? null;
     }
 
-   /* public function getComplement(): ?string
-    {
-        return $this->result['args']['complement'] ?? null;
-    }*/
+    /* public function getComplement(): ?string
+     {
+         return $this->result['args']['complement'] ?? null;
+     }*/
 
     public function getComment(): ?string
     {
