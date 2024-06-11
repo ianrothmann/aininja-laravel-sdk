@@ -35,6 +35,13 @@ class FaceImageProcessor extends AIninjaProcessor
         return $this;
     }
 
+    public function withContext(bool $value = true): self
+    {
+        $this->setInputParameter('context', $value);
+
+        return $this;
+    }
+
     public function withDescription(bool $value = true): self
     {
         $this->setInputParameter('describe', $value);

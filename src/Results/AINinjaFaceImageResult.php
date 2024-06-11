@@ -18,4 +18,11 @@ class AINinjaFaceImageResult extends AINinjaResult
     {
         return $this->result['complement'] ?? null;
     }
+
+    public function getNumberOfFaces(): ?int
+    {
+        return $this->result['number_of_faces'] ?? null;
+    }
+
+
 }

@@ -13,5 +13,6 @@ it('can process a face image', function () {
 
     expect($result->getError())->toBeNull()
         ->and($result->getDescription())->toBeString()
-        ->and($result->getComplement())->toBeString();
+        ->and($result->getComplement())->toBeString()
+        ->and($result->getNumberOfFaces())->toBeInt();
 });
