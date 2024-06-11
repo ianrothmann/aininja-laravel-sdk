@@ -43,6 +43,20 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function forQuestionsByNumbers(array $questionsByNumber): self
+    {
+        $processed = [];
+        foreach ($questionsByNumber as $questionNumber => $question){
+            $processed[] = [
+                'question_number' => (string) $questionNumber,
+                'question' => $question,
+            ];
+        }
+        $this->setInputParameter('questions_by_number', $processed);
+
+        return $this;
+    }
+
     public function withResponse(string $response): self
     {
         $this->setInputParameter('user_response', $response);

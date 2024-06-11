@@ -4,7 +4,7 @@ namespace IanRothmann\AINinja\Results;
 
 class AINinjaQuestionChatNavigatorResult extends AINinjaResult
 {
-    public function getType(): ?string
+    public function getIntent(): ?string
     {
         return $this->result['type'] ?? null;
     }

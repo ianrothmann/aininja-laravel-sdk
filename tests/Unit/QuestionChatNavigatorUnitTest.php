@@ -14,7 +14,7 @@ it('can navigate the question chat', function () {
         ->withContext('The user is Ian Rothmann and he is a software developer')
         ->get();
 
-    expect($result->getType())->toBeString()
+    expect($result->getIntent())->toBeString()
         ->and($result->getQuestion())->toBeString()
         ->and($result->getQuestionNumber())->toBeInt()
         ->and($result->getComplement())->toBeNull()
