@@ -56,7 +56,7 @@ class TranslateProcessor extends AiNinjaProcessor
         return $this;
     }
 
-    public function withParameters(string $parameter): self
+    public function withParameters(array $parameter): self
     {
         $this->setInputParameter('parameters', $parameter);
 
