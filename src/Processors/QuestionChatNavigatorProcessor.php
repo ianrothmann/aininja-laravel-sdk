@@ -46,7 +46,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
     public function forQuestionsByNumbers(array $questionsByNumber): self
     {
         $processed = [];
-        foreach ($questionsByNumber as $questionNumber => $question){
+        foreach ($questionsByNumber as $questionNumber => $question) {
             $processed[] = [
                 'question_number' => (string) $questionNumber,
                 'question' => $question,
