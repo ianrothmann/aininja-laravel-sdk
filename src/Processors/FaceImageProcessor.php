@@ -5,7 +5,7 @@ namespace IanRothmann\AINinja\Processors;
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaFaceImageResult;
 
-class FaceImageProcessor extends AIninjaProcessor
+class FaceImageProcessor extends AINinjaProcessor
 {
     use OutputsInLanguage;
 

@@ -19,6 +19,7 @@ use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
 use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
+use IanRothmann\AINinja\Processors\ResumeProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
@@ -130,6 +131,11 @@ class AINinja
     public function summarizeFile(): FileSummaryProcessor
     {
         return new FileSummaryProcessor();
+    }
+
+    public function analyzeResume(): ResumeProcessor
+    {
+        return new ResumeProcessor();
     }
 
     public function processFaceImage(): FaceImageProcessor
