@@ -4,6 +4,7 @@ namespace IanRothmann\AINinja\Runners;
 
 use IanRothmann\AINinja\Processors\AINinjaProcessor;
 use IanRothmann\LangServePhpClient\RemoteRunnable;
+use IanRothmann\LangServePhpClient\RemoteRunnablePool;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableBatchResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
@@ -28,6 +29,31 @@ class AINinjaRunner
         $this->shouldMock = config('aininja.should_mock');
         $this->shouldCache = $forceNoCache ? false : config('aininja.should_cache');
         $this->cacheDuration = config('aininja.cache_minutes');
+    }
+
+    public function invokeAsyncAndWait(array $processors): array
+    {
+        $runnablePool = new RemoteRunnablePool();
+        $runnablePool->authenticateWithXToken($this->token);
+        $mockedResponses = [];
+        /**
+         * @var AINinjaProcessor $processor
+         */
+        foreach ($processors as $id => $processor){
+            $config = $processor->toArray();
+            $endpoint = $this->url.ltrim($config['endpoint'], '/');
+            if($this->shouldMock){
+                $mockedResponses[$id]=RemoteRunnableResponse::mock($config['mocked']);
+            }else{
+                $runnablePool->invoke($id, $endpoint, $config['input']);
+            }
+        }
+
+        if($this->shouldMock){
+            return $mockedResponses;
+        }
+
+        return $runnablePool->wait();
     }
 
     public function invoke(AINinjaProcessor $processor): RemoteRunnableResponse

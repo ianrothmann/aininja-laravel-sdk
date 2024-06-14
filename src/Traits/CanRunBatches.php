@@ -35,4 +35,27 @@ trait CanRunBatches
                 return $templateProcessor->hydrateResult($response);
             });
     }
+
+    public function pool(array $processors): Collection
+    {
+        foreach ($processors as $processor) {
+            if (! $processor instanceof AINinjaProcessor) {
+                throw new \Exception('The processor must be an instance of AINinjaProcessor');
+            }
+        }
+
+        if ($processors instanceof Collection) {
+            $processors = $processors->toArray();
+        }
+
+        if (count($processors) == 0) {
+            return collect();
+        }
+
+        $runner = new AINinjaRunner();
+
+        return collect($runner->invokeAsyncAndWait($processors))->map(function (RemoteRunnableResponse $response, $key) use ($processors) {
+            return $processors[$key]->hydrateResult($response);
+        });
+    }
 }
