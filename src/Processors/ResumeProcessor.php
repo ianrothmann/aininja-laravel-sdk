@@ -53,7 +53,7 @@ class ResumeProcessor extends AINinjaProcessor
 
     protected function getMocked(): mixed
     {
-        return json_decode(<<<TOC
+        return json_decode(<<<'TOC'
 {
   "error": null,
   "is_resume": true,
@@ -128,7 +128,7 @@ class ResumeProcessor extends AINinjaProcessor
   }
 }
 TOC
-        ,true);
+            , true);
 
     }
 }
