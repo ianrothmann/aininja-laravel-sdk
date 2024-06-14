@@ -39,17 +39,17 @@ class AINinjaRunner
         /**
          * @var AINinjaProcessor $processor
          */
-        foreach ($processors as $id => $processor){
+        foreach ($processors as $id => $processor) {
             $config = $processor->toArray();
             $endpoint = $this->url.ltrim($config['endpoint'], '/');
-            if($this->shouldMock){
-                $mockedResponses[$id]=RemoteRunnableResponse::mock($config['mocked']);
-            }else{
+            if ($this->shouldMock) {
+                $mockedResponses[$id] = RemoteRunnableResponse::mock($config['mocked']);
+            } else {
                 $runnablePool->invoke($id, $endpoint, $config['input']);
             }
         }
 
-        if($this->shouldMock){
+        if ($this->shouldMock) {
             return $mockedResponses;
         }
 
