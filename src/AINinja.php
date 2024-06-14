@@ -15,6 +15,7 @@ use IanRothmann\AINinja\Processors\InterviewQualityProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProbingProcessor;
 use IanRothmann\AINinja\Processors\InterviewQuestionProcessor;
 use IanRothmann\AINinja\Processors\InterviewReportProcessor;
+use IanRothmann\AINinja\Processors\InterviewRequirementsCreateProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
@@ -51,6 +52,11 @@ class AINinja
     public function generateJobDescription(): JobDescriptionCreateProcessor
     {
         return new JobDescriptionCreateProcessor();
+    }
+
+    public function generateInterviewRequirements(): InterviewRequirementsCreateProcessor
+    {
+        return new InterviewRequirementsCreateProcessor();
     }
 
     public function embeddings(): EmbeddingsProcessor
