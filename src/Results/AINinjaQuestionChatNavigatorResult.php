@@ -34,10 +34,10 @@ class AINinjaQuestionChatNavigatorResult extends AINinjaResult
         return $this->getIntent() === 'NextQuestion';
     }
 
-//    public function getQuestion(): ?string
-//    {
-//        return $this->result['args']['question'] ?? null;
-//    }
+    //    public function getQuestion(): ?string
+    //    {
+    //        return $this->result['args']['question'] ?? null;
+    //    }
 
     public function getQuestionNumber(): ?int
     {
