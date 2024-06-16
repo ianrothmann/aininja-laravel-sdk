@@ -111,7 +111,7 @@ class AINinjaRunner
         $endpoint = $this->url.ltrim($configs[0]['endpoint'], '/');
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
-        if($configs[0]['trace_id'] ?? null){
+        if ($configs[0]['trace_id'] ?? null) {
             $runnable->withTraceId($configs[0]['trace_id'] ?? null);
         }
 
