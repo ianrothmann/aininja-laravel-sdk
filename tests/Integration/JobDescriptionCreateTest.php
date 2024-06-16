@@ -11,6 +11,7 @@ it('can generate a job description', function () {
                 //dd($response->getContent());
             }
         });
+
     expect($result->getSummary())->toBeString();
     expect($result->getEducationRequirements())->toBeString();
     expect($result->getExperienceRequirements())->toBeString();

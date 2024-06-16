@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "ianrothmann/langserve-php-client": "0.0.5",
+        "ianrothmann/langserve-php-client": "0.0.6",
         "illuminate/contracts": ">=8.0",
         "spatie/laravel-package-tools": "^1.16"
     },

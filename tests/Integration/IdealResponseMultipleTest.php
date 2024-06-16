@@ -29,6 +29,5 @@ it('can generate multiple ideal responses', function () {
         )
         //->dd()
         ->get();
-    dd($result->getResult());
     expect($result->getResult())->toBeArray();
 });
