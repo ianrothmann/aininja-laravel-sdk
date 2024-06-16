@@ -7,12 +7,15 @@ use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
+use Illuminate\Database\Eloquent\Model;
 
 abstract class AINinjaProcessor
 {
     protected $input = [];
 
     protected $forceNoCache = false;
+
+    protected ?string $traceId = null;
 
     public function __construct()
     {
@@ -99,6 +102,7 @@ abstract class AINinjaProcessor
             'endpoint' => $this->getEndpoint(),
             'input' => $this->transformInputForTransport(),
             'mocked' => $this->getMocked(),
+            'trace_id' => $this->traceId,
         ];
     }
 
@@ -128,5 +132,20 @@ abstract class AINinjaProcessor
     public function dd()
     {
         dd($this->toArray());
+    }
+
+    public function setTraceId(string|int $traceId): self
+    {
+        $this->traceId = (string)$traceId;
+        return $this;
+    }
+
+    public function traceModel(Model $model): self
+    {
+        $modelName = class_basename($model);
+        $primaryKeyValue = $model->getKey();
+        $this->traceId = $modelName . ':' . $primaryKeyValue;
+
+        return $this;
     }
 }

@@ -62,6 +62,7 @@ class AINinjaRunner
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
+        $runnable->withTraceId($config['trace_id'] ?? null);
         if ($this->shouldCache) {
             $key = md5(json_encode($config));
 
@@ -81,6 +82,7 @@ class AINinjaRunner
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
+        $runnable->withTraceId($config['trace_id'] ?? null);
 
         if ($this->shouldMock) {
             return RemoteRunnableStreamResponse::mock($config['mocked']);
@@ -109,6 +111,9 @@ class AINinjaRunner
         $endpoint = $this->url.ltrim($configs[0]['endpoint'], '/');
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
+        if($configs[0]['trace_id'] ?? null){
+            $runnable->withTraceId($configs[0]['trace_id'] ?? null);
+        }
 
         if ($this->shouldCache) {
             $key = md5(json_encode($configs));
