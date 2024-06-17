@@ -5,7 +5,7 @@ namespace IanRothmann\AINinja\Processors;
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaGenerateTextResult;
 
-class GenerateTextProcessor extends AiNinjaProcessor
+class GenerateTextProcessor extends AINinjaProcessor
 {
     use OutputsInLanguage;
 

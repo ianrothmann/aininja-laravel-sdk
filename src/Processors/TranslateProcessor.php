@@ -4,7 +4,7 @@ namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Results\AINinjaTranslateResult;
 
-class TranslateProcessor extends AiNinjaProcessor
+class TranslateProcessor extends AINinjaProcessor
 {
     protected function getEndpoint(): string
     {
