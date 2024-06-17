@@ -2,6 +2,7 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Processors\AssessLanguageProcessor;
 use IanRothmann\AINinja\Processors\CandidateStrengthShortcomingProcessor;
 use IanRothmann\AINinja\Processors\EmbeddingsProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
@@ -92,6 +93,11 @@ class AINinja
     public function transcribeURL(): TranscribeURLProcessor
     {
         return new TranscribeURLProcessor();
+    }
+
+    public function assessLanguage(): AssessLanguageProcessor
+    {
+        return new AssessLanguageProcessor();
     }
 
     public function generateSlug(): SlugProcessor
