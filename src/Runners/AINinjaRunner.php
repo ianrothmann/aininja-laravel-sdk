@@ -76,8 +76,9 @@ class AINinjaRunner
         if ($sourceHeader) {
             $runnable->addHeader('X-Source', $sourceHeader);
         }
+
         if ($this->shouldCache) {
-            $key = md5(json_encode($config));
+            $key = $this->getCacheKey($config);
 
             return Cache::remember('ai_ninja_'.$key, $this->cacheDuration, function () use ($runnable, $config) {
                 return $runnable->invoke($config['input']);
@@ -137,7 +138,7 @@ class AINinjaRunner
         }
 
         if ($this->shouldCache) {
-            $key = md5(json_encode($configs));
+            $key = $this->getCacheKey($configs);
 
             return Cache::remember('ai_ninja_'.$key, $this->cacheDuration, function () use ($runnable, $configs) {
                 return $runnable->batch($configs);
@@ -165,5 +166,26 @@ class AINinjaRunner
         }
 
         return Str::slug($name).'-'.Str::slug($env);
+    }
+
+    protected function getCacheKey($config): string
+    {
+        $configTemp = $this->processUrlsForCache($config);
+        return md5(json_encode($configTemp));
+    }
+
+    protected function processUrlsForCache($config)
+    {
+        foreach ($config as $key => $value) {
+            if (is_array($value)) {
+                $config[$key] = $this->processUrlsForCache($value);
+            } elseif ($key === 'url') {
+                // Parse the URL and remove the query string
+                $parsedUrl = parse_url($value);
+                $urlWithoutQuery = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . (isset($parsedUrl['path']) ? $parsedUrl['path'] : '');
+                $config[$key] = $urlWithoutQuery;
+            }
+        }
+        return $config;
     }
 }
