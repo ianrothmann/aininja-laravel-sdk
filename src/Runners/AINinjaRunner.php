@@ -171,6 +171,7 @@ class AINinjaRunner
     protected function getCacheKey($config): string
     {
         $configTemp = $this->processUrlsForCache($config);
+
         return md5(json_encode($configTemp));
     }
 
@@ -182,10 +183,11 @@ class AINinjaRunner
             } elseif ($key === 'url') {
                 // Parse the URL and remove the query string
                 $parsedUrl = parse_url($value);
-                $urlWithoutQuery = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . (isset($parsedUrl['path']) ? $parsedUrl['path'] : '');
+                $urlWithoutQuery = $parsedUrl['scheme'].'://'.$parsedUrl['host'].(isset($parsedUrl['path']) ? $parsedUrl['path'] : '');
                 $config[$key] = $urlWithoutQuery;
             }
         }
+
         return $config;
     }
 }
