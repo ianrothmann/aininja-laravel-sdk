@@ -65,7 +65,7 @@ class AINinjaRunner
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
         $sourceHeader = $this->getSourceHeader();
-        if($sourceHeader){
+        if ($sourceHeader) {
             $runnable->addHeader('X-Source', $sourceHeader);
         }
         if ($this->shouldCache) {
@@ -89,7 +89,7 @@ class AINinjaRunner
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
         $sourceHeader = $this->getSourceHeader();
-        if($sourceHeader){
+        if ($sourceHeader) {
             $runnable->addHeader('X-Source', $sourceHeader);
         }
 
@@ -124,7 +124,7 @@ class AINinjaRunner
             $runnable->withTraceId($configs[0]['trace_id'] ?? null);
         }
         $sourceHeader = $this->getSourceHeader();
-        if($sourceHeader){
+        if ($sourceHeader) {
             $runnable->addHeader('X-Source', $sourceHeader);
         }
 
@@ -152,9 +152,10 @@ class AINinjaRunner
     {
         $name = config('app.name');
         $env = config('app.env');
-        if(!$name && !$env){
+        if (! $name && ! $env) {
             return null;
         }
-        return Str::slug($name) . '-' . Str::slug($env);
+
+        return Str::slug($name).'-'.Str::slug($env);
     }
 }
