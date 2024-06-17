@@ -2,9 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaLanguageAssessmentResult;
-use IanRothmann\AINinja\Results\AINinjaTranscribeURLResult;
 
 class AssessLanguageProcessor extends AINinjaProcessor
 {
@@ -29,13 +27,13 @@ class AssessLanguageProcessor extends AINinjaProcessor
                 'FluencyScore' => 89.0,
                 'ProsodyScore' => 89.1,
                 'CompletenessScore' => 100.0,
-                'PronScore' => 90.0
+                'PronScore' => 90.0,
             ],
             'ContentAssessment' => [
                 'GrammarScore' => 44.0,
                 'VocabularyScore' => 44.0,
-                'TopicScore' => 72.0
-            ]
+                'TopicScore' => 72.0,
+            ],
         ];
     }
 
