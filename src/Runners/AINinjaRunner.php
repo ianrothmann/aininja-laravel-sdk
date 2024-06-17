@@ -36,6 +36,14 @@ class AINinjaRunner
     {
         $runnablePool = new RemoteRunnablePool();
         $runnablePool->authenticateWithXToken($this->token);
+        if($processors[0] instanceof AINinjaProcessor) {
+            $sampleConfig = $processors[0]->toArray();
+        }
+        $runnablePool->withTraceId($sampleConfig['trace_id'] ?? null);
+        $sourceHeader = $this->getSourceHeader();
+        if($sourceHeader){
+            $runnablePool->addHeader('X-Source', $sourceHeader);
+        }
         $mockedResponses = [];
         /**
          * @var AINinjaProcessor $processor

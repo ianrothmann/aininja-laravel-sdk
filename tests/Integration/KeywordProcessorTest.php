@@ -14,6 +14,7 @@ it('can extract keywords from text', function () {
   leading large-scale projects that leverage data insights to address complex business challenges. Responsibilities also
   include optimizing data model performance, developing databases and analytics strategies, conducting trend analysis,
   and upholding a strict model quality testing framework.')
+        ->setTraceId('Test')
         ->get();
 
     expect($result->getResult())->toBeArray();

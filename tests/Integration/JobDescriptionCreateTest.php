@@ -6,6 +6,7 @@ it('can generate a job description', function () {
     $handler = new AINinja();
     $result = $handler->generateJobDescription()
         ->basedOn('A Laravel Developer in PHP')
+        ->setTraceId('Test')
         ->stream(function (\IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamEvent $response) {
             if ($response->getContent()) {
                 //dd($response->getContent());
