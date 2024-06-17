@@ -9,6 +9,7 @@ use IanRothmann\LangServePhpClient\Responses\RemoteRunnableBatchResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class AINinjaRunner
 {
@@ -63,6 +64,10 @@ class AINinjaRunner
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
+        $sourceHeader = $this->getSourceHeader();
+        if($sourceHeader){
+            $runnable->addHeader('X-Source', $sourceHeader);
+        }
         if ($this->shouldCache) {
             $key = md5(json_encode($config));
 
@@ -83,6 +88,10 @@ class AINinjaRunner
         $runnable = new RemoteRunnable($endpoint);
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
+        $sourceHeader = $this->getSourceHeader();
+        if($sourceHeader){
+            $runnable->addHeader('X-Source', $sourceHeader);
+        }
 
         if ($this->shouldMock) {
             return RemoteRunnableStreamResponse::mock($config['mocked']);
@@ -114,6 +123,10 @@ class AINinjaRunner
         if($configs[0]['trace_id'] ?? null){
             $runnable->withTraceId($configs[0]['trace_id'] ?? null);
         }
+        $sourceHeader = $this->getSourceHeader();
+        if($sourceHeader){
+            $runnable->addHeader('X-Source', $sourceHeader);
+        }
 
         if ($this->shouldCache) {
             $key = md5(json_encode($configs));
@@ -133,5 +146,15 @@ class AINinjaRunner
 
             return $runnable->batch($batchInputs);
         }
+    }
+
+    protected function getSourceHeader(): ?string
+    {
+        $name = config('app.name');
+        $env = config('app.env');
+        if(!$name && !$env){
+            return null;
+        }
+        return Str::slug($name) . '-' . Str::slug($env);
     }
 }

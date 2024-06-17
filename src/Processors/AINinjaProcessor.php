@@ -8,6 +8,7 @@ use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 abstract class AINinjaProcessor
 {
