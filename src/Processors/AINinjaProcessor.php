@@ -137,7 +137,8 @@ abstract class AINinjaProcessor
 
     public function setTraceId(string|int $traceId): self
     {
-        $this->traceId = (string)$traceId;
+        $this->traceId = (string) $traceId;
+
         return $this;
     }
 
@@ -145,7 +146,7 @@ abstract class AINinjaProcessor
     {
         $modelName = class_basename($model);
         $primaryKeyValue = $model->getKey();
-        $this->traceId = $modelName . ':' . $primaryKeyValue;
+        $this->traceId = $modelName.':'.$primaryKeyValue;
 
         return $this;
     }
