@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaSummarizeTranscriptionResult extends AINinjaResult
-{
-}
+class AINinjaSummarizeTranscriptionResult extends AINinjaResult {}

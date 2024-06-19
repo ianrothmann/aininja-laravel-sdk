@@ -8,8 +8,8 @@ use IanRothmann\AINinja\Results\AINinjaInterviewReportResult;
 
 class InterviewReportProcessor extends AINinjaProcessor
 {
-    use OutputsInLanguage;
     use OutputsAsHtml;
+    use OutputsInLanguage;
 
     protected function getEndpoint(): string
     {

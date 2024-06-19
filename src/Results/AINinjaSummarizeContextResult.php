@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaSummarizeContextResult extends AINinjaResult
-{
-}
+class AINinjaSummarizeContextResult extends AINinjaResult {}

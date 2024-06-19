@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaTLDRResult extends AINinjaResult
-{
-}
+class AINinjaTLDRResult extends AINinjaResult {}

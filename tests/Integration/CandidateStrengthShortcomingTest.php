@@ -34,7 +34,7 @@ it('can generate an candidate strength shortcoming', function () {
         ->addRating('How would you handle a situation where your predictive model is not delivering the desired outcomes?', 3, "The candidate's answer is satisfactory. He addresses some aspects of the ideal answer, specifically in terms of gathering more data and trying different models when the current one is not delivering desired outcomes. He also highlights the importance of communication, but does not elaborate on how he would communicate these issues to stakeholders. The response lacks depth in terms of the specific steps to diagnose the model's issues, which is a significant part of the ideal answer.")
         ->outputTextHtml()
         ->get();
-dd($result);
+    dd($result);
     expect($result->getStrengths())->toBeString()
         ->and($result->getShortcomings())->toBeString();
 });

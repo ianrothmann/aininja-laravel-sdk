@@ -8,8 +8,8 @@ use IanRothmann\AINinja\Results\AINinjaCandidateStrengthShortcomingResult;
 
 class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
 {
-    use OutputsInLanguage;
     use OutputsAsHtml;
+    use OutputsInLanguage;
 
     protected function getEndpoint(): string
     {

@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaGenerateTextResult extends AINinjaResult
-{
-}
+class AINinjaGenerateTextResult extends AINinjaResult {}
