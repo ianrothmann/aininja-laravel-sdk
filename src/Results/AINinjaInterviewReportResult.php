@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaInterviewReportResult extends AINinjaResult
-{
-}
+class AINinjaInterviewReportResult extends AINinjaResult {}

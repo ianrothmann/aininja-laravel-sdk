@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaSlugResult extends AINinjaResult
-{
-}
+class AINinjaSlugResult extends AINinjaResult {}

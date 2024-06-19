@@ -2,6 +2,4 @@
 
 namespace IanRothmann\AINinja\Results;
 
-class AINinjaRefineConversationSummaryResult extends AINinjaResult
-{
-}
+class AINinjaRefineConversationSummaryResult extends AINinjaResult {}

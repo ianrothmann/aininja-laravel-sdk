@@ -8,8 +8,8 @@ use IanRothmann\AINinja\Results\AINinjaIdealResponseRatingResult;
 
 class IdealResponseRatingProcessor extends AINinjaProcessor
 {
-    use OutputsInLanguage;
     use OutputsAsHtml;
+    use OutputsInLanguage;
 
     protected function getEndpoint(): string
     {
