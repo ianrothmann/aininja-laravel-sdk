@@ -26,7 +26,7 @@ class TLDRProcessor extends AINinjaProcessor
 
     public function basedOn(string $text): self
     {
-        $this->setInputParameter('text', $text);
+        $this->setInputParameter('text', strip_tags($text));
 
         return $this;
     }
