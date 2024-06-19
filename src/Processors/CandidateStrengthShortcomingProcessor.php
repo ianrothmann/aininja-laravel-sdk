@@ -55,7 +55,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
         $this->addToInputArray('rating_table', [
             'question' => $question,
             'score' => $score,
-            'reason' => $reason,
+            'reason' => strip_tags($reason),
         ]);
 
         return $this;
