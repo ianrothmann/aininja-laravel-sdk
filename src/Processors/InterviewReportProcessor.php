@@ -2,12 +2,14 @@
 
 namespace IanRothmann\AINinja\Processors;
 
+use IanRothmann\AINinja\Processors\Traits\OutputsAsHtml;
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaInterviewReportResult;
 
 class InterviewReportProcessor extends AINinjaProcessor
 {
     use OutputsInLanguage;
+    use OutputsAsHtml;
 
     protected function getEndpoint(): string
     {
