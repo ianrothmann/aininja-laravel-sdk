@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate a job description', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
     $result = $handler->generateJobDescription()
         ->basedOn('A Laravel Developer in PHP')
         ->setTraceId('Test')

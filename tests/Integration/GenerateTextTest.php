@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate text', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->generateText()
         ->addInstruction('Write five names for babies')

@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can review the quality of the interview', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->reviewInterviewQuality()
         ->addQuestion(

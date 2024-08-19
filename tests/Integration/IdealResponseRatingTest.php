@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate a ideal response rating', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->generateIdealResponseRating()
         ->forJobDescription("Title:

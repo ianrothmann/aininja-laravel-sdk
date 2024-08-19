@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can refine a conversation summary', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $previous = 'The person is Ian and he lives in Dubai';
 

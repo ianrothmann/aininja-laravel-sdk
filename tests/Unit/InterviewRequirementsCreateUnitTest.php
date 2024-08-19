@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate interview requirements', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->generateInterviewRequirements()
         ->basedOn('A Laravel Developer in PHP')

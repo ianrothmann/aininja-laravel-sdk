@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate multiple ideal responses', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->generateIdealResponses()
         ->forQuestion(

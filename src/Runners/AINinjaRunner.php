@@ -34,7 +34,7 @@ class AINinjaRunner
 
     public function invokeAsyncAndWait(array $processors): array
     {
-        $runnablePool = new RemoteRunnablePool();
+        $runnablePool = new RemoteRunnablePool;
         $runnablePool->authenticateWithXToken($this->token);
         if ($processors[0] instanceof AINinjaProcessor) {
             $sampleConfig = $processors[0]->toArray();

@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can process and extract infomation from a resume', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->analyzeResume()
         ->forUrl('https://writing.colostate.edu/guides/documents/resume/functionalsample.pdf')

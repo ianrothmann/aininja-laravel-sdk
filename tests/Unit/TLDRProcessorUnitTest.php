@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate a TLDR summary', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->summarizeTLDR()
         ->basedOn('The Data Scientist role is pivotal in crafting machine learning models and analytics solutions that have a profound

@@ -37,136 +37,136 @@ class AINinja
 
     public function generateJson(): GenerateJsonProcessor
     {
-        return new GenerateJsonProcessor();
+        return new GenerateJsonProcessor;
     }
 
     public function extractKeywords(): KeywordProcessor
     {
-        return new KeywordProcessor();
+        return new KeywordProcessor;
     }
 
     public function writeInterviewReport(): InterviewReportProcessor
     {
-        return new InterviewReportProcessor();
+        return new InterviewReportProcessor;
     }
 
     public function generateJobDescription(): JobDescriptionCreateProcessor
     {
-        return new JobDescriptionCreateProcessor();
+        return new JobDescriptionCreateProcessor;
     }
 
     public function generateInterviewRequirements(): InterviewRequirementsCreateProcessor
     {
-        return new InterviewRequirementsCreateProcessor();
+        return new InterviewRequirementsCreateProcessor;
     }
 
     public function embeddings(): EmbeddingsProcessor
     {
-        return new EmbeddingsProcessor();
+        return new EmbeddingsProcessor;
     }
 
     public function summarizeTLDR(): TLDRProcessor
     {
-        return new TLDRProcessor();
+        return new TLDRProcessor;
     }
 
     public function summarizeTranscription(): SummarizeTranscriptionProcessor
     {
-        return new SummarizeTranscriptionProcessor();
+        return new SummarizeTranscriptionProcessor;
     }
 
     public function summarizeText(): SummarizeTextProcessor
     {
-        return new SummarizeTextProcessor();
+        return new SummarizeTextProcessor;
     }
 
     public function summarizeContext(): SummarizeContextProcessor
     {
-        return new SummarizeContextProcessor();
+        return new SummarizeContextProcessor;
     }
 
     public function translate(): TranslateProcessor
     {
-        return new TranslateProcessor();
+        return new TranslateProcessor;
     }
 
     public function transcribeURL(): TranscribeURLProcessor
     {
-        return new TranscribeURLProcessor();
+        return new TranscribeURLProcessor;
     }
 
     public function assessLanguage(): AssessLanguageProcessor
     {
-        return new AssessLanguageProcessor();
+        return new AssessLanguageProcessor;
     }
 
     public function generateSlug(): SlugProcessor
     {
-        return new SlugProcessor();
+        return new SlugProcessor;
     }
 
     public function refineConversationSummary(): RefineConversationSummaryProcessor
     {
-        return new RefineConversationSummaryProcessor();
+        return new RefineConversationSummaryProcessor;
     }
 
     public function navigateQuestionChat(): QuestionChatNavigatorProcessor
     {
-        return new QuestionChatNavigatorProcessor();
+        return new QuestionChatNavigatorProcessor;
     }
 
     public function probeInterviewQuestion(): InterviewQuestionProbingProcessor
     {
-        return new InterviewQuestionProbingProcessor();
+        return new InterviewQuestionProbingProcessor;
     }
 
     public function generateInterviewQuestions(): InterviewQuestionProcessor
     {
-        return new InterviewQuestionProcessor();
+        return new InterviewQuestionProcessor;
     }
 
     public function reviewInterviewQuality(): InterviewQualityProcessor
     {
-        return new InterviewQualityProcessor();
+        return new InterviewQualityProcessor;
     }
 
     public function describeImage(): ImageDescribeProcessor
     {
-        return new ImageDescribeProcessor();
+        return new ImageDescribeProcessor;
     }
 
     public function generateText(): GenerateTextProcessor
     {
-        return new GenerateTextProcessor();
+        return new GenerateTextProcessor;
     }
 
     public function summarizeFile(): FileSummaryProcessor
     {
-        return new FileSummaryProcessor();
+        return new FileSummaryProcessor;
     }
 
     public function analyzeResume(): ResumeProcessor
     {
-        return new ResumeProcessor();
+        return new ResumeProcessor;
     }
 
     public function processFaceImage(): FaceImageProcessor
     {
-        return new FaceImageProcessor();
+        return new FaceImageProcessor;
     }
 
     public function generateIdealResponses(): IdealResponseMultipleProcessor
     {
-        return new IdealResponseMultipleProcessor();
+        return new IdealResponseMultipleProcessor;
     }
 
     public function generateIdealResponseRating(): IdealResponseRatingProcessor
     {
-        return new IdealResponseRatingProcessor();
+        return new IdealResponseRatingProcessor;
     }
 
     public function generateStrengthShortcomingsForRatedInterview(): CandidateStrengthShortcomingProcessor
     {
-        return new CandidateStrengthShortcomingProcessor();
+        return new CandidateStrengthShortcomingProcessor;
     }
 }

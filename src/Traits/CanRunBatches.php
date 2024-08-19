@@ -52,7 +52,7 @@ trait CanRunBatches
             return collect();
         }
 
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner;
 
         return collect($runner->invokeAsyncAndWait($processors))->map(function (RemoteRunnableResponse $response, $key) use ($processors) {
             return $processors[$key]->hydrateResult($response);

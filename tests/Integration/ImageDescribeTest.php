@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can describe an image', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->describeImage()
         ->forUrl('https://kaggle-audio-files-2.s3.amazonaws.com/th-2244693358.jpeg')

@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can probe a question', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->probeInterviewQuestion()
         ->givenQuestion('Please share with us your experience in bartending.')

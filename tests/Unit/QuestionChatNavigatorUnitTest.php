@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can navigate the question chat', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->navigateQuestionChat()
         ->withQuestion('1', 'What is your name')

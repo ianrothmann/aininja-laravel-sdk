@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can assess language proficiency', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->assessLanguage()
         ->forURL('https://ain-public.s3.eu-west-1.amazonaws.com/speech.mp3')
