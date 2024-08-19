@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can extract keywords from text', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->extractKeywords()
         ->basedOn('The Data Scientist role is pivotal in crafting machine learning models and analytics solutions that have a profound

@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can summarize context', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->summarizeContext()
         ->withContext(

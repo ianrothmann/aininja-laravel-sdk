@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can create a file summary', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->summarizeFile()
         ->forUrl('https://kaggle-audio-files-2.s3.amazonaws.com/1183533964.pdf')

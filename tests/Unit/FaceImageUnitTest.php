@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can process a face image', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->processFaceImage()
         ->forUrl('https://kaggle-audio-files-2.s3.amazonaws.com/th-2370801218.jpeg')

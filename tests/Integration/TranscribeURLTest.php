@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can transcribe a URL', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->transcribeURL()
         ->forURL('https://kaggle-audio-files-2.s3.amazonaws.com/03-01-02-01-02-02-05.wav')

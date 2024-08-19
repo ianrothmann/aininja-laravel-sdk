@@ -5,7 +5,7 @@ use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamEvent;
 
 it('can stream content', function () {
 
-    $obj = new AINinja();
+    $obj = new AINinja;
     $finalResult = $obj->generateText()
         ->addInstruction('Generate a list of 10 numbers')
         ->addInstruction('The numbers must be between 1 and 10')

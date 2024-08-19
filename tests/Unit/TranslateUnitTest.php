@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can translate', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->translate()
         ->text('What is your favorite movie of :era?')

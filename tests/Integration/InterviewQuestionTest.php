@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate interview questions', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->generateInterviewQuestions()
         ->basedOn("Title:

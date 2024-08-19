@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can generate embeddings for text', function () {
-    $handler = new AINinja();
+    $handler = new AINinja;
 
     $result = $handler->embeddings()
         ->addText('Zero')
