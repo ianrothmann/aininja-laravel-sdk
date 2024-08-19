@@ -53,8 +53,7 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
 
     public function getSkills(): Collection
     {
-        $value = collect($this->result)->get('skills');
-
+        $value = collect(collect($this->result)->get('skills'))->get('skills');
         return collect($value);
     }
 
