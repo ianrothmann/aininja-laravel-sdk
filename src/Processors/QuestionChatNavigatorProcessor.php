@@ -33,7 +33,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
         ];
     }
 
-    public function withQuestion(string|int $questionNumber, string $question): self
+    public function withQuestion($questionNumber, string $question): self
     {
         $this->addToInputArray('questions_by_number', [
             'question_number' => (string) $questionNumber,

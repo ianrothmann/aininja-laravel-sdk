@@ -113,7 +113,11 @@ abstract class AINinjaProcessor
         return in_array($traitName, $traits);
     }
 
-    public function hydrateResult(RemoteRunnableResponse|RemoteRunnableStreamResponse $response): AINinjaResult
+    /**
+     * @param RemoteRunnableResponse|RemoteRunnableStreamResponse $response
+     * @return AINinjaResult
+     */
+    public function hydrateResult($response): AINinjaResult
     {
         $content = $response->getContent();
 
@@ -134,7 +138,7 @@ abstract class AINinjaProcessor
         dd($this->toArray());
     }
 
-    public function setTraceId(string|int $traceId): self
+    public function setTraceId($traceId): self
     {
         $this->traceId = (string) $traceId;
 

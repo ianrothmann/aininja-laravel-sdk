@@ -36,7 +36,12 @@ trait CanRunBatches
             });
     }
 
-    public function pool(array|Collection $processors): Collection
+    /**
+     * @param array|Collection $processors
+     * @return Collection
+     * @throws \Exception
+     */
+    public function pool($processors): Collection
     {
         foreach ($processors as $processor) {
             if (! $processor instanceof AINinjaProcessor) {
