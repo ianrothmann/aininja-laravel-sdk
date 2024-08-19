@@ -114,8 +114,7 @@ abstract class AINinjaProcessor
     }
 
     /**
-     * @param RemoteRunnableResponse|RemoteRunnableStreamResponse $response
-     * @return AINinjaResult
+     * @param  RemoteRunnableResponse|RemoteRunnableStreamResponse  $response
      */
     public function hydrateResult($response): AINinjaResult
     {

@@ -37,8 +37,8 @@ trait CanRunBatches
     }
 
     /**
-     * @param array|Collection $processors
-     * @return Collection
+     * @param  array|Collection  $processors
+     *
      * @throws \Exception
      */
     public function pool($processors): Collection
