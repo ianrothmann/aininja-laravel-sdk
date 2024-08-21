@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaNameSplitResult;
 
 class NameSplitProcessor extends AINinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return '/name_splitter';
@@ -20,6 +19,7 @@ class NameSplitProcessor extends AINinjaProcessor
     public function addName($id, $name): self
     {
         $this->addToInputArray('names', $name, $id);
+
         return $this;
     }
 
@@ -28,6 +28,7 @@ class NameSplitProcessor extends AINinjaProcessor
         foreach ($namesById as $id => $name) {
             $this->addName($id, $name);
         }
+
         return $this;
     }
 
@@ -51,8 +52,8 @@ class NameSplitProcessor extends AINinjaProcessor
     protected function getMocked()
     {
         return [
-            '1' => ['name'=>'John', 'surname'=>'Doe'],
-            '2' => ['name'=>'Jane', 'surname'=>'Doe']
+            '1' => ['name' => 'John', 'surname' => 'Doe'],
+            '2' => ['name' => 'Jane', 'surname' => 'Doe'],
         ];
     }
 }
