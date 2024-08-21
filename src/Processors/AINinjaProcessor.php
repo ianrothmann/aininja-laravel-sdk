@@ -64,16 +64,15 @@ abstract class AINinjaProcessor
         $this->input[$key] = $value;
     }
 
-    protected function addToInputArray($key, $value, $valueKey=null): void
+    protected function addToInputArray($key, $value, $valueKey = null): void
     {
         if (! array_key_exists($key, $this->input)) {
             $this->input[$key] = [];
         }
 
-        if($valueKey!==null){
+        if ($valueKey !== null) {
             $this->input[$key][$valueKey] = $value;
-        }
-        else{
+        } else {
             $this->input[$key][] = $value;
         }
     }
