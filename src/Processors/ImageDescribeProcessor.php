@@ -19,7 +19,7 @@ class ImageDescribeProcessor extends AINinjaProcessor
         return AINinjaImageDescribeResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'description' => 'This image captures a triumphant moment for a rugby team, celebrating their victory in what appears to be an important tournament, indicated by their joy in lifting a significant trophy — likely from a major event such as the Rugby World Cup. The team is surrounded by confetti, enhancing the festive atmosphere of their achievement. The players are visibly elated, with some raising their fists in victory, and others smiling broadly or cheering. The scene is filled with a sense of camaraderie and shared accomplishment among the team members.',

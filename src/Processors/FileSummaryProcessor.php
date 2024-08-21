@@ -19,7 +19,7 @@ class FileSummaryProcessor extends AINinjaProcessor
         return AINinjaFileSummaryResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'summary' => "The document discusses missed opportunities in the field of mathematics, focusing on instances where mathematicians and physicists failed to collaborate effectively. It highlights examples such as the lack of interest among mathematicians in James Clerk Maxwell's laws of electromagnetism and the failure to unify concepts like quaternions and vectors. The paper also presents open opportunities, including creating a mathematical structure preserving the main features of Haag-Kastler axioms but possessing general coordinate invariance, and achieving a rigorous definition of Feynman sums in nontrivial P-invariant theories.",

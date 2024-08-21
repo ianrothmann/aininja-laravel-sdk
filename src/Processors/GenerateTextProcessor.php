@@ -19,7 +19,7 @@ class GenerateTextProcessor extends AINinjaProcessor
         return AINinjaGenerateTextResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return '1. Kwame 2. Aisha 3. Simba 4. Nala 5. Kofi';
     }

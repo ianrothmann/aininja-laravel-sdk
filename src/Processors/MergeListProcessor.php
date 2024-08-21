@@ -55,7 +55,7 @@ class MergeListProcessor extends AINinjaProcessor
         return parent::stream($callback);
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             '1' => '2',

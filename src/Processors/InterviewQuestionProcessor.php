@@ -19,7 +19,7 @@ class InterviewQuestionProcessor extends AINinjaProcessor
         return AINinjaInterviewQuestionResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'questions' => [

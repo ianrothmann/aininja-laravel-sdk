@@ -21,7 +21,7 @@ class CandidateStrengthShortcomingProcessor extends AINinjaProcessor
         return AINinjaCandidateStrengthShortcomingResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'strengths' => "Ian Rothmann's strengths are evident in his ability to clearly and concisely introduce himself and highlight his relevant experience and achievements, which earned him an exemplary score in the video introduction question. His response was direct, addressing all aspects of the ideal answer, such as his current role, experience, and a brief example of how he applied his skills to solve a significant business problem. This showcases Ian's strong communication skills and his ability to articulate his thoughts in a clear and structured manner. Furthermore, Ian demonstrates satisfactory problem-solving skills by outlining a general approach to addressing issues when predictive models do not deliver the expected outcomes, indicating his proficiency in data manipulation and model adjustment.",

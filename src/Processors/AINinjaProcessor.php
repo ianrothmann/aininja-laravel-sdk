@@ -29,7 +29,7 @@ abstract class AINinjaProcessor
 
     abstract protected function getResultClass(): string;
 
-    abstract protected function getMocked(): mixed;
+    abstract protected function getMocked();
 
     public function forceNoCache($force = true): self
     {
@@ -38,14 +38,14 @@ abstract class AINinjaProcessor
         return $this;
     }
 
-    public function get(): mixed
+    public function get()
     {
         $runner = new AINinjaRunner($this->forceNoCache);
 
         return $this->hydrateResult($runner->invoke($this));
     }
 
-    public function stream($callback = null): mixed
+    public function stream($callback = null)
     {
         $runner = new AINinjaRunner($this->forceNoCache);
 
@@ -64,13 +64,18 @@ abstract class AINinjaProcessor
         $this->input[$key] = $value;
     }
 
-    protected function addToInputArray($key, $value): void
+    protected function addToInputArray($key, $value, $valueKey=null): void
     {
         if (! array_key_exists($key, $this->input)) {
             $this->input[$key] = [];
         }
 
-        $this->input[$key][] = $value;
+        if($valueKey!==null){
+            $this->input[$key][$valueKey] = $value;
+        }
+        else{
+            $this->input[$key][] = $value;
+        }
     }
 
     protected function transformInputForTransport(): array

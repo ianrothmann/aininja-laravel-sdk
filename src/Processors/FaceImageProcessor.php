@@ -19,7 +19,7 @@ class FaceImageProcessor extends AINinjaProcessor
         return AINinjaFaceImageResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'error' => null,

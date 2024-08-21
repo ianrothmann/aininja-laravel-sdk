@@ -51,7 +51,7 @@ class ResumeProcessor extends AINinjaProcessor
         return parent::stream($callback);
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return json_decode(<<<'TOC'
 {

@@ -19,7 +19,7 @@ class QuestionChatNavigatorProcessor extends AINinjaProcessor
         return AINinjaQuestionChatNavigatorResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             'type' => 'BackToPreviousQuestion',

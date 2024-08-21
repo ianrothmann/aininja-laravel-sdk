@@ -20,6 +20,7 @@ use IanRothmann\AINinja\Processors\InterviewRequirementsCreateProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\MergeListProcessor;
+use IanRothmann\AINinja\Processors\NameSplitProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
 use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
 use IanRothmann\AINinja\Processors\ResumeProcessor;
@@ -74,6 +75,11 @@ class AINinja
     public function mergeLists(): MergeListProcessor
     {
         return new MergeListProcessor;
+    }
+
+    public function splitNamesAndSurnames(): NameSplitProcessor
+    {
+        return new NameSplitProcessor;
     }
 
     public function summarizeTranscription(): SummarizeTranscriptionProcessor

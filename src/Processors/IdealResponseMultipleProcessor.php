@@ -19,7 +19,7 @@ class IdealResponseMultipleProcessor extends AINinjaProcessor
         return AINinjaIdealResponseMultipleResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return [
             [

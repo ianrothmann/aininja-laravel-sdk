@@ -19,7 +19,7 @@ class SummarizeContextProcessor extends AINinjaProcessor
         return AINinjaSummarizeContextResult::class;
     }
 
-    protected function getMocked(): mixed
+    protected function getMocked()
     {
         return 'The JSON provided contains information about an individual named Ian Rothmann, who is of South African nationality.';
     }
