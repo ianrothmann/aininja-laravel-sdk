@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaMergedListResult;
 
 class MergeListProcessor extends AINinjaProcessor
 {
-
     protected function getEndpoint(): string
     {
         return '/list_matcher';
