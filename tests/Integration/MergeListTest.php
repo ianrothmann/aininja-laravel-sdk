@@ -11,6 +11,5 @@ it('can merge lists and provide ids', function () {
         ->addToAuxList(3, 'John Doe')
         ->addToAuxList(4, 'Jane Doe')
         ->get();
-
     expect($result->getResult()->toArray())->toBeArray()->toHaveLength(2);
 });
