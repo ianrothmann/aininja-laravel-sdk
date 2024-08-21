@@ -8,6 +8,10 @@ class AINinjaMergedListResult extends AINinjaResult
 {
     public function getResult(): Collection
     {
-        return collect($this->result);
+        return collect($this->result)
+            ->mapWithKeys(function ($item) {
+                $item=collect($item);
+                return [$item->keys()->first() => $item->first()];
+            });
     }
 }
