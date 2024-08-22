@@ -10,7 +10,8 @@ class AINinjaNameSplitResult extends AINinjaResult
     {
         return collect($this->result)
             ->mapWithKeys(function ($item) {
-                $item=collect($item);
+                $item = collect($item);
+
                 return [$item->keys()->first() => $item->first()];
             });
     }
