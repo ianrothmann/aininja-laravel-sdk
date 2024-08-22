@@ -52,8 +52,8 @@ class NameSplitProcessor extends AINinjaProcessor
     protected function getMocked()
     {
         return [
-            '1' => ['name' => 'John', 'surname' => 'Doe'],
-            '2' => ['name' => 'Jane', 'surname' => 'Doe'],
+            ['1' => ['name' => 'John', 'surname' => 'Doe']],
+            ['2' => ['name' => 'Jane', 'surname' => 'Doe']],
         ];
     }
 }

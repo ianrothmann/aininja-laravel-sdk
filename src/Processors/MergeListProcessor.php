@@ -57,8 +57,8 @@ class MergeListProcessor extends AINinjaProcessor
     protected function getMocked()
     {
         return [
-            '1' => '2',
-            '3' => '4',
+            ['1' => '2'],
+            ['3' => '4'],
         ];
     }
 }
