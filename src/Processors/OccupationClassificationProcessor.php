@@ -34,6 +34,11 @@ class OccupationClassificationProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function hasContext(): bool
+    {
+        return $this->input && array_key_exists('context', $this->input) && !empty($this->input['context']);
+    }
+
     protected function getValidationRules(): array
     {
         return [
