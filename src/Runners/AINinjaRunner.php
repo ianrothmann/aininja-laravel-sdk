@@ -21,7 +21,7 @@ class AINinjaRunner
 
     protected bool $shouldCache = false;
 
-    protected int $cacheDuration = 60*60;
+    protected int $cacheDuration = 60 * 60;
 
     public function __construct($forceNoCache = false)
     {

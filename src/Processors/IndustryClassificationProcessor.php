@@ -2,9 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaCodeNamePairResult;
-use IanRothmann\AINinja\Results\AINinjaKeywordResult;
 
 class IndustryClassificationProcessor extends AINinjaProcessor
 {
@@ -22,7 +20,7 @@ class IndustryClassificationProcessor extends AINinjaProcessor
     {
         return [
             'code' => '5221',
-            'name' => 'Depository Credit Intermediation'
+            'name' => 'Depository Credit Intermediation',
         ];
     }
 

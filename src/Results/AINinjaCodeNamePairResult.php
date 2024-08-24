@@ -2,8 +2,6 @@
 
 namespace IanRothmann\AINinja\Results;
 
-use Illuminate\Support\Collection;
-
 class AINinjaCodeNamePairResult extends AINinjaResult
 {
     public function getCode(): ?string
