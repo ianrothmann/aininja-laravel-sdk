@@ -21,7 +21,7 @@ class AINinjaRunner
 
     protected bool $shouldCache = false;
 
-    protected int $cacheDuration = 60;
+    protected int $cacheDuration = 60*60;
 
     public function __construct($forceNoCache = false)
     {
@@ -29,7 +29,7 @@ class AINinjaRunner
         $this->token = config('aininja.token');
         $this->shouldMock = config('aininja.should_mock');
         $this->shouldCache = $forceNoCache ? false : config('aininja.should_cache');
-        $this->cacheDuration = config('aininja.cache_minutes');
+        $this->cacheDuration = config('aininja.cache_minutes') * 60;
     }
 
     public function invokeAsyncAndWait(array $processors): array
