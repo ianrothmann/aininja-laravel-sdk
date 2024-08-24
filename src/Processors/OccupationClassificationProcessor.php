@@ -2,9 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaCodeNamePairResult;
-use IanRothmann\AINinja\Results\AINinjaKeywordResult;
 
 class OccupationClassificationProcessor extends AINinjaProcessor
 {
@@ -22,7 +20,7 @@ class OccupationClassificationProcessor extends AINinjaProcessor
     {
         return [
             'code' => '15-1252',
-            'name' => 'Software Developers'
+            'name' => 'Software Developers',
         ];
     }
 
