@@ -18,6 +18,6 @@ class AINinjaCodeNamePairResult extends AINinjaResult
 
     public function hasResult(): bool
     {
-        return $this->getName() && $this->getName() !== 'Unknown';
+        return $this->getName() && $this->getName() !== 'Unknown' && $this->getName() !== 'None';
     }
 }

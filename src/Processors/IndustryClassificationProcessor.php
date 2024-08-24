@@ -28,6 +28,9 @@ class IndustryClassificationProcessor extends AINinjaProcessor
 
     public function addToContext(string $type, $context): self
     {
+        if(is_array($context)){
+            $context = json_encode($context);
+        }
         $this->addToInputArray('context', $context, $type);
 
         return $this;
