@@ -30,6 +30,7 @@ use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
+use IanRothmann\AINinja\Processors\ThemeExtractionProcessor;
 use IanRothmann\AINinja\Processors\TLDRProcessor;
 use IanRothmann\AINinja\Processors\TranscribeURLProcessor;
 use IanRothmann\AINinja\Processors\TranslateProcessor;
@@ -72,6 +73,11 @@ class AINinja
     public function summarizeTLDR(): TLDRProcessor
     {
         return new TLDRProcessor;
+    }
+
+    public function extractThemes(): ThemeExtractionProcessor
+    {
+        return new ThemeExtractionProcessor;
     }
 
     public function mergeLists(): MergeListProcessor
