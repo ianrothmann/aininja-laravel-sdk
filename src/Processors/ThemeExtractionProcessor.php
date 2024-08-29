@@ -6,7 +6,6 @@ use IanRothmann\AINinja\Results\AINinjaThemeExtractionResult;
 
 class ThemeExtractionProcessor extends AINinjaProcessor
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -27,37 +26,42 @@ class ThemeExtractionProcessor extends AINinjaProcessor
 
     public function fromText($text)
     {
-        $this->setInputParameter('input_type','string');
-        $this->setInputParameter('input',$text);
+        $this->setInputParameter('input_type', 'string');
+        $this->setInputParameter('input', $text);
+
         return $this;
     }
 
     public function fromUrl($url)
     {
-        $this->setInputParameter('input_type','url');
-        $this->setInputParameter('input',$url);
+        $this->setInputParameter('input_type', 'url');
+        $this->setInputParameter('input', $url);
+
         return $this;
     }
 
-    public function fromDocuments(array $documents=null)
+    public function fromDocuments(?array $documents = null)
     {
-        $this->setInputParameter('input_type','json');
-        $this->setInputParameter('input',[
-            'docs' => $documents
+        $this->setInputParameter('input_type', 'json');
+        $this->setInputParameter('input', [
+            'docs' => $documents,
         ]);
+
         return $this;
     }
 
     public function extractNumberOfClustersBetween($min, $max)
     {
-        $this->setInputParameter('lower_bound_clusters',$min);
-        $this->setInputParameter('upper_bound_clusters',$max);
+        $this->setInputParameter('lower_bound_clusters', $min);
+        $this->setInputParameter('upper_bound_clusters', $max);
+
         return $this;
     }
 
     public function overrideDimensionReductionTo($num_dimensions)
     {
-        $this->setInputParameter('num_dimensions',$num_dimensions);
+        $this->setInputParameter('num_dimensions', $num_dimensions);
+
         return $this;
     }
 
@@ -68,7 +72,7 @@ class ThemeExtractionProcessor extends AINinjaProcessor
             'num_dimensions' => 'required|numeric',
             'upper_bound_clusters' => 'required|numeric|gte:lower_bound_clusters',
             'lower_bound_clusters' => 'required|numeric|lte:upper_bound_clusters',
-            'input' => 'required'
+            'input' => 'required',
         ];
 
         return $rules;
@@ -86,7 +90,7 @@ class ThemeExtractionProcessor extends AINinjaProcessor
 
     protected function getMocked()
     {
-        return json_decode(<<<TOC
+        return json_decode(<<<'TOC'
 {
   "themes": [
     {
@@ -105,6 +109,6 @@ class ThemeExtractionProcessor extends AINinjaProcessor
   "overall_summary": "Freeman J. Dyson's lecture emphasizes the missed collaborative opportunities between mathematics and physics that could have advanced theoretical physics. He underscores the importance of interdisciplinary communication to avoid past mistakes and foster significant discoveries."
 }
 TOC
-,true);
+            , true);
     }
 }
