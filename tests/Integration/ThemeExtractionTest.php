@@ -14,7 +14,7 @@ it('can extract themes', function () {
 
     $result = $handler->extractThemes()
         ->fromDocuments($input)
-        ->extractNumberOfClustersBetween(2,20)
+        ->extractNumberOfClustersBetween(2, 20)
         ->get();
 
     expect($result->getThemes())->not()->toBeEmpty();

@@ -3,7 +3,6 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
-use IanRothmann\AINinja\Results\AINinjaCategorizedCompetenciesResult;
 use IanRothmann\AINinja\Results\AINinjaCompetencyMappingResult;
 
 class MapDerivedCompetenciesProcessor extends AINinjaProcessor
@@ -74,7 +73,7 @@ class MapDerivedCompetenciesProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "categories": {
     "Motivate": [
@@ -128,6 +127,7 @@ class MapDerivedCompetenciesProcessor extends AINinjaProcessor
   }
 }
 TOC;
+
         return json_decode($json, true);
     }
 }

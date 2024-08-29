@@ -5,7 +5,7 @@ use IanRothmann\AINinja\AINinja;
 it('extract competencies from text', function () {
     $handler = new AINinja;
 
-    $text = <<<TOC
+    $text = <<<'TOC'
 Motivate
 
 Inspiring

@@ -79,7 +79,7 @@ abstract class AINinjaProcessor
 
     protected function addToSubInputArray($mainKey, $key, $value, $valueKey = null): void
     {
-        if(!array_key_exists($mainKey,$this->input)){
+        if (! array_key_exists($mainKey, $this->input)) {
             $this->input[$mainKey] = [];
         }
 
