@@ -77,6 +77,23 @@ abstract class AINinjaProcessor
         }
     }
 
+    protected function addToSubInputArray($mainKey, $key, $value, $valueKey = null): void
+    {
+        if(!array_key_exists($mainKey,$this->input)){
+            $this->input[$mainKey] = [];
+        }
+
+        if (! array_key_exists($key, $this->input[$mainKey])) {
+            $this->input[$mainKey][$key] = [];
+        }
+
+        if ($valueKey !== null) {
+            $this->input[$mainKey][$key][$valueKey] = $value;
+        } else {
+            $this->input[$mainKey][$key][] = $value;
+        }
+    }
+
     protected function transformInputForTransport(): array
     {
         return $this->input;

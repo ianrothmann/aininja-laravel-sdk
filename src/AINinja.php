@@ -3,8 +3,10 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\AssessLanguageProcessor;
+use IanRothmann\AINinja\Processors\AssessmentMatrixProcessor;
 use IanRothmann\AINinja\Processors\CandidateStrengthShortcomingProcessor;
 use IanRothmann\AINinja\Processors\EmbeddingsProcessor;
+use IanRothmann\AINinja\Processors\ExtractCompetenciesProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
 use IanRothmann\AINinja\Processors\FileSummaryProcessor;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
@@ -20,6 +22,7 @@ use IanRothmann\AINinja\Processors\InterviewReportProcessor;
 use IanRothmann\AINinja\Processors\InterviewRequirementsCreateProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
+use IanRothmann\AINinja\Processors\MapDerivedCompetenciesProcessor;
 use IanRothmann\AINinja\Processors\MergeListProcessor;
 use IanRothmann\AINinja\Processors\NameSplitProcessor;
 use IanRothmann\AINinja\Processors\OccupationClassificationProcessor;
@@ -73,6 +76,21 @@ class AINinja
     public function summarizeTLDR(): TLDRProcessor
     {
         return new TLDRProcessor;
+    }
+
+    public function createAssessmentMatrix(): AssessmentMatrixProcessor
+    {
+        return new AssessmentMatrixProcessor;
+    }
+
+    public function extractCompetencies(): ExtractCompetenciesProcessor
+    {
+        return new ExtractCompetenciesProcessor;
+    }
+
+    public function mapDerivedCompetencies(): MapDerivedCompetenciesProcessor
+    {
+        return new MapDerivedCompetenciesProcessor;
     }
 
     public function extractThemes(): ThemeExtractionProcessor
