@@ -3,11 +3,9 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Results\AINinjaAssessmentMatrixResult;
-use IanRothmann\AINinja\Results\AINinjaThemeExtractionResult;
 
 class AssessmentMatrixProcessor extends AINinjaProcessor
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -25,45 +23,45 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
 
     public function addMethod($id, $name): self
     {
-       $this->addToInputArray('methods',[
-           'method_id' => (string) $id,
-           'name' => $name
-           ],$id);
+        $this->addToInputArray('methods', [
+            'method_id' => (string) $id,
+            'name' => $name,
+        ], $id);
 
         return $this;
     }
 
-    public function addMeasure($methodId, $id, $name, $description=null): self
+    public function addMeasure($methodId, $id, $name, $description = null): self
     {
-        if (! array_key_exists('methods', $this->input) || !is_array($this->input['methods']) || count($this->input['methods'])==0) {
+        if (! array_key_exists('methods', $this->input) || ! is_array($this->input['methods']) || count($this->input['methods']) == 0) {
             throw new \Exception('You must add a method before adding a measure');
         }
 
-        if(!array_key_exists($methodId, $this->input['methods'])){
+        if (! array_key_exists($methodId, $this->input['methods'])) {
             throw new \Exception('Method with id '.$methodId.' not found');
         }
 
-        $this->addToInputArray('source_measures',[
+        $this->addToInputArray('source_measures', [
             'method_id' => (string) $methodId,
             'measure_id' => (string) $id,
             'name' => $name,
-            'description' => $description ?? ''
-        ],$id);
+            'description' => $description ?? '',
+        ], $id);
 
         return $this;
     }
 
-    public function addMappingDimension($measureId, $id, $name, $description=null): self
+    public function addMappingDimension($measureId, $id, $name, $description = null): self
     {
-        if (! array_key_exists('source_measures', $this->input) || !is_array($this->input['source_measures']) || count($this->input['source_measures'])==0) {
+        if (! array_key_exists('source_measures', $this->input) || ! is_array($this->input['source_measures']) || count($this->input['source_measures']) == 0) {
             throw new \Exception('You must add a measure before adding a dimension');
         }
 
-        $this->addToInputArray('source_dimensions',[
+        $this->addToInputArray('source_dimensions', [
             'measure_id' => (string) $measureId,
             'dimension_id' => (string) $id,
             'name' => $name,
-            'description' => $description ?? ''
+            'description' => $description ?? '',
         ]);
 
         return $this;
@@ -71,15 +69,15 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
 
     public function addCompetency($id, $name, $description, $category): self
     {
-        $this->addToInputArray('competencies',[
+        $this->addToInputArray('competencies', [
             'competency_id' => (string) $id,
             'name' => $name,
             'description' => $description ?? '',
             'category' => $category,
             'targets' => [],
             'count_targets' => [],
-            'examples' => []
-        ],$id);
+            'examples' => [],
+        ], $id);
 
         return $this;
     }
@@ -89,7 +87,7 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
         $competency = $this->findAndValidateCompetency($competencyId);
 
         //Now validate method from $this->input['methods']
-        if(!array_key_exists($methodId, $this->input['methods'])){
+        if (! array_key_exists($methodId, $this->input['methods'])) {
             throw new \Exception('Method with id '.$methodId.' not found');
         }
 
@@ -99,27 +97,28 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
         return $this;
     }
 
-    public function addCompetencyExample($competencyId, $mappedDimensionName, $fromMeasure, $method, $weight):self
+    public function addCompetencyExample($competencyId, $mappedDimensionName, $fromMeasure, $method, $weight): self
     {
         $competency = $this->findAndValidateCompetency($competencyId);
-        $this->input['competencies'][$competencyId]['examples'][]=[
-            'name' => (string)$mappedDimensionName,
-            'measure' => (string)$fromMeasure,
-            'type' => (string)$method,
-            'weight' => (string)$weight
+        $this->input['competencies'][$competencyId]['examples'][] = [
+            'name' => (string) $mappedDimensionName,
+            'measure' => (string) $fromMeasure,
+            'type' => (string) $method,
+            'weight' => (string) $weight,
         ];
+
         return $this;
     }
 
     protected function findAndValidateCompetency($competencyId)
     {
-        if (! array_key_exists('competencies', $this->input) || !is_array($this->input['competencies']) || count($this->input['competencies'])==0) {
+        if (! array_key_exists('competencies', $this->input) || ! is_array($this->input['competencies']) || count($this->input['competencies']) == 0) {
             throw new \Exception('You must add a competency before setting a method target');
         }
 
         $competency = $this->input['competencies'][$competencyId] ?? null;
 
-        if(!$competency){
+        if (! $competency) {
             throw new \Exception('Competency with id '.$competencyId.' not found');
         }
 
@@ -142,7 +141,7 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
 
     protected function transformInputForTransport(): array
     {
-        $input=$this->input;
+        $input = $this->input;
 
         $input['competencies'] = array_values($input['competencies']);
         $input['source_measures'] = array_values($input['source_measures']);
@@ -205,6 +204,6 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
     }
   ]
 }
-',true);
+', true);
     }
 }

@@ -4,8 +4,8 @@ namespace IanRothmann\AINinja\Results;
 
 use Illuminate\Support\Collection;
 
-class AINinjaCategorizedCompetenciesResult extends AINinjaResult {
-
+class AINinjaCategorizedCompetenciesResult extends AINinjaResult
+{
     public function getCompetenciesByCategory(): Collection
     {
         return collect(collect($this->result)->get('categories'));

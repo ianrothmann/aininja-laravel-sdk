@@ -45,7 +45,7 @@ class ExtractCompetenciesProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "categories": {
     "Motivate": [
@@ -99,6 +99,7 @@ class ExtractCompetenciesProcessor extends AINinjaProcessor
   }
 }
 TOC;
+
         return json_decode($json, true);
     }
 }

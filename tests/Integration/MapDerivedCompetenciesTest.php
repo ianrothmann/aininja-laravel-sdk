@@ -5,7 +5,7 @@ use IanRothmann\AINinja\AINinja;
 it('extract competencies from text', function () {
     $handler = new AINinja;
 
-    $derivedJson = <<<TOC
+    $derivedJson = <<<'TOC'
 [
   {
     "name": "Inspiring",
@@ -50,7 +50,7 @@ it('extract competencies from text', function () {
 ]
 TOC;
 
-    $mappingJson = <<<TOC
+    $mappingJson = <<<'TOC'
 [
   {
     "id": "team_collaboration",
@@ -195,8 +195,7 @@ TOC;
 ]
 TOC;
 
-
-    $derived= json_decode($derivedJson, true);
+    $derived = json_decode($derivedJson, true);
     $mapping = json_decode($mappingJson, true);
 
     $obj = $handler->mapDerivedCompetencies();
@@ -208,7 +207,6 @@ TOC;
     foreach ($mapping as $competency) {
         $obj->addMappingCompetency($competency['id'], $competency['name'], $competency['description']);
     }
-
 
     $result = $obj->get();
 
