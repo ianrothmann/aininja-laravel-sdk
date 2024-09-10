@@ -11,7 +11,7 @@ it('can transcribe a URL', function () {
         ->withComplement()
         ->withTopics()
         ->withSpeakerContext('The person speaking is Reinhardt')
-        ->wasAskedAQuestion("What are the dogs doing?")
+        ->wasAskedAQuestion('What are the dogs doing?')
         ->get();
 
     expect($result->getTranscription())->toBeString()

@@ -3,7 +3,6 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
-use IanRothmann\AINinja\Results\AINinjaNameSplitResult;
 use IanRothmann\AINinja\Results\AINinjaObservationResult;
 
 class MultiTranscriptObservationsProcessor extends AINinjaProcessor
@@ -29,7 +28,7 @@ class MultiTranscriptObservationsProcessor extends AINinjaProcessor
 
     public function withContext($context): self
     {
-        if(is_array($context)){
+        if (is_array($context)) {
             $context = json_encode($context);
         }
 
