@@ -24,6 +24,7 @@ use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\MapDerivedCompetenciesProcessor;
 use IanRothmann\AINinja\Processors\MergeListProcessor;
+use IanRothmann\AINinja\Processors\MultiTranscriptObservationsProcessor;
 use IanRothmann\AINinja\Processors\NameSplitProcessor;
 use IanRothmann\AINinja\Processors\OccupationClassificationProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
@@ -151,6 +152,11 @@ class AINinja
     public function generateSlug(): SlugProcessor
     {
         return new SlugProcessor;
+    }
+
+    public function observationsFromTranscripts(): MultiTranscriptObservationsProcessor
+    {
+        return new MultiTranscriptObservationsProcessor;
     }
 
     public function refineConversationSummary(): RefineConversationSummaryProcessor

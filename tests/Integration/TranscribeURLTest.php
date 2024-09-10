@@ -11,12 +11,14 @@ it('can transcribe a URL', function () {
         ->withComplement()
         ->withTopics()
         ->withSpeakerContext('The person speaking is Reinhardt')
+        ->wasAskedAQuestion("What are the dogs doing?")
         ->get();
 
     expect($result->getTranscription())->toBeString()
         ->and($result->getSRT())->toBeArray()
         ->and($result->getComplement())->toBeString()
-        ->and($result->getSummary())->toBeString();
+        ->and($result->getSummary())->toBeString()
+        ->and($result->transcriptIsWithinQuestionContext())->toBeTrue();
 
     if ($result->getTopics() !== null) {
         expect($result->getTopics())->toBeArray();

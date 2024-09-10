@@ -39,6 +39,7 @@ class TranscribeURLProcessor extends AINinjaProcessor
                     'end' => '00:00:05,000',
                 ],
             ],
+            'within_question_context' => true,
         ];
     }
 

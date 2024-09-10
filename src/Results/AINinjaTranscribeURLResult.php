@@ -28,4 +28,9 @@ class AINinjaTranscribeURLResult extends AINinjaResult
     {
         return $this->result['topics'] ?? null;
     }
+
+    public function transcriptIsWithinQuestionContext(): bool
+    {
+        return collect($this->result)->get('within_question_context') ?? true;
+    }
 }
