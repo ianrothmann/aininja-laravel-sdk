@@ -92,6 +92,13 @@ class TranscribeURLProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function useAdvancedTranscription(): self
+    {
+        $this->setInputParameter('advanced_transcription', true);
+
+        return $this;
+    }
+
     protected function getValidationRules(): array
     {
         return [
@@ -102,6 +109,7 @@ class TranscribeURLProcessor extends AINinjaProcessor
             'complement_option' => 'sometimes|boolean',
             'topics_option' => 'sometimes|boolean',
             'context' => 'sometimes|string',
+            'advanced_transcription' => 'sometimes|boolean'
         ];
     }
 
