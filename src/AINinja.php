@@ -31,6 +31,10 @@ use IanRothmann\AINinja\Processors\OccupationClassificationProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
 use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
 use IanRothmann\AINinja\Processors\ResumeProcessor;
+use IanRothmann\AINinja\Processors\ScoringGuideCriteriaProcessor;
+use IanRothmann\AINinja\Processors\ScoringGuideItemCreateProcessor;
+use IanRothmann\AINinja\Processors\ScoringGuideItemRefineProcessor;
+use IanRothmann\AINinja\Processors\ScoringGuideRatingProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
@@ -149,6 +153,27 @@ class AINinja
     {
         return new DetectSpeechProcessor;
     }
+
+    public function scoringGuideCreateRatingItems(): ScoringGuideItemCreateProcessor
+    {
+        return new ScoringGuideItemCreateProcessor;
+    }
+
+    public function scoringGuideRefineRatingItems(): ScoringGuideItemRefineProcessor
+    {
+        return new ScoringGuideItemRefineProcessor;
+    }
+
+    public function scoringGuideGenerateCriteria(): ScoringGuideCriteriaProcessor
+    {
+        return new ScoringGuideCriteriaProcessor;
+    }
+
+    public function scoringGuideRating(): ScoringGuideRatingProcessor
+    {
+        return new ScoringGuideRatingProcessor;
+    }
+
 
     public function assessLanguage(): AssessLanguageProcessor
     {
