@@ -109,7 +109,7 @@ class TranscribeURLProcessor extends AINinjaProcessor
             'complement_option' => 'sometimes|boolean',
             'topics_option' => 'sometimes|boolean',
             'context' => 'sometimes|string',
-            'advanced_transcription' => 'sometimes|boolean'
+            'advanced_transcription' => 'sometimes|boolean',
         ];
     }
 
