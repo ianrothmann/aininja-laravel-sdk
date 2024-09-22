@@ -4,8 +4,8 @@ namespace IanRothmann\AINinja\Results;
 
 use Illuminate\Support\Collection;
 
-class AINinjaScoringGuideRatingResult extends AINinjaResult {
-
+class AINinjaScoringGuideRatingResult extends AINinjaResult
+{
     /**
      * @return Collection<string, Collection<int, array{
      *     id: string,

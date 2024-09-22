@@ -18,7 +18,7 @@ class ScoringGuideItemCreateProcessor extends AINinjaProcessor
 
     protected function getMocked(): string
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "updated_items": [
     {
@@ -39,7 +39,7 @@ class ScoringGuideItemCreateProcessor extends AINinjaProcessor
 }
 TOC;
 
-        return json_decode($json,true);
+        return json_decode($json, true);
     }
 
     public function forDimension(string $dimensionName): self
