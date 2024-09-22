@@ -2,70 +2,180 @@
 
 namespace IanRothmann\AINinja\Processors;
 
+use IanRothmann\AINinja\Results\AINinjaScoringGuideRatingResult;
 use IanRothmann\AINinja\Results\AINinjaScoringGuideRefinementResult;
 
 class ScoringGuideRatingProcessor extends AINinjaProcessor
 {
     protected function getEndpoint(): string
     {
-        return '/scoring_guide_item_refinement';
+        return '/scoring_guide_rating';
     }
 
     protected function getResultClass(): string
     {
-        return AINinjaScoringGuideRefinementResult::class;
+        return AINinjaScoringGuideRatingResult::class;
     }
 
-    protected function getMocked(): string
+    protected function getMocked(): array
     {
         $json = <<<TOC
-{
-  "updated_items": [
-    {
-      "item_id": "4",
-      "original_item": "Old item text 1",
-      "updated_item": "New item text 1",
-      "update_reason": "Reason 1",
-      "update_excerpts": "Example 1"
-    },
-    {
-      "item_id": "5",
-      "original_item": "Old item text 2",
-      "updated_item": "New item text 2",
-      "update_reason": "Reason 2",
-      "update_excerpts": "Example 2"
+[
+  {
+    "id": "1",
+    "rating": 1,
+    "reason": "The candidate did not mention specific products or services. They discussed general concepts like databases and apps but lacked concrete examples for Tom's business.",
+    "questions": {
+      "5": [
+        {
+          "question": "Does the candidate mention specific products or services in at least three business functions?",
+          "answer": "No",
+          "reason": "No specific products or services were mentioned in three business functions."
+        },
+        {
+          "question": "Does the candidate explain how products or services apply to Tom's business?",
+          "answer": "No",
+          "reason": "General solutions were given, but no specific products or services were mentioned."
+        }
+      ],
+      "4": [
+        {
+          "question": "Does the candidate mention products or services in three business functions?",
+          "answer": "No",
+          "reason": "General improvements were discussed without naming products or services."
+        },
+        {
+          "question": "Does the candidate provide examples for each business function?",
+          "answer": "No",
+          "reason": "No specific examples or product names were given."
+        }
+      ],
+      "3": [
+        {
+          "question": "Does the candidate mention products in two business functions?",
+          "answer": "No",
+          "reason": "No specific products or services were mentioned."
+        }
+      ],
+      "2": [
+        {
+          "question": "Does the candidate mention at least one product or service?",
+          "answer": "No",
+          "reason": "General concepts were mentioned without naming products or services."
+        }
+      ]
     }
-  ]
-}
+  },
+  {
+    "id": "2",
+    "rating": 5,
+    "reason": "The candidate presented multiple creative solutions like AI for measurements, AR for visualizing tiles, and an app for quotes. The solutions were integrated into a cohesive plan.",
+    "questions": {
+      "5": [
+        {
+          "question": "Does the candidate provide multiple creative solutions?",
+          "answer": "Yes",
+          "reason": "AI for measurements, AR for tiles, and an app for quotes were proposed."
+        },
+        {
+          "question": "Are the solutions interconnected and form a cohesive plan?",
+          "answer": "Yes",
+          "reason": "The solutions form a unified approach to Tom's business challenges."
+        }
+      ],
+      "4": [
+        {
+          "question": "Does the candidate provide distinct creative solutions beyond general suggestions?",
+          "answer": "No",
+          "reason": "There are not multiple distinct innovative strategies."
+        }
+      ],
+      "3": [
+        {
+          "question": "Does the candidate provide at least one original solution?",
+          "answer": "Yes",
+          "reason": "The use of AI for measurements and AR for visualizing tiles shows creative thinking."
+        }
+      ],
+      "2": [
+        {
+          "question": "Does the candidate provide any solutions to Tom's problems?",
+          "answer": "Yes",
+          "reason": "Several suggestions were provided, like a database, app, and AR for visualizing tiles."
+        },
+        {
+          "question": "Are the suggestions general or lacking originality?",
+          "answer": "No",
+          "reason": "The solutions include specific and somewhat innovative approaches."
+        }
+      ]
+    }
+  }
+]
+
 TOC;
 
         return json_decode($json,true);
     }
 
-    public function forDimension(string $dimensionName): self
+    public function onAnswer(string $answer): self
     {
-        $this->setInputParameter('dimension', $dimensionName);
+        $this->setInputParameter('answer', $answer);
 
         return $this;
     }
 
-    public function candidateWasGivenQuestion(string $question): self
+    public function rateItemId($itemId): self
     {
-        $this->setInputParameter('question', $question);
+        $this->addToInputArray('rubric', ['id' => $itemId, 'anchors' => []]);
 
         return $this;
     }
 
-    public function addItem($itemId, $itemText): self
+    public function withAnchor(int $value, $title = "", $description = ""): self
     {
-        $this->addToInputArray('items', ['item_id' => $itemId, 'item' => $itemText]);
+        if (!array_key_exists('rubric', $this->input)) {
+            throw new \Exception('First add the item for rating');
+        }
+
+        $lastKey = array_key_last($this->input['rubric']);
+
+        if ($lastKey === null) {
+            throw new \Exception('No items found in the rubric to add an anchor.');
+        }
+
+        $this->input['rubric'][$lastKey]['anchors'][] = [
+            'title' => $title,
+            'value' => $value,
+            'description' => $description,
+            'prerequisites' => []
+        ];
 
         return $this;
     }
 
-    public function addExample(string $example): self
+    public function withPrerequisite($question, $definitions): self
     {
-        $this->addToInputArray('examples', $example);
+        if (!array_key_exists('rubric', $this->input)) {
+            throw new \Exception('First add the item for rating');
+        }
+
+        $lastKey = array_key_last($this->input['rubric']);
+
+        if ($lastKey === null) {
+            throw new \Exception('No items found in the rubric to add a prerequisite.');
+        }
+
+        $lastAnchorKey = array_key_last($this->input['rubric'][$lastKey]['anchors']);
+
+        if ($lastAnchorKey === null) {
+            throw new \Exception('No anchors found in the rubric to add a prerequisite.');
+        }
+
+        $this->input['rubric'][$lastKey]['anchors'][$lastAnchorKey]['prerequisites'][] = [
+            'question' => $question,
+            'definitions' => $definitions
+        ];
 
         return $this;
     }
@@ -73,21 +183,24 @@ TOC;
     protected function getValidationRules(): array
     {
         return [
-            'dimension' => 'required|string',
-            'question' => 'required|string',
-            'items' => 'required|array',
-            'items.*.item_id' => 'required',
-            'items.*.item' => 'required|string',
-            'examples' => 'array|min:1',
+            'answer' => 'required|string',
+            'rubric' => 'required|array|min:1',
+            'rubric.*.id' => 'required',
+            'rubric.*.anchors' => 'required|array|min:1',
+            'rubric.*.anchors.*.value' => 'required|integer',
+            'rubric.*.anchors.*.title' => 'string',
+            'rubric.*.anchors.*.description' => 'sometimes|string',
+            'rubric.*.anchors.*.prerequisites' => 'array',
+            'rubric.*.anchors.*.prerequisites.*.question' => 'required|string',
         ];
     }
 
-    public function get(): AINinjaScoringGuideRefinementResult
+    public function get(): AINinjaScoringGuideRatingResult
     {
         return parent::get();
     }
 
-    public function stream($callback = null): AINinjaScoringGuideRefinementResult
+    public function stream($callback = null): AINinjaScoringGuideRatingResult
     {
         return parent::stream();
     }
