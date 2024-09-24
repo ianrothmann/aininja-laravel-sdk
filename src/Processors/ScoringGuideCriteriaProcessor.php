@@ -138,7 +138,21 @@ TOC;
 
     public function addExampleOfGoodResponse(string $example): self
     {
-        $this->addToInputArray('examples', $example);
+        $this->addToInputArray('good_examples', $example);
+
+        return $this;
+    }
+
+    public function addExampleOfPoorResponse(string $example): self
+    {
+        $this->addToInputArray('poor_examples', $example);
+
+        return $this;
+    }
+
+    public function addExampleOfModerateResponse(string $example): self
+    {
+        $this->addToInputArray('moderate_examples', $example);
 
         return $this;
     }
@@ -150,7 +164,9 @@ TOC;
             'question' => 'required|string',
             'options' => 'required|array|min:2',
             'avoid_aspects' => 'required|array|min:1',
-            'examples' => 'array|min:1',
+            'good_examples' => 'array|min:1',
+            'moderate_examples' => 'array|min:1',
+            'poor_examples' => 'array|min:1',
         ];
     }
 
