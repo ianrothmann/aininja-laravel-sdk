@@ -3,7 +3,6 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Results\AINinjaScoringGuideRatingResult;
-use IanRothmann\AINinja\Results\AINinjaScoringGuideRefinementResult;
 
 class ScoringGuideRatingProcessor extends AINinjaProcessor
 {
@@ -19,7 +18,7 @@ class ScoringGuideRatingProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 [
   {
     "id": "1",
@@ -115,7 +114,7 @@ class ScoringGuideRatingProcessor extends AINinjaProcessor
 
 TOC;
 
-        return json_decode($json,true);
+        return json_decode($json, true);
     }
 
     public function onAnswer(string $answer): self
@@ -132,9 +131,9 @@ TOC;
         return $this;
     }
 
-    public function withAnchor(int $value, $title = "", $description = ""): self
+    public function withAnchor(int $value, $title = '', $description = ''): self
     {
-        if (!array_key_exists('rubric', $this->input)) {
+        if (! array_key_exists('rubric', $this->input)) {
             throw new \Exception('First add the item for rating');
         }
 
@@ -148,7 +147,7 @@ TOC;
             'title' => $title,
             'value' => $value,
             'description' => $description,
-            'prerequisites' => []
+            'prerequisites' => [],
         ];
 
         return $this;
@@ -156,7 +155,7 @@ TOC;
 
     public function withPrerequisite($question, $definitions): self
     {
-        if (!array_key_exists('rubric', $this->input)) {
+        if (! array_key_exists('rubric', $this->input)) {
             throw new \Exception('First add the item for rating');
         }
 
@@ -174,7 +173,7 @@ TOC;
 
         $this->input['rubric'][$lastKey]['anchors'][$lastAnchorKey]['prerequisites'][] = [
             'question' => $question,
-            'definitions' => $definitions
+            'definitions' => $definitions,
         ];
 
         return $this;

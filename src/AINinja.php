@@ -174,7 +174,6 @@ class AINinja
         return new ScoringGuideRatingProcessor;
     }
 
-
     public function assessLanguage(): AssessLanguageProcessor
     {
         return new AssessLanguageProcessor;

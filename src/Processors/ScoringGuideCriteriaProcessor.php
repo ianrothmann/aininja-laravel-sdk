@@ -18,7 +18,7 @@ class ScoringGuideCriteriaProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "rubric": {
     "anchors": [
@@ -101,7 +101,7 @@ class ScoringGuideCriteriaProcessor extends AINinjaProcessor
 
 TOC;
 
-        return json_decode($json,true);
+        return json_decode($json, true);
     }
 
     public function forItem(string $itemText): self
@@ -121,7 +121,7 @@ TOC;
     public function withRatingsBetween($min, $max): self
     {
         $options = [];
-        for($i=$min; $i<=$max; $i++){
+        for ($i = $min; $i <= $max; $i++) {
             $options[] = $i;
         }
         $this->setInputParameter('options', $options);
