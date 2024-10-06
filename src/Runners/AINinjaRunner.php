@@ -23,6 +23,10 @@ class AINinjaRunner
 
     protected int $cacheDuration = 60 * 60;
 
+    protected $shouldVerifySsl = true;
+
+    protected $timeout = 600;
+
     public function __construct($forceNoCache = false)
     {
         $this->url = rtrim(config('aininja.url'), '/').'/';
@@ -30,11 +34,13 @@ class AINinjaRunner
         $this->shouldMock = config('aininja.should_mock');
         $this->shouldCache = $forceNoCache ? false : config('aininja.should_cache');
         $this->cacheDuration = config('aininja.cache_minutes') * 60;
+        $this->shouldVerifySsl = config('aininja.verify_ssl') ?? true;
+        $this->timeout = config('aininja.timeout') ?? 600;
     }
 
     public function invokeAsyncAndWait(array $processors): array
     {
-        $runnablePool = new RemoteRunnablePool;
+        $runnablePool = new RemoteRunnablePool($this->timeout, $this->shouldVerifySsl);
         $runnablePool->authenticateWithXToken($this->token);
         if ($processors[0] instanceof AINinjaProcessor) {
             $sampleConfig = $processors[0]->toArray();
@@ -69,7 +75,7 @@ class AINinjaRunner
     {
         $config = $processor->toArray();
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
-        $runnable = new RemoteRunnable($endpoint);
+        $runnable = new RemoteRunnable($endpoint, $this->timeout, $this->shouldVerifySsl);
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
         $sourceHeader = $this->getSourceHeader();
@@ -94,7 +100,7 @@ class AINinjaRunner
     {
         $config = $processor->toArray();
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
-        $runnable = new RemoteRunnable($endpoint);
+        $runnable = new RemoteRunnable($endpoint, $this->timeout, $this->shouldVerifySsl);
         $runnable->authenticateWithXToken($this->token);
         $runnable->withTraceId($config['trace_id'] ?? null);
         $sourceHeader = $this->getSourceHeader();
@@ -127,7 +133,7 @@ class AINinjaRunner
         }
 
         $endpoint = $this->url.ltrim($configs[0]['endpoint'], '/');
-        $runnable = new RemoteRunnable($endpoint);
+        $runnable = new RemoteRunnable($endpoint, $this->timeout, $this->shouldVerifySsl);
         $runnable->authenticateWithXToken($this->token);
         if ($configs[0]['trace_id'] ?? null) {
             $runnable->withTraceId($configs[0]['trace_id'] ?? null);
