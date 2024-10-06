@@ -18,7 +18,7 @@ class ScoringGuideItemCreateProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "updated_items": [
     {
