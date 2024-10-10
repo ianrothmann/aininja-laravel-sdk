@@ -6,6 +6,7 @@ use IanRothmann\AINinja\Processors\AssessLanguageProcessor;
 use IanRothmann\AINinja\Processors\AssessmentMatrixProcessor;
 use IanRothmann\AINinja\Processors\CandidateStrengthShortcomingProcessor;
 use IanRothmann\AINinja\Processors\DetectSpeechProcessor;
+use IanRothmann\AINinja\Processors\DevelopmentPlanProcessor;
 use IanRothmann\AINinja\Processors\EmbeddingsProcessor;
 use IanRothmann\AINinja\Processors\ExtractCompetenciesProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
@@ -172,6 +173,11 @@ class AINinja
     public function scoringGuideRating(): ScoringGuideRatingProcessor
     {
         return new ScoringGuideRatingProcessor;
+    }
+
+    public function createDevelopmentPlan(): DevelopmentPlanProcessor
+    {
+        return new DevelopmentPlanProcessor;
     }
 
     public function assessLanguage(): AssessLanguageProcessor
