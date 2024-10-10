@@ -69,7 +69,7 @@ TOC;
         return parent::get();
     }
 
-    public function stream($callback = null): AINinjaScoringGuideRefinementResult
+    public function stream($callback = null): AINinjaScoringGuideItemGenerationResult
     {
         return parent::stream();
     }
