@@ -4,7 +4,6 @@ namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaDevelopmentPlanResult;
-use IanRothmann\AINinja\Results\AINinjaKeywordResult;
 
 class DevelopmentPlanProcessor extends AINinjaProcessor
 {
@@ -22,7 +21,7 @@ class DevelopmentPlanProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "dev_actions": [
     {
@@ -56,34 +55,37 @@ TOC;
     public function addToPersonContext(string $category, string $text): self
     {
         $this->addToInputArray('person_context', $text, $category);
+
         return $this;
     }
 
     public function addToAssessmentContext(string $category, string $text): self
     {
         $this->addToInputArray('assessment_context', $text, $category);
+
         return $this;
     }
 
-    public function addDevelopmentCategory($id, $name, $numActionsRequired):self
+    public function addDevelopmentCategory($id, $name, $numActionsRequired): self
     {
         $this->addToInputArray('development_categories', [
             'id' => $id,
             'name' => $name,
             'num_items_required' => $numActionsRequired,
-            'development_actions' => []
+            'development_actions' => [],
         ]);
+
         return $this;
     }
 
-    public function addDevelopmentAction($categoryId, $actionId, $actionName, $actionDescription, $rationaleHint=null):self
+    public function addDevelopmentAction($categoryId, $actionId, $actionName, $actionDescription, $rationaleHint = null): self
     {
-        if(!array_key_exists('development_categories', $this->input)){
+        if (! array_key_exists('development_categories', $this->input)) {
             throw new \Exception('Development categories must be added before adding actions');
         }
         $categories = collect($this->input['development_categories'])->where('id', $categoryId);
 
-        if($categories->count() == 0){
+        if ($categories->count() == 0) {
             throw new \Exception('Development category with id '.$categoryId.' not found');
         }
 
@@ -94,7 +96,7 @@ TOC;
             'id' => $actionId,
             'title' => $actionName,
             'description' => $actionDescription,
-            'rationale_hint' => $rationaleHint
+            'rationale_hint' => $rationaleHint,
         ];
 
         $this->input['development_categories'][$categoryKey] = $category;
@@ -104,10 +106,11 @@ TOC;
 
     public function avoidActions($actions): self
     {
-        if(is_array($actions)){
+        if (is_array($actions)) {
             $actions = json_encode($actions);
         }
         $this->setInputParameter('avoid_actions', $actions);
+
         return $this;
     }
 
