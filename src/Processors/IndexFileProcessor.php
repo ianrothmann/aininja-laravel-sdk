@@ -2,9 +2,7 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\AINinjaIndexedFileResult;
-use IanRothmann\AINinja\Results\AINinjaKeywordResult;
 
 class IndexFileProcessor extends AINinjaProcessor
 {
@@ -50,12 +48,13 @@ class IndexFileProcessor extends AINinjaProcessor
 
     protected function transformInputForTransport(): array
     {
-        if(!array_key_exists('summarize', $this->input)){
+        if (! array_key_exists('summarize', $this->input)) {
             $this->setInputParameter('summarize', false);
         }
-        if(!array_key_exists('extract_title', $this->input)){
+        if (! array_key_exists('extract_title', $this->input)) {
             $this->setInputParameter('extract_title', false);
         }
+
         return parent::transformInputForTransport();
     }
 

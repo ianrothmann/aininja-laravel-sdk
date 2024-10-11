@@ -5,7 +5,9 @@ namespace IanRothmann\AINinja\Results\Containers;
 class QueryAnswerSourceDocument
 {
     protected $pageNumber;
+
     protected $collectionName;
+
     protected $content;
 
     public function __construct($pageNumber, $collectionName, $content)
@@ -20,9 +22,9 @@ class QueryAnswerSourceDocument
         $result = collect($result);
         $meta = collect($result->get('metadata'));
 
-        $pageNumber = $result->get('page_number',$meta->get('page_number'));
-        $content = $result->get('page_content',$result->get('content'));
-        $collectionName = $meta->get('collection_name',$meta->get('collection_name'));
+        $pageNumber = $result->get('page_number', $meta->get('page_number'));
+        $content = $result->get('page_content', $result->get('content'));
+        $collectionName = $meta->get('collection_name', $meta->get('collection_name'));
 
         return new QueryAnswerSourceDocument($pageNumber, $collectionName, $content);
     }
