@@ -6,6 +6,10 @@ class AINinjaFaceImageResult extends AINinjaResult
 {
     public function getError(): ?string
     {
+        if(!$this->result['error']){
+            return null;
+        }
+
         return $this->result['error'] ?? null;
     }
 
