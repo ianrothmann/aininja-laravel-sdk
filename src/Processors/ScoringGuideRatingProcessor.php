@@ -18,7 +18,7 @@ class ScoringGuideRatingProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 [
   {
     "id": "1",
@@ -50,14 +50,14 @@ TOC;
         return $this;
     }
 
-    public function rateItem($itemId, $itemText, $guidelines=''): self
+    public function rateItem($itemId, $itemText, $guidelines = ''): self
     {
-        $this->addToInputArray('rubric', ['id' => $itemId, 'item' => $itemText, 'guidelines'=>$guidelines, 'anchors' => []]);
+        $this->addToInputArray('rubric', ['id' => $itemId, 'item' => $itemText, 'guidelines' => $guidelines, 'anchors' => []]);
 
         return $this;
     }
 
-    public function withAnchor(int $value, $title = '', $description = '', $criteria=[], $examples = []): self
+    public function withAnchor(int $value, $title = '', $description = '', $criteria = [], $examples = []): self
     {
         if (! array_key_exists('rubric', $this->input)) {
             throw new \Exception('First add the item for rating');
@@ -69,12 +69,12 @@ TOC;
             throw new \Exception('No items found in the rubric to add an anchor.');
         }
 
-        if(!is_array($criteria)){
-            $criteria=[$criteria];
+        if (! is_array($criteria)) {
+            $criteria = [$criteria];
         }
 
-        if(!is_array($examples)){
-            $examples=[$examples];
+        if (! is_array($examples)) {
+            $examples = [$examples];
         }
 
         $this->input['rubric'][$lastKey]['anchors'][] = [
@@ -90,10 +90,10 @@ TOC;
 
     protected function transformInputForTransport(): array
     {
-        $this->input['provide_reasons']=true;
+        $this->input['provide_reasons'] = true;
+
         return parent::transformInputForTransport();
     }
-
 
     protected function getValidationRules(): array
     {
