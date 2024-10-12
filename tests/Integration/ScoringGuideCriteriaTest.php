@@ -6,8 +6,8 @@ it('can generate criteria for an item in a scoring guide', function () {
     $handler = new AINinja;
 
     $result = $handler->scoringGuideGenerateCriteria()
-        ->addItem(10,'Proposes forward-thinking tech solutions')
-        ->addItem(11,'Focuses on recommending digital tools for specific tasks')
+        ->addItem(10, 'Proposes forward-thinking tech solutions')
+        ->addItem(11, 'Focuses on recommending digital tools for specific tasks')
         ->withRatingsBetween(1, 5)
 //        ->addAspectToAvoid('Focuses on recommending digital tools for specific tasks')
 //        ->addAspectToAvoid('Discusses tools to support the digital shift across business areas')

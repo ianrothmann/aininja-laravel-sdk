@@ -13,9 +13,8 @@ class AINinjaSearchResult extends AINinjaResult
     public function getSearchResults(): Collection
     {
         return collect(collect($this->result)->get('results'))
-            ->map(function($item){
+            ->map(function ($item) {
                 return QueryAnswerSourceDocument::fromQueryAnswer($item);
             });
     }
-
 }
