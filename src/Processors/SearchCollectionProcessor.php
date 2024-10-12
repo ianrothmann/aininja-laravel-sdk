@@ -18,7 +18,7 @@ class SearchCollectionProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 TOC;
 
         return json_decode($json, true);
@@ -27,12 +27,14 @@ TOC;
     public function withTerm(string $term): self
     {
         $this->setInputParameter('search_term', $term);
+
         return $this;
     }
 
     public function onCollections(array $collection_refs): self
     {
         $this->setInputParameter('collection_names', $collection_refs);
+
         return $this;
     }
 

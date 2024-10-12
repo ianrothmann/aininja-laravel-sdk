@@ -18,7 +18,7 @@ class ScoringGuideCriteriaProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
     "rubric": {
         "items": [
@@ -183,12 +183,12 @@ TOC;
         return $this;
     }
 
-//    public function addAspectToAvoid($aspect): self
-//    {
-//        $this->addToInputArray('avoid_aspects', $aspect);
-//
-//        return $this;
-//    }
+    //    public function addAspectToAvoid($aspect): self
+    //    {
+    //        $this->addToInputArray('avoid_aspects', $aspect);
+    //
+    //        return $this;
+    //    }
 
     public function withRatingsBetween($min, $max): self
     {
@@ -237,7 +237,7 @@ TOC;
             'items.*.item' => 'required|string',
             'question' => 'required|string',
             'options' => 'required|array|min:2',
-           // 'avoid_aspects' => 'required|array|min:1',
+            // 'avoid_aspects' => 'required|array|min:1',
             'good_examples' => 'array|min:1',
             'moderate_examples' => 'array|min:1',
             'poor_examples' => 'array|min:1',
