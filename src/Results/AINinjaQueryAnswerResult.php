@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 
 class AINinjaQueryAnswerResult extends AINinjaResult
 {
-
     public function getQuestion(): ?string
     {
         return collect($this->result)->get('input');
@@ -24,9 +23,8 @@ class AINinjaQueryAnswerResult extends AINinjaResult
     public function getContext(): Collection
     {
         return collect(collect($this->result)->get('context'))
-            ->map(function($item){
+            ->map(function ($item) {
                 return QueryAnswerSourceDocument::fromQueryAnswer($item);
             });
     }
-
 }
