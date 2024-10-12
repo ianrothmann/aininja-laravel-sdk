@@ -38,6 +38,7 @@ use IanRothmann\AINinja\Processors\ScoringGuideCriteriaProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideItemCreateProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideItemRefineProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideRatingProcessor;
+use IanRothmann\AINinja\Processors\SearchCollectionProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
@@ -187,9 +188,14 @@ class AINinja
         return new IndexFileProcessor;
     }
 
-    public function queryCollection(): QueryCollectionProcessor
+    public function queryCollections(): QueryCollectionProcessor
     {
         return new QueryCollectionProcessor;
+    }
+
+    public function searchCollections(): SearchCollectionProcessor
+    {
+        return new SearchCollectionProcessor;
     }
 
     public function assessLanguage(): AssessLanguageProcessor

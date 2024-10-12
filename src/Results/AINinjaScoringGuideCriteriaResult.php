@@ -7,10 +7,21 @@ use Illuminate\Support\Collection;
 class AINinjaScoringGuideCriteriaResult extends AINinjaResult
 {
     /**
-     * @return Collection<int, array{title: string, value: int, description: string, prerequisites?: array<int, array{question: string, definitions: string}>}>
+     * @return Collection<int, array{
+     *     id: int,
+     *     item: string,
+     *     anchors: array<int, array{
+     *         value: int,
+     *         name: string,
+     *         description: string,
+     *         criteria: array<int, string>,
+     *         examples: array<int, string>
+     *     }>,
+     *     guidelines: string
+     * }>
      */
-    public function getAnchors(): Collection
+    public function getItems(): Collection
     {
-        return collect($this->result['rubric']['anchors']);
+        return collect($this->result['rubric']['items']);
     }
 }

@@ -18,105 +18,177 @@ class ScoringGuideCriteriaProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<'TOC'
+        $json = <<<TOC
 {
-  "rubric": {
-    "anchors": [
-      {
-        "title": "Not Evident",
-        "value": 1,
-        "description": "The candidate does not propose any technological solutions."
-      },
-      {
-        "title": "General Mention",
-        "value": 2,
-        "description": "The candidate mentions technology but without specifics.",
-        "prerequisites": [
-          {
-            "question": "Does the candidate mention technology?",
-            "definitions": "The candidate references technology vaguely, like improving efficiency or streamlining processes, but without specific tools."
-          }
+    "rubric": {
+        "items": [
+            {
+                "id": 1,
+                "item": "Starts with a friendly tone",
+                "anchors": [
+                    {
+                        "value": 1,
+                        "name": "Negative Start",
+                        "description": "Begins with a negative or neutral tone.",
+                        "criteria": [
+                            "No warmth.",
+                            "Fails to engage."
+                        ],
+                        "examples": [
+                            "We need to discuss issues.",
+                            "Let's get to the point."
+                        ]
+                    },
+                    {
+                        "value": 2,
+                        "name": "Basic Greeting",
+                        "description": "Offers a simple greeting but lacks enthusiasm.",
+                        "criteria": [
+                            "Basic well-wishing.",
+                            "Some positivity."
+                        ],
+                        "examples": [
+                            "Hi, hope you're okay.",
+                            "Hello, good to see you."
+                        ]
+                    },
+                    {
+                        "value": 3,
+                        "name": "Warm Greeting",
+                        "description": "Shows warmth and positivity.",
+                        "criteria": [
+                            "Friendly tone.",
+                            "Engages the listener."
+                        ],
+                        "examples": [
+                            "Hi there! How's it going?",
+                            "Hello! Glad to chat."
+                        ]
+                    },
+                    {
+                        "value": 4,
+                        "name": "Very Friendly Start",
+                        "description": "Creates a strong positive atmosphere.",
+                        "criteria": [
+                            "Genuinely welcoming.",
+                            "Builds rapport."
+                        ],
+                        "examples": [
+                            "Hi! It's great to see you!",
+                            "Hello! I'm excited to talk."
+                        ]
+                    },
+                    {
+                        "value": 5,
+                        "name": "Exceptional Warmth",
+                        "description": "Exudes positivity and empathy.",
+                        "criteria": [
+                            "Deep connection.",
+                            "Encourages dialogue."
+                        ],
+                        "examples": [
+                            "Hi there! I hope you're well. Let's talk.",
+                            "Hello! I'm here to support you."
+                        ]
+                    }
+                ],
+                "guidelines": "Focus on warmth and positivity. Evaluate based on tone, not length."
+            },
+            {
+                "id": 2,
+                "item": "Recognizes issues and seeks understanding",
+                "anchors": [
+                    {
+                        "value": 1,
+                        "name": "Minimal Recognition",
+                        "description": "Barely mentions issues.",
+                        "criteria": [
+                            "No desire to understand."
+                        ],
+                        "examples": [
+                            "We need to talk about performance.",
+                            "There are problems."
+                        ]
+                    },
+                    {
+                        "value": 2,
+                        "name": "Basic Recognition",
+                        "description": "Acknowledges issues but lacks depth.",
+                        "criteria": [
+                            "Some acknowledgment.",
+                            "Limited empathy."
+                        ],
+                        "examples": [
+                            "I've seen changes.",
+                            "We should discuss your work."
+                        ]
+                    },
+                    {
+                        "value": 3,
+                        "name": "Moderate Understanding",
+                        "description": "Shows some interest in the issues.",
+                        "criteria": [
+                            "Mentions concerns.",
+                            "Some willingness to help."
+                        ],
+                        "examples": [
+                            "I've noticed changes and want to help.",
+                            "Let's discuss your challenges."
+                        ]
+                    },
+                    {
+                        "value": 4,
+                        "name": "Strong Recognition",
+                        "description": "Actively seeks to understand.",
+                        "criteria": [
+                            "Directly addresses issues.",
+                            "Willing to support."
+                        ],
+                        "examples": [
+                            "I'm here to help with your challenges.",
+                            "Let's talk about how to move forward."
+                        ]
+                    },
+                    {
+                        "value": 5,
+                        "name": "Exceptional Support",
+                        "description": "Demonstrates deep empathy and support.",
+                        "criteria": [
+                            "Highly empathetic.",
+                            "Offers assistance."
+                        ],
+                        "examples": [
+                            "I care about your well-being. Let's work together.",
+                            "Your challenges matter to me. How can I assist?"
+                        ]
+                    }
+                ],
+                "guidelines": "Assess empathy and recognition over length. Evaluate based on clarity."
+            }
         ]
-      },
-      {
-        "title": "Specific Innovative Proposal",
-        "value": 3,
-        "description": "The candidate proposes one specific technological solution for the business.",
-        "prerequisites": [
-          {
-            "question": "Does the candidate propose a specific solution?",
-            "definitions": "The candidate suggests a clear tool, like a CRM system or cloud accounting software."
-          },
-          {
-            "question": "Is the solution innovative?",
-            "definitions": "The candidate mentions cutting-edge tools like AI or IoT."
-          },
-          {
-            "question": "Is it relevant to Tom's business?",
-            "definitions": "The solution improves Tom's operations, like automating processes or improving customer engagement."
-          }
-        ]
-      },
-      {
-        "title": "Multiple Innovative Proposals",
-        "value": 4,
-        "description": "The candidate proposes two or more specific technological solutions.",
-        "prerequisites": [
-          {
-            "question": "Does the candidate propose multiple solutions?",
-            "definitions": "The candidate suggests at least two tools, like CRM and cloud storage."
-          },
-          {
-            "question": "Are they innovative?",
-            "definitions": "Both solutions involve emerging technologies like AI or machine learning."
-          },
-          {
-            "question": "Are they relevant?",
-            "definitions": "Each solution enhances Tom's processes, customer engagement, or data management."
-          }
-        ]
-      },
-      {
-        "title": "Detailed Insightful Proposals",
-        "value": 5,
-        "description": "The candidate provides detailed benefits for multiple technological solutions.",
-        "prerequisites": [
-          {
-            "question": "Does the candidate propose multiple solutions?",
-            "definitions": "The candidate suggests two or more tools, like CRM and AI chatbots."
-          },
-          {
-            "question": "Are they innovative?",
-            "definitions": "Each solution includes innovative technology like AI or AR."
-          },
-          {
-            "question": "Does the candidate explain the benefits?",
-            "definitions": "The candidate explains how each tool improves business, like enhancing customer service or automating processes."
-          }
-        ]
-      }
-    ]
-  }
+    }
 }
-
 TOC;
 
         return json_decode($json, true);
     }
 
-    public function forItem(string $itemText): self
+    public function addItem($id, string $itemText): self
     {
-        $this->setInputParameter('item', $itemText);
+        $this->addToInputArray('items', [
+            'id' => $id,
+            'item' => $itemText,
+        ]);
 
         return $this;
     }
 
-    public function addAspectToAvoid($aspect): self
-    {
-        $this->addToInputArray('avoid_aspects', $aspect);
-
-        return $this;
-    }
+//    public function addAspectToAvoid($aspect): self
+//    {
+//        $this->addToInputArray('avoid_aspects', $aspect);
+//
+//        return $this;
+//    }
 
     public function withRatingsBetween($min, $max): self
     {
@@ -160,10 +232,12 @@ TOC;
     protected function getValidationRules(): array
     {
         return [
-            'item' => 'required|string',
+            'items' => 'required|array',
+            'items.*.id' => 'required',
+            'items.*.item' => 'required|string',
             'question' => 'required|string',
             'options' => 'required|array|min:2',
-            'avoid_aspects' => 'required|array|min:1',
+           // 'avoid_aspects' => 'required|array|min:1',
             'good_examples' => 'array|min:1',
             'moderate_examples' => 'array|min:1',
             'poor_examples' => 'array|min:1',
