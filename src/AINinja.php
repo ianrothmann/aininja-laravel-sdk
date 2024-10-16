@@ -43,6 +43,7 @@ use IanRothmann\AINinja\Processors\SlugProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
+use IanRothmann\AINinja\Processors\TagProcessor;
 use IanRothmann\AINinja\Processors\ThemeExtractionProcessor;
 use IanRothmann\AINinja\Processors\TLDRProcessor;
 use IanRothmann\AINinja\Processors\TranscribeURLProcessor;
@@ -181,6 +182,11 @@ class AINinja
     public function createDevelopmentPlan(): DevelopmentPlanProcessor
     {
         return new DevelopmentPlanProcessor;
+    }
+
+    public function assignTags(): TagProcessor
+    {
+        return new TagProcessor;
     }
 
     public function indexForQuery(): IndexFileProcessor
