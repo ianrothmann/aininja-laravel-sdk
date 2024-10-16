@@ -71,7 +71,7 @@ class IndexFileProcessor extends AINinjaProcessor
             'url' => 'required|url',
             'collection_name' => 'required|string',
             'summarize' => 'sometimes|bool',
-            'extract_title' => 'sometimes|string',
+            'extract_title' => 'sometimes|bool',
         ];
     }
 
