@@ -46,6 +46,13 @@ class IndexFileProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function provideTitle(bool $extract): self
+    {
+        $this->setInputParameter('extract_title', $extract);
+
+        return $this;
+    }
+
     protected function transformInputForTransport(): array
     {
         if (! array_key_exists('summarize', $this->input)) {
