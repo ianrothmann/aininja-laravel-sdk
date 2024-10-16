@@ -2,8 +2,6 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
-use IanRothmann\AINinja\Results\AINinjaDevelopmentPlanResult;
 use IanRothmann\AINinja\Results\AINinjaTagResult;
 
 class TagProcessor extends AINinjaProcessor
@@ -20,7 +18,7 @@ class TagProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<TOC
+        $json = <<<'TOC'
 {
   "output": [
     {
@@ -32,7 +30,6 @@ class TagProcessor extends AINinjaProcessor
 
 TOC;
 
-
         return json_decode($json, true);
     }
 
@@ -43,13 +40,12 @@ TOC;
         return $this;
     }
 
-
     public function addCategory($id, $name): self
     {
         $this->addToInputArray('tag_categories', [
             'category_id' => $id,
             'category_name' => $name,
-            'tags' => []
+            'tags' => [],
         ]);
 
         return $this;
@@ -88,7 +84,7 @@ TOC;
             'tag_categories.*.category_name' => 'required|string',
             'tag_categories.*.tags' => 'required|array',
             'tag_categories.*.tags.*.tag_id' => 'required',
-            'tag_categories.*.tags.*.tag_name' => 'required'
+            'tag_categories.*.tags.*.tag_name' => 'required',
         ];
     }
 

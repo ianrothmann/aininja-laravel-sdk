@@ -12,7 +12,7 @@ it('can assign tags to text', function () {
         ->addCategory('2', 'Topic')
         ->addTag('2', 'tax', 'Tax')
         ->addTag('2', 'acc', 'Accounting')
-        ->basedOn("I am from South Africa and I am an accountant")
+        ->basedOn('I am from South Africa and I am an accountant')
         ->get();
 
     expect($result->getCategories()->toArray())->toBeArray();
