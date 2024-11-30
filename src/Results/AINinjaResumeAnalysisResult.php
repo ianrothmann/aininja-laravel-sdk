@@ -21,6 +21,26 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
         return collect($this->result)->get('name');
     }
 
+    public function getNationalityCode(): ?string
+    {
+        $result=strtolower(collect($this->result)->get('nationality'));
+        if($result=='none'){
+            return null;
+        }else{
+            return $result;
+        }
+    }
+
+    public function getGender(): ?string
+    {
+        $result=strtolower(collect($this->result)->get('gender'));
+        if($result=='none'){
+            return null;
+        }else{
+            return $result;
+        }
+    }
+
     public function getEmail(): ?string
     {
         $value = collect($this->result)->get('email');
