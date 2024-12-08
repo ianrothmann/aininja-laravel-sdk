@@ -20,5 +20,8 @@ it('can process and extract infomation from a resume', function () {
         ->and($result->getEducationRatingReason())->toBeString()
         ->and($result->getSkillsRatingReason())->toBeString()
         ->and($result->getRating())->toBeFloat()
-        ->and($result->getRatingReason())->toBeString();
+        ->and($result->getRatingReason())->toBeString()
+        ->and($result->getGender())->toBeString()
+        ->and($result->getAge())->toBeInt()
+        ->and($result->getNationalityCode())->toBeString();
 });

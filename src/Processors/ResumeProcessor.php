@@ -33,11 +33,27 @@ class ResumeProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function urlIsLinkedIn($isLinkedIn = true): self
+    {
+        $this->setInputParameter('url_from_linkedin', $isLinkedIn);
+
+        return $this;
+    }
+
+    public function extractProfilePicture($shouldExtract = true): self
+    {
+        $this->setInputParameter('extract_profile_image', $shouldExtract);
+
+        return $this;
+    }
+
     public function getValidationRules(): array
     {
         return [
             'url' => 'required|url',
             'job_description' => 'sometimes|nullable|string',
+            'url_from_linkedin' => 'sometimes|boolean',
+            'extract_profile_image' => 'sometimes|boolean',
         ];
     }
 
@@ -61,6 +77,18 @@ class ResumeProcessor extends AINinjaProcessor
   "email": "jwsmith@colostate.edu",
   "mobile": "None",
   "overview": "John W. Smith is a highly qualified professional with a robust background in early childhood development and the care of special needs children and adults. He holds a BS in Early Childhood Development and a BA in Elementary Education from the University of Arkansas at Little Rock, where he achieved a commendable GPA of 3.4 overall, with higher GPAs in his specific fields of study. He has been recognized on both the Dean’s List and the Chancellor’s List. John’s career spans several years, with notable experience in both adult care and childcare settings. His adult care experience includes determining work placements for 150 special needs adult clients, maintaining client databases and records, coordinating monthly client contacts with local healthcare professionals, and managing a team of 25 volunteer workers. In the realm of childcare, John has coordinated service assignments for part-time counselors and client families, overseen daily activities and outings for 100 clients, and assisted families with financial and healthcare research. He has also supported teachers in managing classroom activities and overseeing student activities. His employment history includes roles as a Counseling Supervisor at The Wesley Center in Little Rock, Arkansas, a Client Specialist at Rainbow Special Care Center, and a Teacher’s Assistant at Cowell Elementary in Conway, Arkansas. John W. Smith’s extensive experience, educational background, and recognition for academic excellence make him a strong candidate for roles in early childhood development and special needs care.",
+  "profile_image": "https://example.com/profile_image.jpg",
+  "gender": "male",
+  "date_of_birth": "1975-05-05",
+  "nationality": "US",
+  "languages": {
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "Native"
+      }
+    ]
+  },
   "qualifications": {
     "qualifications": [
       {

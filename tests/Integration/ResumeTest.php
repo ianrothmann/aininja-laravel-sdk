@@ -8,6 +8,8 @@ it('can process and extract infomation from a resume', function () {
     $result = $handler->analyzeResume()
         ->forUrl('https://writing.colostate.edu/guides/documents/resume/functionalsample.pdf')
         ->rateOnJobDescription('Early childhood development teacher')
+        ->extractProfilePicture(true)
+        ->urlIsLinkedIn(false)
         ->get();
 
     expect($result->getError())->toBeNull()

@@ -2,7 +2,9 @@
 
 namespace IanRothmann\AINinja\Results;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class AINinjaResumeAnalysisResult extends AINinjaResult
 {
@@ -41,6 +43,49 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
         }
     }
 
+    public function getBirthDate(): ?Carbon
+    {
+        $result=strtolower(collect($this->result)->get('date_of_birth'));
+        if($result=='none'){
+            return null;
+        }else{
+            return Carbon::parse($result);
+        }
+    }
+
+    public function getAge(): ?int
+    {
+        $birthDate = $this->getBirthDate();
+        if (! $birthDate) {
+            return null;
+        }
+
+        return $birthDate->age;
+    }
+
+    public function getProfilePictureAsDataUrl(): ?string
+    {
+        return collect($this->result)->get('profile_image');
+    }
+
+    public function getProfilePictureAsRaw(): ?string
+    {
+        $base64 = $this->getProfilePictureAsDataUrl();
+        if (! $base64) {
+            return null; // No image data available
+        }
+
+        $base64 = preg_replace('/^data:image\/[a-zA-Z]+;base64,/', '', $base64);
+
+        return base64_decode($base64);
+    }
+
+    public function getProfilePictureFileName(): ?string
+    {
+        return Str::slug($this->getName(),'_').'.jpg';
+    }
+
+
     public function getEmail(): ?string
     {
         $value = collect($this->result)->get('email');
@@ -69,6 +114,13 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
         }
 
         return $value;
+    }
+
+    public function getLanguageProficiency(): Collection
+    {
+        $value = collect(collect($this->result)->get('languages'))->get('languages');
+
+        return collect($value);
     }
 
     public function getSkills(): Collection
