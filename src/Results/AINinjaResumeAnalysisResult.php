@@ -25,20 +25,20 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
 
     public function getNationalityCode(): ?string
     {
-        $result=strtolower(collect($this->result)->get('nationality'));
-        if($result=='none'){
+        $result = strtolower(collect($this->result)->get('nationality'));
+        if ($result == 'none') {
             return null;
-        }else{
+        } else {
             return $result;
         }
     }
 
     public function getGender(): ?string
     {
-        $result=strtolower(collect($this->result)->get('gender'));
-        if($result=='none'){
+        $result = strtolower(collect($this->result)->get('gender'));
+        if ($result == 'none') {
             return null;
-        }else{
+        } else {
             return $result;
         }
     }
