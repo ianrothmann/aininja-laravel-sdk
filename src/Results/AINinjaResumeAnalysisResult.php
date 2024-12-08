@@ -45,10 +45,10 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
 
     public function getBirthDate(): ?Carbon
     {
-        $result=strtolower(collect($this->result)->get('date_of_birth'));
-        if($result=='none'){
+        $result = strtolower(collect($this->result)->get('date_of_birth'));
+        if ($result == 'none') {
             return null;
-        }else{
+        } else {
             return Carbon::parse($result);
         }
     }
@@ -82,9 +82,8 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
 
     public function getProfilePictureFileName(): ?string
     {
-        return Str::slug($this->getName(),'_').'.jpg';
+        return Str::slug($this->getName(), '_').'.jpg';
     }
-
 
     public function getEmail(): ?string
     {
