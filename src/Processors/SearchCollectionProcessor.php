@@ -18,7 +18,8 @@ class SearchCollectionProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $json = <<<'TOC'
+        $json = <<<TOC
+[]
 TOC;
 
         return json_decode($json, true);

@@ -34,12 +34,14 @@ use IanRothmann\AINinja\Processors\QueryCollectionProcessor;
 use IanRothmann\AINinja\Processors\QuestionChatNavigatorProcessor;
 use IanRothmann\AINinja\Processors\RefineConversationSummaryProcessor;
 use IanRothmann\AINinja\Processors\ResumeProcessor;
+use IanRothmann\AINinja\Processors\RoleProfileCreateProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideCriteriaProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideItemCreateProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideItemRefineProcessor;
 use IanRothmann\AINinja\Processors\ScoringGuideRatingProcessor;
 use IanRothmann\AINinja\Processors\SearchCollectionProcessor;
 use IanRothmann\AINinja\Processors\SlugProcessor;
+use IanRothmann\AINinja\Processors\SuccessProfileProcessor;
 use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
@@ -72,6 +74,16 @@ class AINinja
     public function generateJobDescription(): JobDescriptionCreateProcessor
     {
         return new JobDescriptionCreateProcessor;
+    }
+
+    public function createSuccessProfile(): SuccessProfileProcessor
+    {
+        return new SuccessProfileProcessor;
+    }
+
+    public function generateRoleProfile(): RoleProfileCreateProcessor
+    {
+        return new RoleProfileCreateProcessor;
     }
 
     public function generateInterviewRequirements(): InterviewRequirementsCreateProcessor
