@@ -2,7 +2,6 @@
 
 namespace IanRothmann\AINinja\Processors;
 
-
 use IanRothmann\AINinja\Results\AINinjaSuccessProfileResult;
 
 class SuccessProfileProcessor extends AINinjaProcessor
@@ -28,6 +27,7 @@ class SuccessProfileProcessor extends AINinjaProcessor
 
         return $this;
     }
+
     public function addCompetency($id, $name, $description): self
     {
         $this->addToInputArray('competencies', [
@@ -54,6 +54,7 @@ class SuccessProfileProcessor extends AINinjaProcessor
     protected function transformInputForTransport(): array
     {
         $input = $this->input;
+
         return $input;
     }
 
