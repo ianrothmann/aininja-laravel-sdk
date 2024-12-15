@@ -49,7 +49,11 @@ class AINinjaResumeAnalysisResult extends AINinjaResult
         if ($result == 'none') {
             return null;
         } else {
-            return Carbon::parse($result);
+            try{
+                return Carbon::parse($result);
+            }catch (\Throwable $th){
+                return null;
+            }
         }
     }
 
