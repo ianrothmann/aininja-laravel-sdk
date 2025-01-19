@@ -39,6 +39,13 @@ class TranslateProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function withInstructions(string $text): self
+    {
+        $this->setInputParameter('instructions', $text);
+
+        return $this;
+    }
+
     public function to(string $languageName, string $languageCode): self
     {
         $this->addToInputArray('languages', [
@@ -72,6 +79,7 @@ class TranslateProcessor extends AINinjaProcessor
             'languages.*.language_code' => 'required|string',
             'parameters' => 'sometimes|array',
             'parameters.*' => 'required|string',
+            'instructions' => 'sometimes|string',
         ];
     }
 
