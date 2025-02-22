@@ -58,7 +58,7 @@ TOC;
 
     public function addItem($itemId, $itemText): self
     {
-        $this->addToInputArray('items', ['item_id' => $itemId, 'item' => $itemText]);
+        $this->addToInputArray('items', ['item_id' => (string)$itemId, 'item' => $itemText]);
 
         return $this;
     }
@@ -76,7 +76,7 @@ TOC;
             'dimension' => 'required|string',
             'question' => 'required|string',
             'items' => 'required|array',
-            'items.*.item_id' => 'required',
+            'items.*.item_id' => 'required|string',
             'items.*.item' => 'required|string',
             'examples' => 'array|min:1',
         ];

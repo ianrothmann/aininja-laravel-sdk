@@ -19,7 +19,7 @@ class MergeListProcessor extends AINinjaProcessor
     public function addToMasterList($id, $name): self
     {
         $this->addToInputArray('original_list', [
-            'id' => $id,
+            'id' => (string)$id,
             'name' => $name,
         ]);
 
@@ -29,7 +29,7 @@ class MergeListProcessor extends AINinjaProcessor
     public function addToAuxList($id, $name): self
     {
         $this->addToInputArray('new_list', [
-            'id' => $id,
+            'id' => (string)$id,
             'name' => $name,
         ]);
 
