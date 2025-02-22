@@ -86,11 +86,11 @@ class AssessmentMatrixProcessor extends AINinjaProcessor
     {
         $competency = $this->findAndValidateCompetency($competencyId);
 
-        //Now validate method from $this->input['methods']
+        // Now validate method from $this->input['methods']
         if (array_key_exists($methodId, $this->input['methods'])) {
             $this->input['competencies'][$competencyId]['targets'][$methodId] = (string) $weightTarget;
             $this->input['competencies'][$competencyId]['count_targets'][$methodId] = (string) $numDimensionsTarget;
-            //throw new \Exception('Method with id '.$methodId.' not found');
+            // throw new \Exception('Method with id '.$methodId.' not found');
         }
 
         return $this;

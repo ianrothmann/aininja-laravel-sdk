@@ -9,7 +9,7 @@ it('can generate a job description', function () {
         ->setTraceId('Test')
         ->stream(function (\IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamEvent $response) {
             if ($response->getContent()) {
-                //dd($response->getContent());
+                // dd($response->getContent());
             }
         });
 
@@ -17,5 +17,5 @@ it('can generate a job description', function () {
     expect($result->getEducationRequirements())->toBeString();
     expect($result->getExperienceRequirements())->toBeString();
     expect($result->getEducationRequirements())->toBeString();
-    //expect($result->getOtherRequirements())->toBeString();
+    // expect($result->getOtherRequirements())->toBeString();
 });

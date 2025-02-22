@@ -10,7 +10,7 @@ it('can stream content', function () {
         ->addInstruction('Generate a list of 10 numbers by writing the word of the number')
         ->addInstruction('The numbers must be between one and ten')
         ->stream(function (RemoteRunnableStreamEvent $event) {
-            if (! $event->getRunId() && $event->getContentAsString()) { //Weird assertion but sometimes something empty is streamed
+            if (! $event->getRunId() && $event->getContentAsString()) { // Weird assertion but sometimes something empty is streamed
                 expect($event->getContentAsString())->not->toBeEmpty();
             }
         });
