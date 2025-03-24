@@ -58,7 +58,7 @@ TOC;
 
     public function addItem($itemId, $itemText): self
     {
-        $this->addToInputArray('items', ['item_id' => (string)$itemId, 'item' => $itemText]);
+        $this->addToInputArray('items', ['item_id' => (string) $itemId, 'item' => $itemText]);
 
         return $this;
     }

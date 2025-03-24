@@ -52,7 +52,7 @@ TOC;
 
     public function rateItem($itemId, $itemText, $guidelines = ''): self
     {
-        $this->addToInputArray('rubric', ['id' => (string)$itemId, 'item' => $itemText, 'guidelines' => $guidelines, 'anchors' => []]);
+        $this->addToInputArray('rubric', ['id' => (string) $itemId, 'item' => $itemText, 'guidelines' => $guidelines, 'anchors' => []]);
 
         return $this;
     }
