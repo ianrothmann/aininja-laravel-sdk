@@ -13,5 +13,18 @@ it('can generate JSON', function () {
         ->get()
         ->getResult();
 
-    expect($result)->toHaveKey('numbers');
+    expect($result->toArray())->toHaveKey('numbers');
+
+    $obj = new AINinja;
+    $result = $obj->generateJson()
+        ->addInstruction('Generate a list of 10 numbers')
+        ->addInstruction('The numbers must be between 1 and 10')
+        ->expectJsonStructure([
+            'numbers' => ['The array of numbers'],
+        ])
+        ->useAdvancedMode()
+        ->get()
+        ->getResult();
+
+    expect($result->toArray())->toHaveKey('numbers');
 });

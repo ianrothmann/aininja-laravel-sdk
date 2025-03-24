@@ -34,12 +34,20 @@ class GenerateJsonProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function useAdvancedMode(): self
+    {
+        $this->setInputParameter('advanced',true);
+
+        return $this;
+    }
+
     public function getValidationRules(): array
     {
         return [
             'instructions' => 'required|array',
             'instructions.*' => 'required|string',
             'json_structure' => 'required|string',
+            'advanced'=>'sometimes|boolean'
         ];
     }
 
