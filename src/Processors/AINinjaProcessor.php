@@ -3,6 +3,10 @@
 namespace IanRothmann\AINinja\Processors;
 
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
+use IanRothmann\AINinja\Processors\Traits\ProcessorInputHandling;
+use IanRothmann\AINinja\Processors\Traits\ProcessorResultHandling;
+use IanRothmann\AINinja\Processors\Traits\ProcessorTraceHandling;
+use IanRothmann\AINinja\Processors\Traits\ProcessorTraitDetection;
 use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
 use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
@@ -11,11 +15,12 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class AINinjaProcessor
 {
-    protected $input = [];
+    use ProcessorInputHandling;
+    use ProcessorTraceHandling;
+    use ProcessorTraitDetection;
+    use ProcessorResultHandling;
 
     protected $forceNoCache = false;
-
-    protected ?string $traceId = null;
 
     public function __construct()
     {
@@ -42,7 +47,7 @@ abstract class AINinjaProcessor
     {
         $runner = new AINinjaRunner($this->forceNoCache);
 
-        return $this->hydrateResult($runner->invoke($this));
+        return $this->hydrateResult($runner->invoke($this->toArray()));
     }
 
     public function stream($callback = null)
@@ -52,67 +57,9 @@ abstract class AINinjaProcessor
         return $this->hydrateResult($runner->stream($this, $callback));
     }
 
-    protected function createResult($content): AINinjaResult
+    public function dd()
     {
-        $class = $this->getResultClass();
-
-        return new $class($content);
-    }
-
-    protected function setInputParameter($key, $value): void
-    {
-        $this->input[$key] = $value;
-    }
-
-    protected function addToInputArray($key, $value, $valueKey = null): void
-    {
-        if (! array_key_exists($key, $this->input)) {
-            $this->input[$key] = [];
-        }
-
-        if ($valueKey !== null) {
-            $this->input[$key][$valueKey] = $value;
-        } else {
-            $this->input[$key][] = $value;
-        }
-    }
-
-    protected function addToSubInputArray($mainKey, $key, $value, $valueKey = null): void
-    {
-        if (! array_key_exists($mainKey, $this->input)) {
-            $this->input[$mainKey] = [];
-        }
-
-        if (! array_key_exists($key, $this->input[$mainKey])) {
-            $this->input[$mainKey][$key] = [];
-        }
-
-        if ($valueKey !== null) {
-            $this->input[$mainKey][$key][$valueKey] = $value;
-        } else {
-            $this->input[$mainKey][$key][] = $value;
-        }
-    }
-
-    protected function transformInputForTransport(): array
-    {
-        return $this->input;
-    }
-
-    protected function getValidationRules(): array
-    {
-        return [];
-    }
-
-    protected function validate(): void
-    {
-        $rules = $this->getValidationRules();
-
-        $validator = validator($this->input, $rules);
-
-        if ($validator->fails()) {
-            throw new \Exception($validator->errors()->first());
-        }
+        dd($this->toArray());
     }
 
     public function toArray(): array
@@ -127,50 +74,4 @@ abstract class AINinjaProcessor
         ];
     }
 
-    protected function hasTrait($traitName): bool
-    {
-        $traits = class_uses($this);
-
-        return in_array($traitName, $traits);
-    }
-
-    /**
-     * @param  RemoteRunnableResponse|RemoteRunnableStreamResponse  $response
-     */
-    public function hydrateResult($response): AINinjaResult
-    {
-        $content = $response->getContent();
-
-        if (is_array($content)) {
-            return $this->createResult($content);
-        }
-
-        $decoded = json_decode($content, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            return $this->createResult($content);
-        } else {
-            return $this->createResult($decoded);
-        }
-    }
-
-    public function dd()
-    {
-        dd($this->toArray());
-    }
-
-    public function setTraceId($traceId): self
-    {
-        $this->traceId = (string) $traceId;
-
-        return $this;
-    }
-
-    public function traceModel(Model $model): self
-    {
-        $modelName = class_basename($model);
-        $primaryKeyValue = $model->getKey();
-        $this->traceId = $modelName.':'.$primaryKeyValue;
-
-        return $this;
-    }
 }

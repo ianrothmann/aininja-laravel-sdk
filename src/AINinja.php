@@ -56,6 +56,11 @@ class AINinja
 {
     use CanRunBatches;
 
+    public function agent(): AINinjaAgent
+    {
+        return new AINinjaAgent;
+    }
+
     public function generateJson(): GenerateJsonProcessor
     {
         return new GenerateJsonProcessor;

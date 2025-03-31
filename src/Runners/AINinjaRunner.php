@@ -71,9 +71,8 @@ class AINinjaRunner
         return $runnablePool->wait();
     }
 
-    public function invoke(AINinjaProcessor $processor): RemoteRunnableResponse
+    public function invoke(array $config): RemoteRunnableResponse
     {
-        $config = $processor->toArray();
         $endpoint = $this->url.ltrim($config['endpoint'], '/');
         $runnable = new RemoteRunnable($endpoint, $this->timeout, $this->shouldVerifySsl);
         $runnable->authenticateWithXToken($this->token);
