@@ -8,8 +8,11 @@ use IanRothmann\AINinja\Runners\AINinjaRunner;
 class AINinjaAgentRun
 {
     protected $agentType;
+
     protected $threadId;
+
     protected $runId;
+
     protected $mocked;
 
     public function __construct($agentType, $threadId, $runId, $mocked = null)
@@ -22,21 +25,21 @@ class AINinjaAgentRun
 
     public function check(): AINinjaRunResult
     {
-        if($this->mocked){
+        if ($this->mocked) {
             return $this->createResultObject([
                 'status' => 'success',
-                'response' => $this->mocked
+                'response' => $this->mocked,
             ]);
         }
 
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner;
 
         $content = $runner->invoke([
             'endpoint' => '/agent_result',
             'input' => [
                 'thread_id' => $this->threadId,
-                'run_id' => $this->runId
-            ]
+                'run_id' => $this->runId,
+            ],
         ])->getContent();
 
         return $this->createResultObject($content);
@@ -48,8 +51,8 @@ class AINinjaAgentRun
         /**
          * @var AINinjaAgent $obj
          */
-        $obj = new $class();
-        $resultClass=$obj->getResultClass();
+        $obj = new $class;
+        $resultClass = $obj->getResultClass();
 
         return new $resultClass($content);
     }
@@ -60,13 +63,12 @@ class AINinjaAgentRun
             'agent_type' => $this->agentType,
             'thread_id' => $this->threadId,
             'run_id' => $this->runId,
-            'mocked' => $this->mocked
+            'mocked' => $this->mocked,
         ];
     }
 
     public static function fromArray($array): self
     {
-        return new self($array['agent_type'], $array['thread_id'], $array['run_id'], $array['mocked']??null);
+        return new self($array['agent_type'], $array['thread_id'], $array['run_id'], $array['mocked'] ?? null);
     }
-
 }

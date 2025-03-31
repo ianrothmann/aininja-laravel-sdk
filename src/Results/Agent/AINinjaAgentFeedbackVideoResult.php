@@ -3,8 +3,6 @@
 namespace IanRothmann\AINinja\Results\Agent;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaRunResult;
-use IanRothmann\AINinja\Results\AINinjaResult;
-use Illuminate\Support\Collection;
 
 class AINinjaAgentFeedbackVideoResult extends AINinjaRunResult
 {
