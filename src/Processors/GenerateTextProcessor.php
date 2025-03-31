@@ -33,7 +33,7 @@ class GenerateTextProcessor extends AINinjaProcessor
 
     public function useAdvancedMode(): self
     {
-        $this->setInputParameter('advanced',true);
+        $this->setInputParameter('advanced', true);
 
         return $this;
     }
@@ -43,7 +43,7 @@ class GenerateTextProcessor extends AINinjaProcessor
         return [
             'instructions' => 'required|array',
             'instructions.*' => 'required|string',
-            'advanced'=>'sometimes|boolean'
+            'advanced' => 'sometimes|boolean',
         ];
     }
 

@@ -36,7 +36,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
 
     public function useAdvancedMode(): self
     {
-        $this->setInputParameter('advanced',true);
+        $this->setInputParameter('advanced', true);
 
         return $this;
     }
@@ -47,7 +47,7 @@ class GenerateJsonProcessor extends AINinjaProcessor
             'instructions' => 'required|array',
             'instructions.*' => 'required|string',
             'json_structure' => 'required|string',
-            'advanced'=>'sometimes|boolean'
+            'advanced' => 'sometimes|boolean',
         ];
     }
 
