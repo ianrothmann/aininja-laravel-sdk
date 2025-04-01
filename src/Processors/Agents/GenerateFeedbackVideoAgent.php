@@ -3,15 +3,12 @@
 namespace IanRothmann\AINinja\Processors\Agents;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaAgentRun;
-use IanRothmann\AINinja\Processors\Agents\Run\AINinjaRunResult;
-use IanRothmann\AINinja\Processors\AINinjaProcessor;
 use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentFeedbackVideoResult;
-use IanRothmann\AINinja\Results\AINinjaTLDRResult;
 
 class GenerateFeedbackVideoAgent extends AINinjaAgent
 {
-    //use OutputsInLanguage;
+    // use OutputsInLanguage;
 
     protected function getEndpoint(): string
     {
@@ -28,7 +25,7 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
         return [
             'feedback' => 'This is a feedback',
             'script' => 'This is a script',
-            'video_url' => 'https://www.w3schools.com/html/mov_bbb.mp4'
+            'video_url' => 'https://www.w3schools.com/html/mov_bbb.mp4',
         ];
     }
 
@@ -74,7 +71,6 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
         return $this;
     }
 
-
     public function withTaskIntroContent(string $content): self
     {
         $this->setInputParameter('intro_description', strip_tags($content));
@@ -89,7 +85,7 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
         return $this;
     }
 
-    public function videoTypeIsShort($type='style_1'): self
+    public function videoTypeIsShort($type = 'style_1'): self
     {
         $this->setInputParameter('video_type', 'short');
         $this->setInputParameter('video_style', $type);
@@ -97,7 +93,7 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
         return $this;
     }
 
-    public function videoTypeIsAvatar($avatarStyleNumber=1): self
+    public function videoTypeIsAvatar($avatarStyleNumber = 1): self
     {
         $this->setInputParameter('video_type', 'avatar');
         $this->setInputParameter('video_avatar', 'avatar_'.$avatarStyleNumber);
@@ -111,29 +107,28 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
 
         $input['task'] = collect($input['task'])
             ->map(function ($instruction) {
-                return '- ' . $instruction;
+                return '- '.$instruction;
             })->implode("\n");
 
-        if(!($input['additional'] ?? null)){
+        if (! ($input['additional'] ?? null)) {
             $input['additional'] = [];
         }
 
-        if(!$input['additional_context_description']){
+        if (! $input['additional_context_description']) {
             $input['additional_context_description'] = 'None Provided';
         }
 
-        if(!($input['extra_descriptions'] ?? null)){
+        if (! ($input['extra_descriptions'] ?? null)) {
             $input['extra_descriptions'] = [];
         }
 
-        if(!($this->input['video_type'] ?? null)){
+        if (! ($this->input['video_type'] ?? null)) {
             $input['video_type'] = 'short';
             $input['video_style'] = 'style_1';
         }
 
         return $input;
     }
-
 
     protected function getValidationRules(): array
     {
@@ -162,5 +157,4 @@ class GenerateFeedbackVideoAgent extends AINinjaAgent
     {
         return parent::retrieveRunResult($run);
     }
-
 }

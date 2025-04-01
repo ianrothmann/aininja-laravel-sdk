@@ -13,10 +13,7 @@ abstract class AINinjaAgent
     use ProcessorInputHandling;
     use ProcessorTraceHandling;
 
-    public function __construct()
-    {
-
-    }
+    public function __construct() {}
 
     abstract protected function getEndpoint(): string;
 
@@ -27,30 +24,31 @@ abstract class AINinjaAgent
     public function run(): AINinjaAgentRun
     {
         $shouldMock = config('aininja.should_mock');
-        if($shouldMock){
-            return new AINinjaAgentRun(static::class,'test','test',$this->getMocked());
+        if ($shouldMock) {
+            return new AINinjaAgentRun(static::class, 'test', 'test', $this->getMocked());
         }
 
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner;
         $rawResult = $runner->invoke($this->toArray())->getContent();
-        return new AINinjaAgentRun(static::class,$rawResult['thread_id'],$rawResult['run_id']);
+
+        return new AINinjaAgentRun(static::class, $rawResult['thread_id'], $rawResult['run_id']);
     }
 
     public function runAndWait($waitIntervalSeconds = 10): AINinjaRunResult
     {
         $run = $this->run();
 
-        if(!$waitIntervalSeconds){
+        if (! $waitIntervalSeconds) {
             $waitIntervalSeconds = 10;
         }
 
         $tries = 0;
         $maxTries = 5000 / $waitIntervalSeconds;
 
-        do{
+        do {
             sleep($waitIntervalSeconds);
             $runResult = $run->check();
-        }while($tries++ < $maxTries && $runResult->isPending());
+        } while ($tries++ < $maxTries && $runResult->isPending());
 
         return $runResult;
     }
@@ -78,6 +76,7 @@ abstract class AINinjaAgent
     public function dd(): self
     {
         dd($this->toArray());
+
         return $this;
     }
 }

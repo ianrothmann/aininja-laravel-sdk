@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 class AINinjaRunResult
 {
     protected $status;
+
     protected $result;
 
     public function __construct($result)
@@ -34,6 +35,4 @@ class AINinjaRunResult
     {
         return collect($this->result);
     }
-
-
 }

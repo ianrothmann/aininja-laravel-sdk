@@ -7,18 +7,14 @@ use IanRothmann\AINinja\Processors\Traits\ProcessorInputHandling;
 use IanRothmann\AINinja\Processors\Traits\ProcessorResultHandling;
 use IanRothmann\AINinja\Processors\Traits\ProcessorTraceHandling;
 use IanRothmann\AINinja\Processors\Traits\ProcessorTraitDetection;
-use IanRothmann\AINinja\Results\AINinjaResult;
 use IanRothmann\AINinja\Runners\AINinjaRunner;
-use IanRothmann\LangServePhpClient\Responses\RemoteRunnableResponse;
-use IanRothmann\LangServePhpClient\Responses\RemoteRunnableStreamResponse;
-use Illuminate\Database\Eloquent\Model;
 
 abstract class AINinjaProcessor
 {
     use ProcessorInputHandling;
+    use ProcessorResultHandling;
     use ProcessorTraceHandling;
     use ProcessorTraitDetection;
-    use ProcessorResultHandling;
 
     protected $forceNoCache = false;
 
@@ -73,5 +69,4 @@ abstract class AINinjaProcessor
             'trace_id' => $this->traceId,
         ];
     }
-
 }
