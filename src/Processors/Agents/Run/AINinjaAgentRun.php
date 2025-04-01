@@ -29,7 +29,7 @@ class AINinjaAgentRun
             ]);
         }
 
-        $runner = new AINinjaRunner();
+        $runner = new AINinjaRunner(true);
 
         $content = $runner->invoke([
             'endpoint' => '/agent_result',
