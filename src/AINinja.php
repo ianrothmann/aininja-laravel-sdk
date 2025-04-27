@@ -26,6 +26,7 @@ use IanRothmann\AINinja\Processors\InterviewRequirementsCreateProcessor;
 use IanRothmann\AINinja\Processors\JobDescriptionCreateProcessor;
 use IanRothmann\AINinja\Processors\KeywordProcessor;
 use IanRothmann\AINinja\Processors\MapDerivedCompetenciesProcessor;
+use IanRothmann\AINinja\Processors\MenuBrandProcessor;
 use IanRothmann\AINinja\Processors\MergeListProcessor;
 use IanRothmann\AINinja\Processors\MultiTranscriptObservationsProcessor;
 use IanRothmann\AINinja\Processors\NameSplitProcessor;
@@ -284,6 +285,11 @@ class AINinja
     public function processFaceImage(): FaceImageProcessor
     {
         return new FaceImageProcessor;
+    }
+
+    public function processMenusForBrands(): MenuBrandProcessor
+    {
+        return new MenuBrandProcessor;
     }
 
     public function generateIdealResponses(): IdealResponseMultipleProcessor
