@@ -18,7 +18,7 @@ class MenuBrandProcessor extends AINinjaProcessor
 
     protected function getMocked()
     {
-        $content = <<<TOC
+        $content = <<<'TOC'
 {
   "total_brands_found": "20",
   "total_tracked_brands_found": "10",
@@ -56,7 +56,7 @@ class MenuBrandProcessor extends AINinjaProcessor
 
 TOC;
 
-        return json_decode($content,true);
+        return json_decode($content, true);
     }
 
     public function addUrl(string $url): self
