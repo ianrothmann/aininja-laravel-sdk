@@ -8,8 +8,8 @@ it('can generate technical competency questions', function () {
     $result = $handler->generateTechnicalCompetencyQuestions()
         ->forAudience('Graduates in Computer Science applying for a software engineering position')
         ->inContextOf('Microsoft')
-        ->forCompetency('PHP Coding Skills','Ability to understand and write PHP code')
-        ->numberOfQuestions(1,1,1)
+        ->forCompetency('PHP Coding Skills', 'Ability to understand and write PHP code')
+        ->numberOfQuestions(1, 1, 1)
         ->get();
 
     expect($result->getQuestions()->toArray())->toBeArray()->toHaveLength(3);

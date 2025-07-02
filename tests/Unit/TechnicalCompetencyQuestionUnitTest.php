@@ -8,7 +8,7 @@ it('can generate technical competency questions', function () {
     $result = $handler->generateTechnicalCompetencyQuestions()
         ->forAudience('Graduates in Computer Science applying for a software engineering position')
         ->inContextOf('Microsoft')
-        ->forCompetency('PHP Coding Skills','Ability to understand and write PHP code')
+        ->forCompetency('PHP Coding Skills', 'Ability to understand and write PHP code')
         ->numberOfQuestions()
         ->get();
 

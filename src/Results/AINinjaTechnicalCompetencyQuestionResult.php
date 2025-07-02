@@ -13,16 +13,16 @@ class AINinjaTechnicalCompetencyQuestionResult extends AINinjaResult
 
     public function getEasyQuestions(): Collection
     {
-        return $this->getQuestions()->filter(fn($question) => $question['difficulty'] === 'easy');
+        return $this->getQuestions()->filter(fn ($question) => $question['difficulty'] === 'easy');
     }
 
     public function getMediumQuestions(): Collection
     {
-        return $this->getQuestions()->filter(fn($question) => $question['difficulty'] === 'medium');
+        return $this->getQuestions()->filter(fn ($question) => $question['difficulty'] === 'medium');
     }
 
     public function getHardQuestions(): Collection
     {
-        return $this->getQuestions()->filter(fn($question) => $question['difficulty'] === 'hard');
+        return $this->getQuestions()->filter(fn ($question) => $question['difficulty'] === 'hard');
     }
 }
