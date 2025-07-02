@@ -47,6 +47,7 @@ use IanRothmann\AINinja\Processors\SummarizeContextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTextProcessor;
 use IanRothmann\AINinja\Processors\SummarizeTranscriptionProcessor;
 use IanRothmann\AINinja\Processors\TagProcessor;
+use IanRothmann\AINinja\Processors\TechnicalCompetencyQuestionProcessor;
 use IanRothmann\AINinja\Processors\ThemeExtractionProcessor;
 use IanRothmann\AINinja\Processors\TLDRProcessor;
 use IanRothmann\AINinja\Processors\TranscribeURLProcessor;
@@ -145,6 +146,11 @@ class AINinja
     public function splitNamesAndSurnames(): NameSplitProcessor
     {
         return new NameSplitProcessor;
+    }
+
+    public function generateTechnicalCompetencyQuestions(): TechnicalCompetencyQuestionProcessor
+    {
+        return new TechnicalCompetencyQuestionProcessor;
     }
 
     public function summarizeTranscription(): SummarizeTranscriptionProcessor
