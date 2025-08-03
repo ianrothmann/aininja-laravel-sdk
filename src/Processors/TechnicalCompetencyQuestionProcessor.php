@@ -21,7 +21,7 @@ class TechnicalCompetencyQuestionProcessor extends AINinjaProcessor
 
     protected function getMocked(): array
     {
-        $content = <<<TOC
+        $content = <<<'TOC'
 {
   "questions": [
     {
@@ -119,7 +119,7 @@ TOC;
         return $this;
     }
 
-    public function numberOfQuestions(int $numEasy=3, int $numMedium=4, int $numHard=3): self
+    public function numberOfQuestions(int $numEasy = 3, int $numMedium = 4, int $numHard = 3): self
     {
         $this->setInputParameter('num_easy', $numEasy);
         $this->setInputParameter('num_medium', $numMedium);
