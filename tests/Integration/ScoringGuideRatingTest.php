@@ -32,4 +32,5 @@ it('can rate from a scoring guide designed by AI Ninja', function () {
         ->get();
 
     expect($result->getResultsById()->toArray())->not()->toBeEmpty();
+
 });

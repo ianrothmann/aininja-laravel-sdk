@@ -28,7 +28,7 @@ abstract class AINinjaAgent
             return new AINinjaAgentRun(static::class, 'test', 'test', $this->getMocked());
         }
 
-        $runner = new AINinjaRunner;
+        $runner = new AINinjaRunner(true);
         $rawResult = $runner->invoke($this->toArray())->getContent();
 
         return new AINinjaAgentRun(static::class, $rawResult['thread_id'], $rawResult['run_id']);
