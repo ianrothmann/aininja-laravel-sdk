@@ -82,7 +82,7 @@ class AINinjaRunner
             $runnable->addHeader('X-Source', $sourceHeader);
         }
 
-        if ($this->shouldCache) {
+        if ($this->shouldCache && !$this->shouldMock) {
             $key = $this->getCacheKey($config);
 
             return Cache::remember('ai_ninja_'.$key, $this->cacheDuration, function () use ($runnable, $config) {
