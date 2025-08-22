@@ -52,6 +52,7 @@ use IanRothmann\AINinja\Processors\ThemeExtractionProcessor;
 use IanRothmann\AINinja\Processors\TLDRProcessor;
 use IanRothmann\AINinja\Processors\TranscribeURLProcessor;
 use IanRothmann\AINinja\Processors\TranslateProcessor;
+use IanRothmann\AINinja\Processors\VoiceOverProcessor;
 use IanRothmann\AINinja\Traits\CanRunBatches;
 
 class AINinja
@@ -311,5 +312,10 @@ class AINinja
     public function generateStrengthShortcomingsForRatedInterview(): CandidateStrengthShortcomingProcessor
     {
         return new CandidateStrengthShortcomingProcessor;
+    }
+
+    public function generateVoiceOver(): VoiceOverProcessor
+    {
+        return new VoiceOverProcessor;
     }
 }
