@@ -2,6 +2,7 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
@@ -27,5 +28,10 @@ class AINinjaAgent
     public function generateImage(): ImageGeneratorAgent
     {
         return new ImageGeneratorAgent;
+    }
+
+    public function createAssessmentMatrix(): AssessmentMatrixAgent
+    {
+        return new AssessmentMatrixAgent;
     }
 }
