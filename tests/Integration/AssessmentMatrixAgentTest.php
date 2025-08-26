@@ -38,7 +38,7 @@ it('can run an assessment matrix agent integration test', function () {
         ->runAndWait(30);
 
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    
+
     if ($result->isSuccessful()) {
         expect($result->getMappings())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getCompetenciesCount())->toBeGreaterThan(0);

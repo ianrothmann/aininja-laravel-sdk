@@ -15,6 +15,7 @@ class AINinjaAgentAssessmentMatrixResult extends AINinjaRunResult
     public function getCompetencyMappings(string $competency): Collection
     {
         $mappings = collect($this->result)->get($competency, []);
+
         return collect($mappings);
     }
 
