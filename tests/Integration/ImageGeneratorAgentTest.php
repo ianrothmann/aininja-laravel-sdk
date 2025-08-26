@@ -3,7 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 
-//it('can run an agent to generate a photorealistic image', function () {
+// it('can run an agent to generate a photorealistic image', function () {
 //    $handler = new AINinja;
 //
 //    $result = $handler->agent()
@@ -24,9 +24,9 @@ use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 //            expect($extension)->toBeString();
 //        }
 //    }
-//});
+// });
 
-//it('can run an agent to generate a cinematic style image', function () {
+// it('can run an agent to generate a cinematic style image', function () {
 //    $handler = new AINinja;
 //
 //    $result = $handler->agent()
@@ -43,7 +43,7 @@ use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 //        expect($result->getImageUrl())->toBeString();
 //        expect($result->hasImage())->toBeTrue();
 //    }
-//});
+// });
 
 it('can run an agent to generate image with input images', function () {
     $handler = new AINinja;
