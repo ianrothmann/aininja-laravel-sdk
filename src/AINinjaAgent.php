@@ -2,12 +2,30 @@
 
 namespace IanRothmann\AINinja;
 
+use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
+use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
 
 class AINinjaAgent
 {
     public function generateFeedbackVideo(): GenerateFeedbackVideoAgent
     {
         return new GenerateFeedbackVideoAgent;
+    }
+
+    public function createDub(): CreateDubAgent
+    {
+        return new CreateDubAgent;
+    }
+
+    public function generateNews(): NewsGeneratorAgent
+    {
+        return new NewsGeneratorAgent;
+    }
+
+    public function generateImage(): ImageGeneratorAgent
+    {
+        return new ImageGeneratorAgent;
     }
 }
