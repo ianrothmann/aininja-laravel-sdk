@@ -19,8 +19,11 @@ it('can run an agent to make a feedback video', function () {
         ->onPrimaryContent("Hi there. My name is Elias Verhoeven and I recently graduated from the University of Cape Town with a BCom Honours in Business Finance. I have a real passion for finance, and I'm excited about applying the knowledge I've gained as a student to real-world scenarios. As someone who loves to learn, I’ve decided to pursue the Polaris CFA Programme with the goal of becoming a charter holder, as I believe it will strengthen my financial expertise. I'm technically inclined with experience using coding languages such as R, Java, Python, VBA, and SQL. I’m also confident in using Excel, which I see as essential in most corporate environments. I consider myself an analytical thinker, committed to producing high-quality work and achieving set goals. Above all, I’m a motivated individual who takes pride in continuous improvement, and I look forward to growing alongside a dynamic organization.")
         ->primaryContentDescribedBy("The candidate is responding with a recorded video to the following question:\nIntroduce yourself as a professional, tell us how you developed your career and describe your personal and leadership brand.\nGiven the following information:\n- Let's launch your journey with an elevator pitch. Introduce yourself as a professional, describe your career path, and articulate your personal and leadership brand. Imagine you're on an elevator sharing this with a new colleague. Keep it short and impactful (2-3 mins).")
         ->videoTypeIsShort()
-        ->runAndWait(3);
+        ->runAndWait(5);
 
-    expect($result->getFeedback())->not()->toBeEmpty();
-    expect($result->getScript())->not()->toBeEmpty();
+    expect($result->isSuccessful())->toBeTrue();
+    if ($result->isSuccessful()) {
+        expect($result->getFeedback())->not()->toBeEmpty();
+        expect($result->getScript())->not()->toBeEmpty();
+    }
 });

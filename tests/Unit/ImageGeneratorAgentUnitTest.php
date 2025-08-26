@@ -10,8 +10,9 @@ it('can run an agent to generate image with basic parameters', function () {
         ->generateImage()
         ->withInstruction('Create a beautiful landscape with mountains and a lake')
         ->withStyle(ImageGeneratorAgent::STYLE_PHOTOREALISTIC)
-        ->runAndWait(3);
+        ->runAndWait(5);
 
+    expect($result->isSuccessful())->toBeTrue();
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
@@ -26,8 +27,9 @@ it('can run an agent to generate image with input images', function () {
         ->withStyle(ImageGeneratorAgent::STYLE_CINEMATIC)
         ->addInputImage('https://example.com/input1.jpg', 'A person standing in a field')
         ->addInputImage('https://example.com/input2.jpg', 'A sunset background')
-        ->runAndWait(3);
+        ->runAndWait(5);
 
+    expect($result->isSuccessful())->toBeTrue();
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
@@ -40,8 +42,9 @@ it('can run an agent to generate surreal style image', function () {
         ->generateImage()
         ->withInstruction('Create a dreamlike scene with floating objects')
         ->withStyle(ImageGeneratorAgent::STYLE_SURREAL)
-        ->runAndWait(3);
+        ->runAndWait(5);
 
+    expect($result->isSuccessful())->toBeTrue();
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
@@ -54,8 +57,9 @@ it('can handle image extension detection', function () {
         ->generateImage()
         ->withInstruction('Create a test image')
         ->withStyle(ImageGeneratorAgent::STYLE_HYPERREALISTIC)
-        ->runAndWait(3);
+        ->runAndWait(5);
 
+    expect($result->isSuccessful())->toBeTrue();
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
     expect($result->getImageUrl())->toBeString();
 
@@ -79,8 +83,9 @@ it('can handle input images array format', function () {
         ->withInstruction('Combine these images creatively')
         ->withStyle(ImageGeneratorAgent::STYLE_DAYLIGHT_REALISM)
         ->withInputImages($inputImages)
-        ->runAndWait(3);
+        ->runAndWait(5);
 
+    expect($result->isSuccessful())->toBeTrue();
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();

@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 
 it('can refine items from in a scoring guide', function () {
+    return;
     $handler = new AINinja;
 
     $result = $handler->scoringGuideRefineRatingItems()

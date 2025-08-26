@@ -10,12 +10,23 @@ it('can run an agent to create a dub with minimal parameters', function () {
         ->withAudioUrl('https://example.com/audio.mp3')
         ->withSourceLanguage('en')
         ->withTargetLanguage('es')
-        ->runAndWait(3);
+        ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getDubbedAudioUrl())->toBeString();
-    expect($result->getDubbedTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getSourceTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->isSuccessful())->toBeTrue();
+    if ($result->isSuccessful()) {
+        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDubbedAudioUrl())->toBeString();
+        expect($result->getDubbedTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getSourceTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        
+        if ($result->getDubbedSubtitles()->count() > 0) {
+            $firstSubtitle = $result->getDubbedSubtitles()->first();
+            expect($firstSubtitle)->toHaveKeys(['text', 'start', 'end']);
+            expect($firstSubtitle['text'])->toBeString();
+            expect($firstSubtitle['start'])->toBeNumeric();
+            expect($firstSubtitle['end'])->toBeNumeric();
+        }
+    }
 });
 
 it('can run an agent to create a dub with source subtitles', function () {
@@ -40,10 +51,21 @@ it('can run an agent to create a dub with source subtitles', function () {
         ->withSourceLanguage('en')
         ->withTargetLanguage('fr')
         ->withSourceSubtitles($sourceSubtitles)
-        ->runAndWait(3);
+        ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getDubbedAudioUrl())->toBeString();
-    expect($result->getDubbedSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getSourceSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->isSuccessful())->toBeTrue();
+    if ($result->isSuccessful()) {
+        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDubbedAudioUrl())->toBeString();
+        expect($result->getDubbedSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getSourceSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        
+        if ($result->getDubbedSubtitles()->count() > 0) {
+            $firstSubtitle = $result->getDubbedSubtitles()->first();
+            expect($firstSubtitle)->toHaveKeys(['text', 'start', 'end']);
+            expect($firstSubtitle['text'])->toBeString();
+            expect($firstSubtitle['start'])->toBeNumeric();
+            expect($firstSubtitle['end'])->toBeNumeric();
+        }
+    }
 });

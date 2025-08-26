@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Carbon;
 
 it('can run an agent to generate news from context', function () {
     $handler = new AINinja;
@@ -9,10 +10,10 @@ it('can run an agent to generate news from context', function () {
         ->generateNews()
         ->withContext('Latest developments in artificial intelligence and machine learning technology')
         ->setTraceId('NewsGeneratorAgentTest')
-        ->runAndWait(30);
+        ->runAndWait(5);
 
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-
+    expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);
@@ -32,12 +33,12 @@ it('can run an agent to generate news with recency filter', function () {
     $result = $handler->agent()
         ->generateNews()
         ->withContext('Global economic trends and market analysis')
-        ->withRecencyFilter('12/1/2024')
+        ->withRecencyFilter(Carbon::parse('2024-12-01'))
         ->setTraceId('NewsGeneratorAgentRecencyTest')
-        ->runAndWait(3);
+        ->runAndWait(5);
 
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-
+    expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);

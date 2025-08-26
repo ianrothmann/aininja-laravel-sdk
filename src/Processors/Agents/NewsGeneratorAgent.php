@@ -4,6 +4,7 @@ namespace IanRothmann\AINinja\Processors\Agents;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaAgentRun;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentNewsGeneratorResult;
+use Illuminate\Support\Carbon;
 
 class NewsGeneratorAgent extends AINinjaAgent
 {
@@ -44,11 +45,9 @@ class NewsGeneratorAgent extends AINinjaAgent
         return $this;
     }
 
-    public function withRecencyFilter(?string $recencyFilter): self
+    public function withRecencyFilter(Carbon $recencyFilter): self
     {
-        if ($recencyFilter !== null) {
-            $this->setInputParameter('receny_filter', $recencyFilter);
-        }
+        $this->setInputParameter('recency_filter', $recencyFilter->format('d/m/Y'));
 
         return $this;
     }
@@ -62,7 +61,7 @@ class NewsGeneratorAgent extends AINinjaAgent
     {
         return [
             'context' => 'required|string',
-            'receny_filter' => 'nullable|string',
+            'recency_filter' => 'nullable|string',
         ];
     }
 

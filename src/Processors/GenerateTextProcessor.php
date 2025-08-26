@@ -38,12 +38,28 @@ class GenerateTextProcessor extends AINinjaProcessor
         return $this;
     }
 
+    public function withoutReasoning(): self
+    {
+        $this->setInputParameter('without_reasoning', true);
+
+        return $this;
+    }
+
+    public function useQuickMode(): self
+    {
+        $this->setInputParameter('quick', true);
+
+        return $this;
+    }
+
     public function getValidationRules(): array
     {
         return [
             'instructions' => 'required|array',
             'instructions.*' => 'required|string',
             'advanced' => 'sometimes|boolean',
+            'without_reasoning' => 'sometimes|boolean',
+            'quick' => 'sometimes|boolean',
         ];
     }
 

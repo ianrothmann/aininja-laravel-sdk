@@ -11,15 +11,23 @@ it('can run an agent to create a dub from audio', function () {
         ->withSourceLanguage('en')
         ->withTargetLanguage('es')
         ->setTraceId('CreateDubAgentTest')
-        ->runAndWait(3);
+        ->runAndWait(5);
 
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-
+    expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getDubbedAudioUrl())->toBeString();
         expect($result->getDubbedTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getDubbedSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getSourceTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
         expect($result->getSourceSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDubbedSubtitles()->count())->toBeGreaterThan(0);
+        if ($result->getDubbedSubtitles()->count() > 0) {
+            $firstSubtitle = $result->getDubbedSubtitles()->first();
+            expect($firstSubtitle)->toHaveKeys(['text', 'start', 'end']);
+            expect($firstSubtitle['text'])->toBeString();
+            expect($firstSubtitle['start'])->toBeNumeric();
+            expect($firstSubtitle['end'])->toBeNumeric();
+        }
     }
 });
