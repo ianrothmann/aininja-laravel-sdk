@@ -47,7 +47,7 @@ class NewsGeneratorAgent extends AINinjaAgent
 
     public function withRecencyFilter(Carbon $recencyFilter): self
     {
-        $this->setInputParameter('recency_filter', $recencyFilter->format('d/m/Y'));
+        $this->setInputParameter('recency_filter', $recencyFilter->format('m/d/Y'));
 
         return $this;
     }
