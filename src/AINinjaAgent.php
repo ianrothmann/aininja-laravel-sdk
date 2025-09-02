@@ -7,6 +7,7 @@ use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\ProfilePictureAgent;
 
 class AINinjaAgent
 {
@@ -33,5 +34,10 @@ class AINinjaAgent
     public function createAssessmentMatrix(): AssessmentMatrixAgent
     {
         return new AssessmentMatrixAgent;
+    }
+
+    public function generateProfilePicture(): ProfilePictureAgent
+    {
+        return new ProfilePictureAgent;
     }
 }
