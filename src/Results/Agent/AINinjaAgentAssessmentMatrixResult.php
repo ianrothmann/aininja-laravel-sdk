@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 
 class AINinjaAgentAssessmentMatrixResult extends AINinjaRunResult
 {
-
     protected function getFinalResult()
     {
         return collect(collect($this->result)->get('final_results'));
