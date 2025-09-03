@@ -35,7 +35,7 @@ it('can run an assessment matrix agent integration test', function () {
         ->addCompetencyExample('leadership_comp', 'Influence', 'Interview', 'interview', 0.6)
         ->addCompetencyExample('analytical_thinking', 'Problem Solving', 'Cognitive Test', 'cognitive', 0.7)
         ->setTraceId('AssessmentMatrixAgentTest')
-        ->runAndWait(30);
+        ->runAndWait(5);
 
     expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
 
@@ -48,10 +48,22 @@ it('can run an assessment matrix agent integration test', function () {
         $competencyNames = $result->getCompetencyNames();
         foreach ($competencyNames as $competency) {
             expect($result->hasCompetency($competency))->toBeTrue();
-            expect($result->getCompetencyMappings($competency))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getWeightsForCompetency($competency))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getDimensionsForCompetency($competency))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getMeasuresForCompetency($competency))->toBeInstanceOf(\Illuminate\Support\Collection::class);
+
+            $mappings = $result->getCompetencyMappings($competency);
+            expect($mappings)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($mappings->count())->toBeGreaterThan(0);
+
+            $weights = $result->getWeightsForCompetency($competency);
+            expect($weights)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($weights->count())->toBeGreaterThan(0);
+
+            $dimensions = $result->getDimensionsForCompetency($competency);
+            expect($dimensions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($dimensions->count())->toBeGreaterThan(0);
+
+            $measures = $result->getMeasuresForCompetency($competency);
+            expect($measures)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($measures->count())->toBeGreaterThan(0);
         }
     } else {
         // Agent may still be processing or encountered an error

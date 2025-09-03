@@ -7,51 +7,57 @@ use Illuminate\Support\Collection;
 
 class AINinjaAgentAssessmentMatrixResult extends AINinjaRunResult
 {
+
+    protected function getFinalResult()
+    {
+        return collect(collect($this->result)->get('final_results'));
+    }
+
     public function getMappings(): Collection
     {
-        return collect($this->result);
+        return collect($this->getFinalResult());
     }
 
     public function getCompetencyMappings(string $competency): Collection
     {
-        $mappings = collect($this->result)->get($competency, []);
+        $mappings = collect($this->getFinalResult())->get($competency, []);
 
         return collect($mappings);
     }
 
     public function getCompetencyNames(): Collection
     {
-        return collect($this->result)->keys();
+        return collect($this->getFinalResult())->keys();
     }
 
     public function getCompetenciesCount(): int
     {
-        return collect($this->result)->count();
+        return collect($this->getFinalResult())->count();
     }
 
     public function hasCompetency(string $competency): bool
     {
-        return collect($this->result)->has($competency);
+        return collect($this->getFinalResult())->has($competency);
     }
 
     public function getWeightsForCompetency(string $competency): Collection
     {
-        return collect($this->result)
-            ->get($competency, [])
+        return collect($this->getFinalResult()
+            ->get($competency, collect()))
             ->pluck('weight');
     }
 
     public function getDimensionsForCompetency(string $competency): Collection
     {
-        return collect($this->result)
-            ->get($competency, [])
+        return collect($this->getFinalResult()
+            ->get($competency, collect()))
             ->pluck('dimension_name');
     }
 
     public function getMeasuresForCompetency(string $competency): Collection
     {
-        return collect($this->result)
-            ->get($competency, [])
+        return collect($this->getFinalResult()
+            ->get($competency, collect()))
             ->pluck('measure_name');
     }
 }
