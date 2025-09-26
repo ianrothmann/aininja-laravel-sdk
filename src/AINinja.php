@@ -11,6 +11,7 @@ use IanRothmann\AINinja\Processors\EmbeddingsProcessor;
 use IanRothmann\AINinja\Processors\ExtractCompetenciesProcessor;
 use IanRothmann\AINinja\Processors\FaceImageProcessor;
 use IanRothmann\AINinja\Processors\FileSummaryProcessor;
+use IanRothmann\AINinja\Processors\FileToMarkdownProcessor;
 use IanRothmann\AINinja\Processors\GenerateJsonProcessor;
 use IanRothmann\AINinja\Processors\GenerateTextProcessor;
 use IanRothmann\AINinja\Processors\IdealResponseMultipleProcessor;
@@ -282,6 +283,11 @@ class AINinja
     public function summarizeFile(): FileSummaryProcessor
     {
         return new FileSummaryProcessor;
+    }
+
+    public function convertFileToMarkdown(): FileToMarkdownProcessor
+    {
+        return new FileToMarkdownProcessor;
     }
 
     public function analyzeResume(): ResumeProcessor
