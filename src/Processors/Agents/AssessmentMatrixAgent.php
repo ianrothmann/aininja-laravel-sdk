@@ -25,43 +25,45 @@ class AssessmentMatrixAgent extends AINinjaAgent
     public function getMocked(): array
     {
         return [
-            'collaboration_and_teamwork' => [
-                [
-                    'dimension_id' => 'skills',
-                    'weight' => 0.2,
-                    'dimension_name' => 'Skills',
-                    'measure_name' => 'Interview',
-                    'source_name' => 'Assessment Centre',
+            'formatted_results' => [
+                'collaboration_and_teamwork' => [
+                    [
+                        'dimension_id' => 'skills',
+                        'weight' => 0.2,
+                        'dimension_name' => 'Skills',
+                        'measure_name' => 'Interview',
+                        'source_name' => 'Assessment Centre',
+                    ],
+                    [
+                        'dimension_id' => 'decision_making',
+                        'weight' => 0.2,
+                        'dimension_name' => 'Decision Making',
+                        'measure_name' => 'Role Play',
+                        'source_name' => 'Assessment Centre',
+                    ],
+                    [
+                        'dimension_id' => 'emotional_intelligence',
+                        'weight' => 0.3,
+                        'dimension_name' => 'Emotional Intelligence',
+                        'measure_name' => 'Personality Test',
+                        'source_name' => 'Personality',
+                    ],
                 ],
-                [
-                    'dimension_id' => 'decision_making',
-                    'weight' => 0.2,
-                    'dimension_name' => 'Decision Making',
-                    'measure_name' => 'Role Play',
-                    'source_name' => 'Assessment Centre',
-                ],
-                [
-                    'dimension_id' => 'emotional_intelligence',
-                    'weight' => 0.3,
-                    'dimension_name' => 'Emotional Intelligence',
-                    'measure_name' => 'Personality Test',
-                    'source_name' => 'Personality',
-                ],
-            ],
-            'communicating_with_impact' => [
-                [
-                    'dimension_id' => 'skills',
-                    'weight' => 0.5,
-                    'dimension_name' => 'Skills',
-                    'measure_name' => 'Interview',
-                    'source_name' => 'Assessment Centre',
-                ],
-                [
-                    'dimension_id' => 'emotional_intelligence',
-                    'weight' => 0.2,
-                    'dimension_name' => 'Emotional Intelligence',
-                    'measure_name' => 'Personality Test',
-                    'source_name' => 'Personality',
+                'communicating_with_impact' => [
+                    [
+                        'dimension_id' => 'skills',
+                        'weight' => 0.5,
+                        'dimension_name' => 'Skills',
+                        'measure_name' => 'Interview',
+                        'source_name' => 'Assessment Centre',
+                    ],
+                    [
+                        'dimension_id' => 'emotional_intelligence',
+                        'weight' => 0.2,
+                        'dimension_name' => 'Emotional Intelligence',
+                        'measure_name' => 'Personality Test',
+                        'source_name' => 'Personality',
+                    ],
                 ],
             ],
         ];

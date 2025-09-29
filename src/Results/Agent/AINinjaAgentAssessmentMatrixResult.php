@@ -9,7 +9,7 @@ class AINinjaAgentAssessmentMatrixResult extends AINinjaRunResult
 {
     protected function getFinalResult()
     {
-        return collect(collect($this->result)->get('final_results'));
+        return collect(collect($this->result)->get('formatted_results'));
     }
 
     public function getMappings(): Collection

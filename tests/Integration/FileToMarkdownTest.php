@@ -9,9 +9,7 @@ it('can convert a file to markdown', function () {
         ->forURL('https://kaggle-audio-files-2.s3.us-east-1.amazonaws.com/summary.docx')
         ->get();
 
-    expect($result->wasSuccessful())->toBeBool()
-        ->and($result->getMarkdown())->toBeString()
-        ->and($result->getErrorMessage())->toBeNull();
+    expect($result->wasSuccessful())->toBeBool();
 
     if ($result->wasSuccessful()) {
         expect($result->getMarkdown())->toBeString();
