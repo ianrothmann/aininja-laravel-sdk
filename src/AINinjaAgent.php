@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
+use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
@@ -39,5 +40,10 @@ class AINinjaAgent
     public function generateProfilePicture(): ProfilePictureAgent
     {
         return new ProfilePictureAgent;
+    }
+
+    public function curateCompetencyDevelopment(): CompetencyDevelopmentCuratorAgent
+    {
+        return new CompetencyDevelopmentCuratorAgent;
     }
 }
