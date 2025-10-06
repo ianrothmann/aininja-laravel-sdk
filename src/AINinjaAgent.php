@@ -6,6 +6,7 @@ use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
+use IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\ProfilePictureAgent;
@@ -45,5 +46,10 @@ class AINinjaAgent
     public function curateCompetencyDevelopment(): CompetencyDevelopmentCuratorAgent
     {
         return new CompetencyDevelopmentCuratorAgent;
+    }
+
+    public function createIdpFromLibrary(): IdpFromLibraryCreatorAgent
+    {
+        return new IdpFromLibraryCreatorAgent;
     }
 }
