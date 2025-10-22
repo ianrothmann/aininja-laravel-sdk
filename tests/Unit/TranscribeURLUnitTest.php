@@ -19,5 +19,6 @@ it('can transcribe a URL', function () {
         ->and($result->getComplement())->toBeString()
         ->and($result->getSummary())->toBeString()
         ->and($result->getTopics())->toBeArray()
-        ->and($result->transcriptIsWithinQuestionContext())->toBeTrue();
+        ->and($result->transcriptIsWithinQuestionContext())->toBeTrue()
+        ->and($result->getValidTranscript())->toBeTrue();
 });

@@ -33,4 +33,9 @@ class AINinjaTranscribeURLResult extends AINinjaResult
     {
         return collect($this->result)->get('within_question_context') ?? true;
     }
+
+    public function getValidTranscript(): bool
+    {
+        return $this->result['valid_transcript'] ?? true;
+    }
 }

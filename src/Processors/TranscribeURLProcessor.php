@@ -40,6 +40,7 @@ class TranscribeURLProcessor extends AINinjaProcessor
                 ],
             ],
             'within_question_context' => true,
+            'valid_transcript' => true,
         ];
     }
 
@@ -94,7 +95,7 @@ class TranscribeURLProcessor extends AINinjaProcessor
 
     public function useAdvancedTranscription(): self
     {
-        $this->setInputParameter('advanced_transcription', true);
+        $this->setInputParameter('advanced_transcription', false);
 
         return $this;
     }

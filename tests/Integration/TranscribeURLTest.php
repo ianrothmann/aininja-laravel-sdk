@@ -18,9 +18,25 @@ it('can transcribe a URL', function () {
         ->and($result->getSRT())->toBeArray()
         ->and($result->getComplement())->toBeString()
         ->and($result->getSummary())->toBeString()
-        ->and($result->transcriptIsWithinQuestionContext())->toBeTrue();
+        ->and($result->transcriptIsWithinQuestionContext())->toBeTrue()
+        ->and($result->getValidTranscript())->toBeTrue();
 
     if ($result->getTopics() !== null) {
         expect($result->getTopics())->toBeArray();
     }
+});
+
+it('can detect invalid transcript for white noise', function () {
+    $handler = new AINinja;
+
+    $result = $handler->transcribeURL()
+        ->forURL('https://public-bucket-for-ai-ninja.s3.us-east-1.amazonaws.com/white-noise-358382.mp3')
+        ->withSummary()
+        ->withComplement()
+        ->withTopics()
+        ->withSpeakerContext('The person speaking is Reinhardt')
+        ->wasAskedAQuestion('What are the dogs doing?')
+        ->get();
+
+    expect($result->getValidTranscript())->toBeFalse();
 });
