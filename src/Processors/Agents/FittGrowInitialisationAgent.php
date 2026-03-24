@@ -89,20 +89,12 @@ class FittGrowInitialisationAgent extends AINinjaAgent
                     ],
                     'rejected_candidate_themes' => [],
                 ],
-                'videos' => [
-                    [
-                        'title' => 'Your Social Energy',
-                        'script' => 'You bring energy into every room you enter...',
-                        'storyboard' => [
-                            'audio' => 'https://example.com/audio/jane_extraversion.mp3',
-                            'cover_content' => [
-                                'heading' => 'Your Social Energy',
-                                'subheading' => 'Understanding your extraverted personality.',
-                                'image_url' => null,
-                            ],
-                            'scenes' => [],
-                        ],
-                    ],
+                'scripts' => [
+                    ['id' => 'personality', 'sub_id' => 'extraversion', 'title' => 'Your Social Energy', 'script' => 'You bring energy into every room you enter...'],
+                    ['id' => 'personality', 'sub_id' => 'openness', 'title' => 'Your Curiosity', 'script' => 'You embrace new ideas and perspectives...'],
+                    ['id' => 'personality', 'sub_id' => 'agreeableness', 'title' => 'Your Collaborative Nature', 'script' => 'You lead with warmth and care for others...'],
+                    ['id' => 'personality', 'sub_id' => 'conscientiousness', 'title' => 'Your Drive for Excellence', 'script' => 'You approach work with discipline and high standards...'],
+                    ['id' => 'experience_drivers', 'sub_id' => null, 'title' => 'What You Need from Your Work', 'script' => 'You thrive when you have the freedom to grow...'],
                 ],
             ],
         ];

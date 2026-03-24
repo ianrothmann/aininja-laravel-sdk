@@ -114,6 +114,6 @@ it('can run fitt grow initialisation agent', function () {
         expect($result->getProfileStrengths())->toBeInstanceOf(Collection::class);
         expect($result->getCareerAspirations())->toBeInstanceOf(Collection::class);
         expect($result->getDevelopmentAreas())->toBeInstanceOf(Collection::class);
-        expect($result->getVideos())->toBeInstanceOf(Collection::class);
+        expect($result->getScripts())->toBeInstanceOf(Collection::class);
     }
 });

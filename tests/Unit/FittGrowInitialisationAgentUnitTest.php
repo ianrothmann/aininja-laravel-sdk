@@ -18,8 +18,8 @@ it('can build fitt grow initialisation agent with candidate context', function (
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_fitt_grow_initialisation');
-    expect($data['input']['input'])->toBeArray();
-    expect($data['input']['input']['bio']['name'])->toBe('Alex');
+    expect($data['input'])->toBeArray();
+    expect($data['input']['bio']['name'])->toBe('Alex');
 });
 
 it('returns mocked result with all output sections', function () {
@@ -30,7 +30,7 @@ it('returns mocked result with all output sections', function () {
     expect($mocked['output'])->toHaveKey('profile_strengths');
     expect($mocked['output'])->toHaveKey('career_aspirations');
     expect($mocked['output'])->toHaveKey('development_areas');
-    expect($mocked['output'])->toHaveKey('videos');
+    expect($mocked['output'])->toHaveKey('scripts');
 });
 
 it('result class can parse mocked data', function () {
@@ -46,6 +46,6 @@ it('result class can parse mocked data', function () {
     expect($result->getProfileStrengths())->toBeInstanceOf(Collection::class);
     expect($result->getCareerAspirations())->toBeInstanceOf(Collection::class);
     expect($result->getDevelopmentAreas())->toBeInstanceOf(Collection::class);
-    expect($result->getVideos())->toBeInstanceOf(Collection::class);
-    expect($result->getVideoCount())->toBeGreaterThan(0);
+    expect($result->getScripts())->toBeInstanceOf(Collection::class);
+    expect($result->getScriptCount())->toBeGreaterThan(0);
 });

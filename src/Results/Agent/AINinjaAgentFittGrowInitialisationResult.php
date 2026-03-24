@@ -32,13 +32,13 @@ class AINinjaAgentFittGrowInitialisationResult extends AINinjaRunResult
         return collect(collect($this->getFinalResult())->get('development_areas', []));
     }
 
-    public function getVideos(): Collection
+    public function getScripts(): Collection
     {
-        return collect(collect($this->getFinalResult())->get('videos', []));
+        return collect(collect($this->getFinalResult())->get('scripts', []));
     }
 
-    public function getVideoCount(): int
+    public function getScriptCount(): int
     {
-        return $this->getVideos()->count();
+        return $this->getScripts()->count();
     }
 }
