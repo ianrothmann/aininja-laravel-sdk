@@ -1,0 +1,50 @@
+<?php
+
+use IanRothmann\AINinja\AINinja;
+use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
+use IanRothmann\AINinja\Results\Agent\AINinjaAgentFittGrowInitialisationResult;
+
+it('can build fitt grow initialisation agent with candidate context', function () {
+    $agent = (new AINinja)->agent()
+        ->initialiseFittGrow()
+        ->candidateContext([
+            'bio' => ['name' => 'Alex', 'surname' => 'Morgan', 'country' => 'New Zealand'],
+            'experience' => 'Senior manager with 10 years experience.',
+            'qualifications' => 'MBA (2018).',
+        ]);
+
+    expect($agent)->toBeInstanceOf(FittGrowInitialisationAgent::class);
+
+    $data = $agent->toArray();
+    expect($data['endpoint'])->toBe('/agent_fitt_grow_initialisation');
+    expect($data['input']['input'])->toBeArray();
+    expect($data['input']['input']['bio']['name'])->toBe('Alex');
+});
+
+it('returns mocked result with all output sections', function () {
+    $mocked = (new AINinja)->agent()->initialiseFittGrow()->getMocked();
+
+    expect($mocked)->toHaveKey('output');
+    expect($mocked['output'])->toHaveKey('profile_info');
+    expect($mocked['output'])->toHaveKey('profile_strengths');
+    expect($mocked['output'])->toHaveKey('career_aspirations');
+    expect($mocked['output'])->toHaveKey('development_areas');
+    expect($mocked['output'])->toHaveKey('videos');
+});
+
+it('result class can parse mocked data', function () {
+    $agent = (new AINinja)->agent()->initialiseFittGrow();
+
+    $result = new AINinjaAgentFittGrowInitialisationResult([
+        'status' => 'success',
+        'response' => $agent->getMocked(),
+    ]);
+
+    expect($result->isSuccessful())->toBeTrue();
+    expect($result->getProfileInfo())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getProfileStrengths())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getCareerAspirations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getDevelopmentAreas())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getVideos())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getVideoCount())->toBeGreaterThan(0);
+});

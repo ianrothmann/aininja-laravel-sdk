@@ -11,6 +11,16 @@ use IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\ProfilePictureAgent;
+use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
+use IanRothmann\AINinja\Processors\Agents\StoryboardGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\InstrumentInterpretationProcessorAgent;
+use IanRothmann\AINinja\Processors\Agents\PersonalityScriptGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\ProfileInfoExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\ProfileStrengthExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\SuccessProfileMatcherAgent;
 
 class AINinjaAgent
 {
@@ -57,5 +67,55 @@ class AINinjaAgent
     public function createIdp(): IdpCreatorAgent
     {
         return new IdpCreatorAgent;
+    }
+
+    public function matchSuccessProfiles(): SuccessProfileMatcherAgent
+    {
+        return new SuccessProfileMatcherAgent;
+    }
+
+    public function extractCareerAspirations(): CareerAspirationExtractorAgent
+    {
+        return new CareerAspirationExtractorAgent;
+    }
+
+    public function extractDevelopmentAreas(): DevelopmentAreasExtractorAgent
+    {
+        return new DevelopmentAreasExtractorAgent;
+    }
+
+    public function extractProfileStrengths(): ProfileStrengthExtractorAgent
+    {
+        return new ProfileStrengthExtractorAgent;
+    }
+
+    public function extractProfileInfo(): ProfileInfoExtractorAgent
+    {
+        return new ProfileInfoExtractorAgent;
+    }
+
+    public function generateExperienceDriversScript(): ExperienceDriversScriptGeneratorAgent
+    {
+        return new ExperienceDriversScriptGeneratorAgent;
+    }
+
+    public function generatePersonalityScript(): PersonalityScriptGeneratorAgent
+    {
+        return new PersonalityScriptGeneratorAgent;
+    }
+
+    public function interpretInstruments(): InstrumentInterpretationProcessorAgent
+    {
+        return new InstrumentInterpretationProcessorAgent;
+    }
+
+    public function initialiseFittGrow(): FittGrowInitialisationAgent
+    {
+        return new FittGrowInitialisationAgent;
+    }
+
+    public function generateStoryboard(): StoryboardGeneratorAgent
+    {
+        return new StoryboardGeneratorAgent;
     }
 }
