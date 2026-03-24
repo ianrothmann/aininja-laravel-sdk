@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run career aspiration extractor agent', function () {
     $result = (new AINinja)->agent()
@@ -70,7 +71,7 @@ it('can run career aspiration extractor agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getAspirations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getAspirations())->toBeInstanceOf(Collection::class);
         expect($result->getVersion())->toBeString();
     }
 });

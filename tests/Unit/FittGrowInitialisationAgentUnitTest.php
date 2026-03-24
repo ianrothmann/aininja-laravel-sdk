@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentFittGrowInitialisationResult;
+use Illuminate\Support\Collection;
 
 it('can build fitt grow initialisation agent with candidate context', function () {
     $agent = (new AINinja)->agent()
@@ -41,10 +42,10 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getProfileInfo())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getProfileStrengths())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getCareerAspirations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getDevelopmentAreas())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getVideos())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getProfileInfo())->toBeInstanceOf(Collection::class);
+    expect($result->getProfileStrengths())->toBeInstanceOf(Collection::class);
+    expect($result->getCareerAspirations())->toBeInstanceOf(Collection::class);
+    expect($result->getDevelopmentAreas())->toBeInstanceOf(Collection::class);
+    expect($result->getVideos())->toBeInstanceOf(Collection::class);
     expect($result->getVideoCount())->toBeGreaterThan(0);
 });

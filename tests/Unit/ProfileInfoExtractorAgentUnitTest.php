@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ProfileInfoExtractorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentProfileInfoExtractorResult;
+use Illuminate\Support\Collection;
 
 it('can build profile info extractor agent with candidate context', function () {
     $agent = (new AINinja)->agent()
@@ -39,10 +40,10 @@ it('result class can parse mocked data and extract name fields', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getPersonProfileExtract())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getExtractionMeta())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getInstrumentInterpretations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getIdentity())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getPersonProfileExtract())->toBeInstanceOf(Collection::class);
+    expect($result->getExtractionMeta())->toBeInstanceOf(Collection::class);
+    expect($result->getInstrumentInterpretations())->toBeInstanceOf(Collection::class);
+    expect($result->getIdentity())->toBeInstanceOf(Collection::class);
     expect($result->getFirstName())->toBe('Alex');
     expect($result->getSurname())->toBe('Morgan');
     expect($result->getFullName())->toBe('Alex Morgan');
@@ -56,8 +57,8 @@ it('result class can access demographics and career snapshot', function () {
         'response' => $agent->getMocked(),
     ]);
 
-    expect($result->getDemographics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getCareerSnapshot())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getExperience())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getQualifications())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getDemographics())->toBeInstanceOf(Collection::class);
+    expect($result->getCareerSnapshot())->toBeInstanceOf(Collection::class);
+    expect($result->getExperience())->toBeInstanceOf(Collection::class);
+    expect($result->getQualifications())->toBeInstanceOf(Collection::class);
 });

@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an IDP from library creator agent integration test', function () {
     $handler = new AINinja;
@@ -32,11 +33,11 @@ it('can run an IDP from library creator agent integration test', function () {
         ->setTraceId('IdpFromLibraryCreatorAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
 
     if ($result->isSuccessful()) {
         // Test dev_actions structure
-        expect($result->getDevActions())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDevActions())->toBeInstanceOf(Collection::class);
         expect($result->getTotalDevActions())->toBeGreaterThan(0);
 
         // Test dev action structure
@@ -63,19 +64,19 @@ it('can run an IDP from library creator agent integration test', function () {
         if ($firstAction) {
             $actionId = $firstAction['dev_action_id'];
             $retrievedAction = $result->getDevAction($actionId);
-            expect($retrievedAction)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($retrievedAction)->toBeInstanceOf(Collection::class);
             expect($retrievedAction->get('dev_action_id'))->toBe($actionId);
         }
 
         // Test category filtering
         $categories = $result->getDevActionCategories();
-        expect($categories)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($categories)->toBeInstanceOf(Collection::class);
         expect($categories->count())->toBeGreaterThan(0);
 
         if ($categories->isNotEmpty()) {
             $firstCategory = $categories->first();
             $categoryActions = $result->getDevActionsByCategory($firstCategory);
-            expect($categoryActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($categoryActions)->toBeInstanceOf(Collection::class);
             // All actions should have the same category
             $categoryActions->each(function ($action) use ($firstCategory) {
                 expect($action['category_id'])->toBe($firstCategory);
@@ -84,13 +85,13 @@ it('can run an IDP from library creator agent integration test', function () {
 
         // Test priority filtering
         $priorities = $result->getDevActionPriorities();
-        expect($priorities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($priorities)->toBeInstanceOf(Collection::class);
         expect($priorities->count())->toBeGreaterThan(0);
 
         if ($priorities->isNotEmpty()) {
             $firstPriority = $priorities->first();
             $priorityActions = $result->getDevActionsByPriority($firstPriority);
-            expect($priorityActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($priorityActions)->toBeInstanceOf(Collection::class);
             // All actions should have the same priority
             $priorityActions->each(function ($action) use ($firstPriority) {
                 expect($action['priority'])->toBe($firstPriority);
@@ -98,7 +99,7 @@ it('can run an IDP from library creator agent integration test', function () {
         }
 
         // Test development_themes structure
-        expect($result->getDevelopmentThemes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDevelopmentThemes())->toBeInstanceOf(Collection::class);
         expect($result->getTotalDevelopmentThemes())->toBeGreaterThan(0);
 
         // Test development theme structure
@@ -131,18 +132,18 @@ it('can run an IDP from library creator agent integration test', function () {
 
         // Test highest priority theme
         $highestPriorityTheme = $result->getHighestPriorityTheme();
-        expect($highestPriorityTheme)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($highestPriorityTheme)->toBeInstanceOf(Collection::class);
         expect($highestPriorityTheme->get('priority'))->toBe(1);
 
         // Test theme retrieval by priority
         $theme1 = $result->getDevelopmentTheme(1);
         if ($theme1) {
-            expect($theme1)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($theme1)->toBeInstanceOf(Collection::class);
             expect($theme1->get('priority'))->toBe(1);
 
             // Test linked competencies structure
             $competencies = $result->getThemeCompetencies(1);
-            expect($competencies)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($competencies)->toBeInstanceOf(Collection::class);
             if ($competencies->isNotEmpty()) {
                 $firstComp = $competencies->first();
                 expect($firstComp)->toHaveKeys(['refcode', 'name', 'score']);
@@ -153,7 +154,7 @@ it('can run an IDP from library creator agent integration test', function () {
 
             // Test quick diagnostics
             $diagnostics = $result->getThemeQuickDiagnostics(1);
-            expect($diagnostics)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($diagnostics)->toBeInstanceOf(Collection::class);
             if ($diagnostics->isNotEmpty()) {
                 $firstDiagnostic = $diagnostics->first();
                 expect($firstDiagnostic)->toBeString();
@@ -162,7 +163,7 @@ it('can run an IDP from library creator agent integration test', function () {
 
             // Test evidence structure
             $evidence = $result->getThemeEvidence(1);
-            expect($evidence)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($evidence)->toBeInstanceOf(Collection::class);
             if ($evidence->isNotEmpty()) {
                 $firstEvidence = $evidence->first();
                 expect($firstEvidence)->toHaveKeys(['type', 'ref', 'detail']);
@@ -174,7 +175,7 @@ it('can run an IDP from library creator agent integration test', function () {
 
             // Test suggested modalities
             $modalities = $result->getThemeSuggestedModalities(1);
-            expect($modalities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($modalities)->toBeInstanceOf(Collection::class);
             if ($modalities->isNotEmpty()) {
                 $firstModality = $modalities->first();
                 expect($firstModality)->toBeString();
@@ -184,13 +185,13 @@ it('can run an IDP from library creator agent integration test', function () {
 
         // Test tag filtering
         $allTags = $result->getAllThemeTags();
-        expect($allTags)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($allTags)->toBeInstanceOf(Collection::class);
         expect($allTags->count())->toBeGreaterThan(0);
 
         if ($allTags->isNotEmpty()) {
             $firstTag = $allTags->first();
             $taggedThemes = $result->getThemesByTag($firstTag);
-            expect($taggedThemes)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($taggedThemes)->toBeInstanceOf(Collection::class);
             // Each theme should contain the tag
             $taggedThemes->each(function ($theme) use ($firstTag) {
                 expect($theme['tags'])->toContain($firstTag);
@@ -207,6 +208,6 @@ it('can run an IDP from library creator agent integration test', function () {
     } else {
         // Agent may still be processing or encountered an error
         // This is acceptable for complex IDP creation
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
     }
 });

@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an agent to create a dub from audio', function () {
     $handler = new AINinja;
@@ -13,14 +14,14 @@ it('can run an agent to create a dub from audio', function () {
         ->setTraceId('CreateDubAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getDubbedAudioUrl())->toBeString();
-        expect($result->getDubbedTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDubbedSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getSourceTranscript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getSourceSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDubbedTranscript())->toBeInstanceOf(Collection::class);
+        expect($result->getDubbedSubtitles())->toBeInstanceOf(Collection::class);
+        expect($result->getSourceTranscript())->toBeInstanceOf(Collection::class);
+        expect($result->getSourceSubtitles())->toBeInstanceOf(Collection::class);
         expect($result->getDubbedSubtitles()->count())->toBeGreaterThan(0);
         if ($result->getDubbedSubtitles()->count() > 0) {
             $firstSubtitle = $result->getDubbedSubtitles()->first();

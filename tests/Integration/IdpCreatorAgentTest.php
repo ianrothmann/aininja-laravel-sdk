@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an IDP creator agent integration test', function () {
     $handler = new AINinja;
@@ -30,11 +31,11 @@ it('can run an IDP creator agent integration test', function () {
         ->setTraceId('IdpCreatorAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
 
     if ($result->isSuccessful()) {
         // Test dev_actions structure
-        expect($result->getDevActions())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDevActions())->toBeInstanceOf(Collection::class);
         expect($result->getTotalDevActions())->toBeGreaterThan(0);
 
         // Test dev action structure
@@ -82,13 +83,13 @@ it('can run an IDP creator agent integration test', function () {
 
         // Test category filtering
         $categories = $result->getDevActionCategories();
-        expect($categories)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($categories)->toBeInstanceOf(Collection::class);
         expect($categories->count())->toBeGreaterThan(0);
 
         if ($categories->isNotEmpty()) {
             $firstCategory = $categories->first();
             $categoryActions = $result->getDevActionsByCategory($firstCategory);
-            expect($categoryActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($categoryActions)->toBeInstanceOf(Collection::class);
             // All actions should have the same category
             $categoryActions->each(function ($action) use ($firstCategory) {
                 expect($action['category_id'])->toBe($firstCategory);
@@ -97,13 +98,13 @@ it('can run an IDP creator agent integration test', function () {
 
         // Test priority filtering
         $priorities = $result->getDevActionPriorities();
-        expect($priorities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($priorities)->toBeInstanceOf(Collection::class);
         expect($priorities->count())->toBeGreaterThan(0);
 
         if ($priorities->isNotEmpty()) {
             $firstPriority = $priorities->first();
             $priorityActions = $result->getDevActionsByPriority($firstPriority);
-            expect($priorityActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($priorityActions)->toBeInstanceOf(Collection::class);
             // All actions should have the same priority
             $priorityActions->each(function ($action) use ($firstPriority) {
                 expect($action['priority'])->toBe($firstPriority);
@@ -112,12 +113,12 @@ it('can run an IDP creator agent integration test', function () {
 
         // Test keyword filtering
         $allKeywords = $result->getAllKeywords();
-        expect($allKeywords)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($allKeywords)->toBeInstanceOf(Collection::class);
 
         if ($allKeywords->isNotEmpty()) {
             $firstKeyword = $allKeywords->first();
             $keywordActions = $result->getDevActionsByKeyword($firstKeyword);
-            expect($keywordActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($keywordActions)->toBeInstanceOf(Collection::class);
             // All actions should contain the keyword
             $keywordActions->each(function ($action) use ($firstKeyword) {
                 expect($action['keywords'])->toContain($firstKeyword);
@@ -126,28 +127,28 @@ it('can run an IDP creator agent integration test', function () {
 
         // Test URL retrieval
         $actionsWithUrls = $result->getDevActionsWithUrls();
-        expect($actionsWithUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($actionsWithUrls)->toBeInstanceOf(Collection::class);
 
         if ($actionsWithUrls->isNotEmpty()) {
             $firstActionWithUrl = $actionsWithUrls->first();
             $actionByUrl = $result->getDevActionByUrl($firstActionWithUrl['url']);
-            expect($actionByUrl)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($actionByUrl)->toBeInstanceOf(Collection::class);
             expect($actionByUrl->get('url'))->toBe($firstActionWithUrl['url']);
         }
 
         // Test title retrieval
         if ($firstAction) {
             $actionByTitle = $result->getDevActionByTitle($firstAction['title']);
-            expect($actionByTitle)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($actionByTitle)->toBeInstanceOf(Collection::class);
             expect($actionByTitle->get('title'))->toBe($firstAction['title']);
         }
 
         // Test thumbnail filtering
         $withThumbnails = $result->getDevActionsWithThumbnails();
-        expect($withThumbnails)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withThumbnails)->toBeInstanceOf(Collection::class);
 
         $withoutThumbnails = $result->getDevActionsWithoutThumbnails();
-        expect($withoutThumbnails)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withoutThumbnails)->toBeInstanceOf(Collection::class);
 
         // Verify that together they make up all actions
         $totalThumbnails = $withThumbnails->count() + $withoutThumbnails->count();
@@ -155,10 +156,10 @@ it('can run an IDP creator agent integration test', function () {
 
         // Test URL filtering
         $withUrls = $result->getDevActionsWithUrls();
-        expect($withUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withUrls)->toBeInstanceOf(Collection::class);
 
         $withoutUrls = $result->getDevActionsWithoutUrls();
-        expect($withoutUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withoutUrls)->toBeInstanceOf(Collection::class);
 
         // Verify that together they make up all actions
         $totalUrls = $withUrls->count() + $withoutUrls->count();
@@ -188,6 +189,6 @@ it('can run an IDP creator agent integration test', function () {
     } else {
         // Agent may still be processing or encountered an error
         // This is acceptable for complex IDP creation
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
     }
 });

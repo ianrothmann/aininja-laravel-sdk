@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run instrument interpretation processor agent', function () {
     $result = (new AINinja)->agent()
@@ -24,7 +25,7 @@ it('can run instrument interpretation processor agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getInterpretations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getInterpretations())->toBeInstanceOf(Collection::class);
         expect($result->getInterpretationCount())->toBeGreaterThanOrEqual(1);
     }
 });

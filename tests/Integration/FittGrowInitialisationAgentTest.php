@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run fitt grow initialisation agent', function () {
     $result = (new AINinja)->agent()
@@ -109,10 +110,10 @@ it('can run fitt grow initialisation agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getProfileInfo())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getProfileStrengths())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getCareerAspirations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDevelopmentAreas())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getVideos())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getProfileInfo())->toBeInstanceOf(Collection::class);
+        expect($result->getProfileStrengths())->toBeInstanceOf(Collection::class);
+        expect($result->getCareerAspirations())->toBeInstanceOf(Collection::class);
+        expect($result->getDevelopmentAreas())->toBeInstanceOf(Collection::class);
+        expect($result->getVideos())->toBeInstanceOf(Collection::class);
     }
 });

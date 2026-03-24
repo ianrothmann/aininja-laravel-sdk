@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use IanRothmann\AINinja\Results\Containers\QueryAnswerSourceDocument;
 
 it('query RAG', function () {
     $handler = new AINinja;
@@ -14,7 +15,7 @@ it('query RAG', function () {
     expect($result->getAnswer())->toBeString();
     expect($result->getQuestion())->toBeString();
 
-    $result->getContext()->each(function (\IanRothmann\AINinja\Results\Containers\QueryAnswerSourceDocument $context) {
+    $result->getContext()->each(function (QueryAnswerSourceDocument $context) {
         // expect($context->getPageNumber())->not()->toBeEmpty();
         expect($context->getContent())->toBeString();
         expect($context->getCollectionName())->toBeString();

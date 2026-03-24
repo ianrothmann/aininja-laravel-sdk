@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\SuccessProfileMatcherAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentSuccessProfileMatcherResult;
+use Illuminate\Support\Collection;
 
 it('can build a success profile matcher agent with required inputs', function () {
     $agent = (new AINinja)->agent()
@@ -62,7 +63,7 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getFinalMatches())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getFinalMatches())->toBeInstanceOf(Collection::class);
     expect($result->getMatchCount())->toBeGreaterThan(0);
 });
 
@@ -75,7 +76,7 @@ it('can get matches for a specific person', function () {
     ]);
 
     $matches = $result->getMatchesForPerson('person_001');
-    expect($matches)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($matches)->toBeInstanceOf(Collection::class);
     expect($matches->count())->toBe(1);
 
     $noMatches = $result->getMatchesForPerson('nonexistent');

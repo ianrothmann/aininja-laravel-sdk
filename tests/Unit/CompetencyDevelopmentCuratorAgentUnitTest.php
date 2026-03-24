@@ -1,6 +1,8 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
+use Illuminate\Support\Collection;
 
 it('can run a competency development curator agent with basic setup', function () {
     $handler = new AINinja;
@@ -19,14 +21,14 @@ it('can run a competency development curator agent with basic setup', function (
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
         expect($result->getSummary())->toBeString();
-        expect($result->getCompetency())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getCompetency())->toBeInstanceOf(Collection::class);
         expect($result->getCompetencyName())->toBeString();
         expect($result->getCompetencyDescription())->toBeString();
         expect($result->getCompetencyTargetLevel())->toBeString();
-        expect($result->getResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDevelopment())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResources())->toBeInstanceOf(Collection::class);
+        expect($result->getDevelopment())->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -48,17 +50,17 @@ it('can handle different resource and development types', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getELearningResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getVideoResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getAudioResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getReadingResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getELearningResources())->toBeInstanceOf(Collection::class);
+        expect($result->getVideoResources())->toBeInstanceOf(Collection::class);
+        expect($result->getAudioResources())->toBeInstanceOf(Collection::class);
+        expect($result->getReadingResources())->toBeInstanceOf(Collection::class);
 
-        expect($result->getExperienceDevelopment())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getExposureDevelopment())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getEducationDevelopment())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getExperienceDevelopment())->toBeInstanceOf(Collection::class);
+        expect($result->getExposureDevelopment())->toBeInstanceOf(Collection::class);
+        expect($result->getEducationDevelopment())->toBeInstanceOf(Collection::class);
 
-        expect($result->getAllResourceTypes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getAllDevelopmentTypes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getAllResourceTypes())->toBeInstanceOf(Collection::class);
+        expect($result->getAllDevelopmentTypes())->toBeInstanceOf(Collection::class);
         expect($result->getTotalResourcesCount())->toBeGreaterThan(0);
         expect($result->getTotalDevelopmentItemsCount())->toBeGreaterThan(0);
     }
@@ -100,7 +102,7 @@ it('can access individual resource and development items', function () {
         // Test resource item access
         $firstELearningResource = $result->getResourceItem('e_learning', 0);
         if ($firstELearningResource) {
-            expect($firstELearningResource)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($firstELearningResource)->toBeInstanceOf(Collection::class);
             expect($firstELearningResource->get('title'))->toBeString();
             expect($firstELearningResource->get('description'))->toBeString();
             expect($firstELearningResource->get('url'))->toBeString();
@@ -109,7 +111,7 @@ it('can access individual resource and development items', function () {
         // Test development item access
         $firstExperienceItem = $result->getDevelopmentItem('experience', 0);
         if ($firstExperienceItem) {
-            expect($firstExperienceItem)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($firstExperienceItem)->toBeInstanceOf(Collection::class);
             expect($firstExperienceItem->get('title'))->toBeString();
             expect($firstExperienceItem->get('description'))->toBeString();
             expect($firstExperienceItem->get('rationale'))->toBeString();
@@ -117,10 +119,10 @@ it('can access individual resource and development items', function () {
 
         // Test URL extraction
         $videoUrls = $result->getResourceUrls('video');
-        expect($videoUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($videoUrls)->toBeInstanceOf(Collection::class);
 
         $experienceUrls = $result->getDevelopmentUrls('experience');
-        expect($experienceUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($experienceUrls)->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -140,7 +142,7 @@ it('can build complex agent configuration', function () {
         ->quickMode(true);
 
     // Test that the agent can be configured without errors
-    expect($agent)->toBeInstanceOf(\IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent::class);
+    expect($agent)->toBeInstanceOf(CompetencyDevelopmentCuratorAgent::class);
 
     // Test that toArray doesn't throw exceptions
     $data = $agent->toArray();

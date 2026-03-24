@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an agent to generate a profile picture', function () {
     $handler = new AINinja;
@@ -11,7 +12,7 @@ it('can run an agent to generate a profile picture', function () {
         ->setTraceId('ProfilePictureAgentTest')
         ->runAndWait(60);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getImageUrl())->toBeString();

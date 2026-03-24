@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\StoryboardGeneratorAgent;
+use Illuminate\Support\Collection;
 
 it('can run storyboard generator agent', function () {
     $result = (new AINinja)->agent()
@@ -13,7 +14,7 @@ it('can run storyboard generator agent', function () {
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getAudio())->toBeString();
-        expect($result->getScenes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getScenes())->toBeInstanceOf(Collection::class);
         expect($result->getSceneCount())->toBeGreaterThan(0);
     }
 });

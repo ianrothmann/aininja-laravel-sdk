@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\PersonalityScriptGeneratorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentPersonalityScriptGeneratorResult;
+use Illuminate\Support\Collection;
 
 $sampleLevels = [
     'extraversion_level' => 'high',
@@ -57,10 +58,10 @@ it('result class can parse mocked data and return all four scripts', function ()
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getExtraversionScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getOpennessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getAgreeablenessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getConscientiousnessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getExtraversionScript())->toBeInstanceOf(Collection::class);
+    expect($result->getOpennessScript())->toBeInstanceOf(Collection::class);
+    expect($result->getAgreeablenessScript())->toBeInstanceOf(Collection::class);
+    expect($result->getConscientiousnessScript())->toBeInstanceOf(Collection::class);
     expect($result->getScriptTitle('extraversion'))->toBeString();
     expect($result->getScriptText('extraversion'))->toBeString();
     expect($result->getScriptTitle('conscientiousness'))->toBeString();

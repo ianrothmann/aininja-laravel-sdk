@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
+use Illuminate\Support\Collection;
 
 it('can run an agent to generate image with basic parameters', function () {
     $handler = new AINinja;
@@ -13,7 +14,7 @@ it('can run an agent to generate image with basic parameters', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
 });
@@ -30,7 +31,7 @@ it('can run an agent to generate image with input images', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
 });
@@ -45,7 +46,7 @@ it('can run an agent to generate surreal style image', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
 });
@@ -60,7 +61,7 @@ it('can handle image extension detection', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
 
     // Test extension detection methods
@@ -86,7 +87,7 @@ it('can handle input images array format', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
 });

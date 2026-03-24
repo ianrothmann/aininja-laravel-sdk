@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentExperienceDriversScriptGeneratorResult;
+use Illuminate\Support\Collection;
 
 it('can build experience drivers script generator agent', function () {
     $agent = (new AINinja)->agent()
@@ -48,5 +49,5 @@ it('result class can parse mocked data', function () {
     expect($result->getTitle())->toBeString();
     expect($result->getScript())->toBeString();
     expect($result->getWordCount())->toBeInt();
-    expect($result->getHiddenInterpretation())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getHiddenInterpretation())->toBeInstanceOf(Collection::class);
 });

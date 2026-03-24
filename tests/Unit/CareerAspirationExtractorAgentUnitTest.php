@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentCareerAspirationExtractorResult;
+use Illuminate\Support\Collection;
 
 it('can build career aspiration extractor agent with candidate context', function () {
     $agent = (new AINinja)->agent()
@@ -40,7 +41,7 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getAspirations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getAspirations())->toBeInstanceOf(Collection::class);
     expect($result->getAspirations()->count())->toBeGreaterThan(0);
     expect($result->getVersion())->toBe('v1');
     expect($result->getAssessmentDateUsed())->toBeString();

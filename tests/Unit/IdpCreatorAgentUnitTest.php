@@ -1,6 +1,8 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use IanRothmann\AINinja\Processors\Agents\IdpCreatorAgent;
+use Illuminate\Support\Collection;
 
 it('can run an IDP creator agent with basic setup', function () {
     $handler = new AINinja;
@@ -20,8 +22,8 @@ it('can run an IDP creator agent with basic setup', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDevActions())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getDevActions())->toBeInstanceOf(Collection::class);
         expect($result->getTotalDevActions())->toBeGreaterThan(0);
     }
 });
@@ -42,18 +44,18 @@ it('can filter dev actions by category and priority', function () {
     if ($result->isSuccessful()) {
         // Test category filtering
         $watchActions = $result->getDevActionsByCategory('watch');
-        expect($watchActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($watchActions)->toBeInstanceOf(Collection::class);
 
         // Test priority filtering
         $shortTermActions = $result->getDevActionsByPriority('ShortTerm');
-        expect($shortTermActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($shortTermActions)->toBeInstanceOf(Collection::class);
 
         // Test getting unique categories and priorities
         $categories = $result->getDevActionCategories();
-        expect($categories)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($categories)->toBeInstanceOf(Collection::class);
 
         $priorities = $result->getDevActionPriorities();
-        expect($priorities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($priorities)->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -73,27 +75,27 @@ it('can access dev actions by keyword and URL', function () {
     if ($result->isSuccessful()) {
         // Test getting all keywords
         $allKeywords = $result->getAllKeywords();
-        expect($allKeywords)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($allKeywords)->toBeInstanceOf(Collection::class);
 
         // Test filtering by keyword
         if ($allKeywords->isNotEmpty()) {
             $firstKeyword = $allKeywords->first();
             $keywordActions = $result->getDevActionsByKeyword($firstKeyword);
-            expect($keywordActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($keywordActions)->toBeInstanceOf(Collection::class);
         }
 
         // Test getting dev action by URL
         $firstAction = $result->getDevActions()->first();
         if ($firstAction && ! empty($firstAction['url'])) {
             $actionByUrl = $result->getDevActionByUrl($firstAction['url']);
-            expect($actionByUrl)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($actionByUrl)->toBeInstanceOf(Collection::class);
             expect($actionByUrl->get('url'))->toBe($firstAction['url']);
         }
 
         // Test getting dev action by title
         if ($firstAction) {
             $actionByTitle = $result->getDevActionByTitle($firstAction['title']);
-            expect($actionByTitle)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($actionByTitle)->toBeInstanceOf(Collection::class);
             expect($actionByTitle->get('title'))->toBe($firstAction['title']);
         }
     }
@@ -115,11 +117,11 @@ it('can filter dev actions with and without thumbnails', function () {
     if ($result->isSuccessful()) {
         // Test filtering actions with thumbnails
         $withThumbnails = $result->getDevActionsWithThumbnails();
-        expect($withThumbnails)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withThumbnails)->toBeInstanceOf(Collection::class);
 
         // Test filtering actions without thumbnails
         $withoutThumbnails = $result->getDevActionsWithoutThumbnails();
-        expect($withoutThumbnails)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withoutThumbnails)->toBeInstanceOf(Collection::class);
 
         // Verify that together they make up all actions
         $total = $withThumbnails->count() + $withoutThumbnails->count();
@@ -143,11 +145,11 @@ it('can filter dev actions with and without URLs', function () {
     if ($result->isSuccessful()) {
         // Test filtering actions with URLs
         $withUrls = $result->getDevActionsWithUrls();
-        expect($withUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withUrls)->toBeInstanceOf(Collection::class);
 
         // Test filtering actions without URLs
         $withoutUrls = $result->getDevActionsWithoutUrls();
-        expect($withoutUrls)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($withoutUrls)->toBeInstanceOf(Collection::class);
 
         // Verify that together they make up all actions
         $total = $withUrls->count() + $withoutUrls->count();
@@ -167,7 +169,7 @@ it('can handle avoid actions parameter', function () {
         ->avoidActions(['webinar', 'certification']);
 
     // Test that the agent can be configured without errors
-    expect($agent)->toBeInstanceOf(\IanRothmann\AINinja\Processors\Agents\IdpCreatorAgent::class);
+    expect($agent)->toBeInstanceOf(IdpCreatorAgent::class);
 
     // Test that toArray doesn't throw exceptions
     $data = $agent->toArray();
@@ -202,7 +204,7 @@ it('can build complex agent configuration with all features', function () {
         ->instructions('Focus on analytics, forecasting, and data-driven decision making in transformation context');
 
     // Test that the agent can be configured without errors
-    expect($agent)->toBeInstanceOf(\IanRothmann\AINinja\Processors\Agents\IdpCreatorAgent::class);
+    expect($agent)->toBeInstanceOf(IdpCreatorAgent::class);
 
     // Test that toArray doesn't throw exceptions
     $data = $agent->toArray();

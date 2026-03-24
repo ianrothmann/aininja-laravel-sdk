@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run profile info extractor agent', function () {
     $result = (new AINinja)->agent()
@@ -92,8 +93,8 @@ it('can run profile info extractor agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getPersonProfileExtract())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getExtractionMeta())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getIdentity())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getPersonProfileExtract())->toBeInstanceOf(Collection::class);
+        expect($result->getExtractionMeta())->toBeInstanceOf(Collection::class);
+        expect($result->getIdentity())->toBeInstanceOf(Collection::class);
     }
 });

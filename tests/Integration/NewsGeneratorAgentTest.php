@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 it('can run an agent to generate news from context', function () {
     $handler = new AINinja;
@@ -12,13 +13,13 @@ it('can run an agent to generate news from context', function () {
         ->setTraceId('NewsGeneratorAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getTopics())->toBeInstanceOf(Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);
-        expect($result->getTopicTitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getTopicSummaries())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getTopicTitles())->toBeInstanceOf(Collection::class);
+        expect($result->getTopicSummaries())->toBeInstanceOf(Collection::class);
 
         if ($result->getFirstTopic()) {
             expect($result->getFirstTopic())->toBeArray();
@@ -37,10 +38,10 @@ it('can run an agent to generate news with recency filter', function () {
         ->setTraceId('NewsGeneratorAgentRecencyTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getTopics())->toBeInstanceOf(Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);
     }
 });

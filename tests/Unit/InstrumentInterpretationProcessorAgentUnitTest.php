@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\InstrumentInterpretationProcessorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentInstrumentInterpretationProcessorResult;
+use Illuminate\Support\Collection;
 
 it('can build instrument interpretation processor agent', function () {
     $agent = (new AINinja)->agent()
@@ -40,7 +41,7 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getInterpretations())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getInterpretations())->toBeInstanceOf(Collection::class);
     expect($result->getInterpretationCount())->toBeGreaterThan(0);
 });
 
@@ -53,7 +54,7 @@ it('can retrieve interpretation by instrument key', function () {
     ]);
 
     $personality = $result->getInterpretationByKey('ptg_personality');
-    expect($personality)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($personality)->toBeInstanceOf(Collection::class);
     expect($personality->get('instrument_key'))->toBe('ptg_personality');
     expect($personality->get('instrument_interpretation'))->toBeString();
 

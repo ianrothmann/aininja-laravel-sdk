@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentDevelopmentAreasExtractorResult;
+use Illuminate\Support\Collection;
 
 it('can build development areas extractor agent with candidate context', function () {
     $agent = (new AINinja)->agent()
@@ -38,8 +39,8 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getDevelopmentAreas())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getDevelopmentAreas())->toBeInstanceOf(Collection::class);
     expect($result->getDevelopmentAreas()->count())->toBeGreaterThan(0);
-    expect($result->getRejectedThemes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getRejectedThemes())->toBeInstanceOf(Collection::class);
     expect($result->getVersion())->toBe('v1.1');
 });

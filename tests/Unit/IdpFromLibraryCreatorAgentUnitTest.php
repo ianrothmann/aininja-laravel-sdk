@@ -1,6 +1,8 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent;
+use Illuminate\Support\Collection;
 
 it('can run an IDP from library creator agent with basic setup', function () {
     $handler = new AINinja;
@@ -23,9 +25,9 @@ it('can run an IDP from library creator agent with basic setup', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDevActions())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getDevelopmentThemes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getDevActions())->toBeInstanceOf(Collection::class);
+        expect($result->getDevelopmentThemes())->toBeInstanceOf(Collection::class);
         expect($result->getTotalDevActions())->toBeGreaterThan(0);
         expect($result->getTotalDevelopmentThemes())->toBeGreaterThan(0);
     }
@@ -48,18 +50,18 @@ it('can filter dev actions by category and priority', function () {
     if ($result->isSuccessful()) {
         // Test category filtering
         $experienceActions = $result->getDevActionsByCategory('experience');
-        expect($experienceActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($experienceActions)->toBeInstanceOf(Collection::class);
 
         // Test priority filtering
         $shortTermActions = $result->getDevActionsByPriority('ShortTerm');
-        expect($shortTermActions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($shortTermActions)->toBeInstanceOf(Collection::class);
 
         // Test getting unique categories and priorities
         $categories = $result->getDevActionCategories();
-        expect($categories)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($categories)->toBeInstanceOf(Collection::class);
 
         $priorities = $result->getDevActionPriorities();
-        expect($priorities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($priorities)->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -80,7 +82,7 @@ it('can access development themes and their details', function () {
         // Test getting highest priority theme
         $highestPriorityTheme = $result->getHighestPriorityTheme();
         if ($highestPriorityTheme) {
-            expect($highestPriorityTheme)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($highestPriorityTheme)->toBeInstanceOf(Collection::class);
             expect($highestPriorityTheme->get('title'))->toBeString();
             expect($highestPriorityTheme->get('summary'))->toBeString();
             expect($highestPriorityTheme->get('priority'))->toBeInt();
@@ -89,14 +91,14 @@ it('can access development themes and their details', function () {
         // Test getting theme by priority
         $theme1 = $result->getDevelopmentTheme(1);
         if ($theme1) {
-            expect($theme1)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($theme1)->toBeInstanceOf(Collection::class);
             expect($theme1->get('linked_competencies'))->toBeArray();
             expect($theme1->get('tags'))->toBeArray();
         }
 
         // Test getting all tags
         $allTags = $result->getAllThemeTags();
-        expect($allTags)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($allTags)->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -116,19 +118,19 @@ it('can access theme competencies, diagnostics, and evidence', function () {
     if ($result->isSuccessful()) {
         // Test theme competencies
         $competencies = $result->getThemeCompetencies(1);
-        expect($competencies)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($competencies)->toBeInstanceOf(Collection::class);
 
         // Test quick diagnostics
         $diagnostics = $result->getThemeQuickDiagnostics(1);
-        expect($diagnostics)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($diagnostics)->toBeInstanceOf(Collection::class);
 
         // Test evidence
         $evidence = $result->getThemeEvidence(1);
-        expect($evidence)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($evidence)->toBeInstanceOf(Collection::class);
 
         // Test suggested modalities
         $modalities = $result->getThemeSuggestedModalities(1);
-        expect($modalities)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($modalities)->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -152,7 +154,7 @@ it('can access individual dev actions by ID', function () {
             $actionId = $firstAction['dev_action_id'];
             $retrievedAction = $result->getDevAction($actionId);
 
-            expect($retrievedAction)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($retrievedAction)->toBeInstanceOf(Collection::class);
             expect($retrievedAction->get('dev_action_id'))->toBe($actionId);
             expect($retrievedAction->get('title'))->toBeString();
             expect($retrievedAction->get('description'))->toBeString();
@@ -181,7 +183,7 @@ it('can filter themes by tag', function () {
             $firstTag = $allTags->first();
             $taggedThemes = $result->getThemesByTag($firstTag);
 
-            expect($taggedThemes)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($taggedThemes)->toBeInstanceOf(Collection::class);
             // Each theme should contain the tag
             $taggedThemes->each(function ($theme) use ($firstTag) {
                 expect($theme['tags'])->toContain($firstTag);
@@ -203,7 +205,7 @@ it('can handle avoid actions parameter', function () {
         ->avoidActions(['action_123', 'action_456']);
 
     // Test that the agent can be configured without errors
-    expect($agent)->toBeInstanceOf(\IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent::class);
+    expect($agent)->toBeInstanceOf(IdpFromLibraryCreatorAgent::class);
 
     // Test that toArray doesn't throw exceptions
     $data = $agent->toArray();
@@ -238,7 +240,7 @@ it('can build complex agent configuration with all features', function () {
         ->instructions('Focus on central banking context and monetary policy expertise');
 
     // Test that the agent can be configured without errors
-    expect($agent)->toBeInstanceOf(\IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent::class);
+    expect($agent)->toBeInstanceOf(IdpFromLibraryCreatorAgent::class);
 
     // Test that toArray doesn't throw exceptions
     $data = $agent->toArray();

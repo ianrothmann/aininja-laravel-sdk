@@ -3,23 +3,23 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
+use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
+use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
 use IanRothmann\AINinja\Processors\Agents\IdpCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
-use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
-use IanRothmann\AINinja\Processors\Agents\ProfilePictureAgent;
-use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
-use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
-use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
-use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
-use IanRothmann\AINinja\Processors\Agents\StoryboardGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\InstrumentInterpretationProcessorAgent;
+use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\PersonalityScriptGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\ProfileInfoExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\ProfilePictureAgent;
 use IanRothmann\AINinja\Processors\Agents\ProfileStrengthExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\StoryboardGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\SuccessProfileMatcherAgent;
 
 class AINinjaAgent

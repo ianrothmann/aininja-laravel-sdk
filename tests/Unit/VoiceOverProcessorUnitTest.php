@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\VoiceOverProcessor;
+use Illuminate\Support\Collection;
 
 it('can generate voice over with text only', function () {
     $handler = new AINinja;
@@ -11,7 +12,7 @@ it('can generate voice over with text only', function () {
         ->get();
 
     expect($result->getResult())->toBeArray();
-    expect($result->getSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getSubtitles())->toBeInstanceOf(Collection::class);
     expect($result->getAudioBase64())->toBeString();
 });
 
@@ -24,7 +25,7 @@ it('can generate voice over with text and voice', function () {
         ->get();
 
     expect($result->getResult())->toBeArray();
-    expect($result->getSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getSubtitles())->toBeInstanceOf(Collection::class);
     expect($result->getAudioBase64())->toBeString();
 });
 

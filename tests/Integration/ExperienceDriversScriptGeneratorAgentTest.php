@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run experience drivers script generator agent', function () {
     $result = (new AINinja)->agent()
@@ -20,6 +21,6 @@ it('can run experience drivers script generator agent', function () {
         expect($result->getTitle())->toBeString();
         expect($result->getScript())->toBeString();
         expect($result->getWordCount())->toBeInt();
-        expect($result->getHiddenInterpretation())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getHiddenInterpretation())->toBeInstanceOf(Collection::class);
     }
 });

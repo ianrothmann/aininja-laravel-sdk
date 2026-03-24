@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\StoryboardGeneratorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentStoryboardGeneratorResult;
+use Illuminate\Support\Collection;
 
 it('can build storyboard generator agent with script', function () {
     $agent = (new AINinja)->agent()
@@ -68,9 +69,9 @@ it('result class can parse mocked data', function () {
     expect($result->isSuccessful())->toBeTrue();
     expect($result->getAudio())->toBeString();
     expect($result->getScript())->toBeString();
-    expect($result->getSubtitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getCoverContent())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-    expect($result->getScenes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getSubtitles())->toBeInstanceOf(Collection::class);
+    expect($result->getCoverContent())->toBeInstanceOf(Collection::class);
+    expect($result->getScenes())->toBeInstanceOf(Collection::class);
     expect($result->getSceneCount())->toBeGreaterThan(0);
     expect($result->getTotalDuration())->toBeFloat();
 });

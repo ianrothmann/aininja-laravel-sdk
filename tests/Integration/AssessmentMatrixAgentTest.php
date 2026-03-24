@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an assessment matrix agent integration test', function () {
     $handler = new AINinja;
@@ -37,12 +38,12 @@ it('can run an assessment matrix agent integration test', function () {
         ->setTraceId('AssessmentMatrixAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
 
     if ($result->isSuccessful()) {
-        expect($result->getMappings())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getMappings())->toBeInstanceOf(Collection::class);
         expect($result->getCompetenciesCount())->toBeGreaterThan(0);
-        expect($result->getCompetencyNames())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getCompetencyNames())->toBeInstanceOf(Collection::class);
 
         // Test that we get mappings for each competency
         $competencyNames = $result->getCompetencyNames();
@@ -50,24 +51,24 @@ it('can run an assessment matrix agent integration test', function () {
             expect($result->hasCompetency($competency))->toBeTrue();
 
             $mappings = $result->getCompetencyMappings($competency);
-            expect($mappings)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($mappings)->toBeInstanceOf(Collection::class);
             expect($mappings->count())->toBeGreaterThan(0);
 
             $weights = $result->getWeightsForCompetency($competency);
-            expect($weights)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($weights)->toBeInstanceOf(Collection::class);
             expect($weights->count())->toBeGreaterThan(0);
 
             $dimensions = $result->getDimensionsForCompetency($competency);
-            expect($dimensions)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($dimensions)->toBeInstanceOf(Collection::class);
             expect($dimensions->count())->toBeGreaterThan(0);
 
             $measures = $result->getMeasuresForCompetency($competency);
-            expect($measures)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($measures)->toBeInstanceOf(Collection::class);
             expect($measures->count())->toBeGreaterThan(0);
         }
     } else {
         // Agent may still be processing or encountered an error
         // This is acceptable for complex assessment matrix generation
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
     }
 });

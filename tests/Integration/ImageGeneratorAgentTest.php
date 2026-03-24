@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
+use Illuminate\Support\Collection;
 
 // it('can run an agent to generate a photorealistic image', function () {
 //    $handler = new AINinja;
@@ -56,7 +57,7 @@ it('can run an agent to generate image with input images', function () {
         ->setTraceId('ImageGeneratorAgentWithInputTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
         expect($result->getImageUrl())->toBeString();

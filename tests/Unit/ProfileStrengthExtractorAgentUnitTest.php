@@ -3,6 +3,7 @@
 use IanRothmann\AINinja\AINinja;
 use IanRothmann\AINinja\Processors\Agents\ProfileStrengthExtractorAgent;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentProfileStrengthExtractorResult;
+use Illuminate\Support\Collection;
 
 it('can build profile strength extractor agent with candidate context', function () {
     $agent = (new AINinja)->agent()
@@ -38,8 +39,8 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getStrengths())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getStrengths())->toBeInstanceOf(Collection::class);
     expect($result->getStrengthCount())->toBeGreaterThan(0);
-    expect($result->getRejectedThemes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getRejectedThemes())->toBeInstanceOf(Collection::class);
     expect($result->getAssessmentDateUsed())->toBeString();
 });

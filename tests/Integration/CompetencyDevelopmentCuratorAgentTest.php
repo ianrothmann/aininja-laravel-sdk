@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run a competency development curator agent integration test', function () {
     $handler = new AINinja;
@@ -18,7 +19,7 @@ it('can run a competency development curator agent integration test', function (
         ->setTraceId('CompetencyDevelopmentCuratorAgentTest')
         ->runAndWait(5);
 
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
 
     if ($result->isSuccessful()) {
         // Test basic structure
@@ -26,19 +27,19 @@ it('can run a competency development curator agent integration test', function (
         expect($result->getSummary())->not->toBeEmpty();
 
         // Test competency information
-        expect($result->getCompetency())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getCompetency())->toBeInstanceOf(Collection::class);
         expect($result->getCompetencyName())->toBe('Leadership and Decision Making');
         expect($result->getCompetencyDescription())->toBeString();
         expect($result->getCompetencyTargetLevel())->toBe('managerial');
 
         // Test resources structure
-        expect($result->getResources())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getAllResourceTypes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResources())->toBeInstanceOf(Collection::class);
+        expect($result->getAllResourceTypes())->toBeInstanceOf(Collection::class);
 
         // Test that requested resource types are present
         if ($result->hasResourceType('e_learning')) {
             $elearning = $result->getELearningResources();
-            expect($elearning)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($elearning)->toBeInstanceOf(Collection::class);
             expect($elearning->count())->toBeGreaterThanOrEqual(2);
             expect($elearning->count())->toBeLessThanOrEqual(4);
 
@@ -54,19 +55,19 @@ it('can run a competency development curator agent integration test', function (
 
         if ($result->hasResourceType('video')) {
             $video = $result->getVideoResources();
-            expect($video)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($video)->toBeInstanceOf(Collection::class);
             expect($video->count())->toBeGreaterThanOrEqual(2);
             expect($video->count())->toBeLessThanOrEqual(4);
         }
 
         // Test development structure
-        expect($result->getDevelopment())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getAllDevelopmentTypes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getDevelopment())->toBeInstanceOf(Collection::class);
+        expect($result->getAllDevelopmentTypes())->toBeInstanceOf(Collection::class);
 
         // Test that requested development types are present
         if ($result->hasDevelopmentType('experience')) {
             $experience = $result->getExperienceDevelopment();
-            expect($experience)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($experience)->toBeInstanceOf(Collection::class);
             expect($experience->count())->toBeGreaterThanOrEqual(2);
             expect($experience->count())->toBeLessThanOrEqual(4);
 
@@ -82,7 +83,7 @@ it('can run a competency development curator agent integration test', function (
 
         if ($result->hasDevelopmentType('exposure')) {
             $exposure = $result->getExposureDevelopment();
-            expect($exposure)->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($exposure)->toBeInstanceOf(Collection::class);
             expect($exposure->count())->toBeGreaterThanOrEqual(2);
             expect($exposure->count())->toBeLessThanOrEqual(4);
         }
@@ -94,6 +95,6 @@ it('can run a competency development curator agent integration test', function (
     } else {
         // Agent may still be processing or encountered an error
         // This is acceptable for complex competency development curation
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
     }
 });

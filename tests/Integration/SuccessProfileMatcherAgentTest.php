@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run success profile matcher agent', function () {
     $result = (new AINinja)->agent()
@@ -24,7 +25,7 @@ it('can run success profile matcher agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getFinalMatches())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getFinalMatches())->toBeInstanceOf(Collection::class);
         expect($result->getMatchCount())->toBeGreaterThanOrEqual(0);
     }
 });

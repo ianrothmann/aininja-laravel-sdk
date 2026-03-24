@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run profile strength extractor agent', function () {
     $result = (new AINinja)->agent()
@@ -101,8 +102,8 @@ it('can run profile strength extractor agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getStrengths())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getRejectedThemes())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getStrengths())->toBeInstanceOf(Collection::class);
+        expect($result->getRejectedThemes())->toBeInstanceOf(Collection::class);
         expect($result->getStrengthCount())->toBeGreaterThan(0);
     }
 });

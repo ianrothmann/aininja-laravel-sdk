@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run personality script generator agent', function () {
     $result = (new AINinja)->agent()
@@ -30,9 +31,9 @@ it('can run personality script generator agent', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getExtraversionScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getOpennessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getAgreeablenessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getConscientiousnessScript())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getExtraversionScript())->toBeInstanceOf(Collection::class);
+        expect($result->getOpennessScript())->toBeInstanceOf(Collection::class);
+        expect($result->getAgreeablenessScript())->toBeInstanceOf(Collection::class);
+        expect($result->getConscientiousnessScript())->toBeInstanceOf(Collection::class);
     }
 });

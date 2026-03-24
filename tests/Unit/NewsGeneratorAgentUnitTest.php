@@ -2,6 +2,7 @@
 
 use IanRothmann\AINinja\AINinja;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 it('can run an agent to generate news with context only', function () {
     $handler = new AINinja;
@@ -13,11 +14,11 @@ it('can run an agent to generate news with context only', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getTopics())->toBeInstanceOf(Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);
-        expect($result->getTopicTitles())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getTopicSummaries())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getTopicTitles())->toBeInstanceOf(Collection::class);
+        expect($result->getTopicSummaries())->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -32,8 +33,8 @@ it('can run an agent to generate news with context and recency filter', function
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getTopics())->toBeInstanceOf(Collection::class);
         expect($result->getTopicsCount())->toBeGreaterThan(0);
 
         if ($result->getFirstTopic()) {
@@ -54,7 +55,7 @@ it('can handle empty recency filter', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getTopics())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getTopics())->toBeInstanceOf(Collection::class);
     }
 });

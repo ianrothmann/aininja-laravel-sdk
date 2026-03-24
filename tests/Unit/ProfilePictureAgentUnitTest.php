@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an agent to generate a profile picture', function () {
     $handler = new AINinja;
@@ -11,7 +12,7 @@ it('can run an agent to generate a profile picture', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
     expect($result->hasImage())->toBeTrue();
 });
@@ -25,7 +26,7 @@ it('can handle image extension detection for profile picture', function () {
         ->runAndWait(5);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+    expect($result->getResult())->toBeInstanceOf(Collection::class);
     expect($result->getImageUrl())->toBeString();
 
     // Test extension detection methods

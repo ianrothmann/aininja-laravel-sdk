@@ -1,6 +1,7 @@
 <?php
 
 use IanRothmann\AINinja\AINinja;
+use Illuminate\Support\Collection;
 
 it('can run an assessment matrix agent with basic setup', function () {
     $handler = new AINinja;
@@ -21,10 +22,10 @@ it('can run an assessment matrix agent with basic setup', function () {
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getMappings())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getMappings())->toBeInstanceOf(Collection::class);
         expect($result->getCompetenciesCount())->toBeGreaterThan(0);
-        expect($result->getCompetencyNames())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getCompetencyNames())->toBeInstanceOf(Collection::class);
     }
 });
 
@@ -47,16 +48,16 @@ it('can handle multiple competencies and provide detailed mappings', function ()
 
     expect($result->isSuccessful())->toBeTrue();
     if ($result->isSuccessful()) {
-        expect($result->getResult())->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result->getMappings())->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect($result->getResult())->toBeInstanceOf(Collection::class);
+        expect($result->getMappings())->toBeInstanceOf(Collection::class);
         expect($result->getCompetenciesCount())->toBeGreaterThanOrEqual(2);
 
         // Test specific competency methods
         if ($result->hasCompetency('leadership')) {
-            expect($result->getCompetencyMappings('leadership'))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getWeightsForCompetency('leadership'))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getDimensionsForCompetency('leadership'))->toBeInstanceOf(\Illuminate\Support\Collection::class);
-            expect($result->getMeasuresForCompetency('leadership'))->toBeInstanceOf(\Illuminate\Support\Collection::class);
+            expect($result->getCompetencyMappings('leadership'))->toBeInstanceOf(Collection::class);
+            expect($result->getWeightsForCompetency('leadership'))->toBeInstanceOf(Collection::class);
+            expect($result->getDimensionsForCompetency('leadership'))->toBeInstanceOf(Collection::class);
+            expect($result->getMeasuresForCompetency('leadership'))->toBeInstanceOf(Collection::class);
         }
     }
 });
@@ -69,5 +70,5 @@ it('validates required data structure', function () {
         $handler->agent()
             ->createAssessmentMatrix()
             ->addMeasure('nonexistent', 'test', 'Test Measure');
-    })->toThrow(\Exception::class, 'You must add a method before adding a measure');
+    })->toThrow(Exception::class, 'You must add a method before adding a measure');
 });
