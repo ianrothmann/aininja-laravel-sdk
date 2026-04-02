@@ -107,18 +107,18 @@ class LearningDomainGeneratorAgent extends AINinjaAgent
     protected function getValidationRules(): array
     {
         return [
-            'person_profile'                       => 'required|array',
-            'person_profile.id'                    => 'required|string',
-            'person_profile.name'                  => 'required|string',
-            'person_profile.surname'               => 'required|string',
-            'person_profile.country'               => 'required|string',
-            'person_profile.current_position'      => 'required|string',
-            'person_profile.current_organization'  => 'required|string',
-            'development_goals'                    => 'required|array',
-            'development_goals.*.id'               => 'required|string',
-            'development_goals.*.name'             => 'required|string',
-            'existing_learning_domains'            => 'nullable|array',
-            'generation_context'                   => 'nullable|array',
+            'person_profile' => 'required|array',
+            'person_profile.id' => 'required|string',
+            'person_profile.name' => 'required|string',
+            'person_profile.surname' => 'required|string',
+            'person_profile.country' => 'required|string',
+            'person_profile.current_position' => 'required|string',
+            'person_profile.current_organization' => 'required|string',
+            'development_goals' => 'required|array',
+            'development_goals.*.id' => 'required|string',
+            'development_goals.*.name' => 'required|string',
+            'existing_learning_domains' => 'nullable|array',
+            'generation_context' => 'nullable|array',
         ];
     }
 

@@ -116,17 +116,17 @@ class LearningActionsGeneratorAgent extends AINinjaAgent
     protected function getValidationRules(): array
     {
         return [
-            'person'                     => 'required|array',
-            'person.id'                  => 'required|string',
-            'person.country'             => 'required|string',
-            'person.timezone'            => 'required|string',
-            'person.language'            => 'required|string',
-            'resource_preferences'       => 'required|array',
-            'active_learning_domains'    => 'required|array',
-            'existing_learning_items'    => 'nullable|array',
-            'recent_coverage'            => 'nullable|array',
-            'run_context'                => 'required|array',
-            'run_context.run_date'       => 'required|string',
+            'person' => 'required|array',
+            'person.id' => 'required|string',
+            'person.country' => 'required|string',
+            'person.timezone' => 'required|string',
+            'person.language' => 'required|string',
+            'resource_preferences' => 'required|array',
+            'active_learning_domains' => 'required|array',
+            'existing_learning_items' => 'nullable|array',
+            'recent_coverage' => 'nullable|array',
+            'run_context' => 'required|array',
+            'run_context.run_date' => 'required|string',
         ];
     }
 

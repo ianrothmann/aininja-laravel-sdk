@@ -3,8 +3,6 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
-use IanRothmann\AINinja\Processors\Agents\LearningActionsGeneratorAgent;
-use IanRothmann\AINinja\Processors\Agents\LearningDomainGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
@@ -16,6 +14,8 @@ use IanRothmann\AINinja\Processors\Agents\IdpCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\IdpFromLibraryCreatorAgent;
 use IanRothmann\AINinja\Processors\Agents\ImageGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\InstrumentInterpretationProcessorAgent;
+use IanRothmann\AINinja\Processors\Agents\LearningActionsGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\LearningDomainGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\NewsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\PersonalityScriptGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\ProfileInfoExtractorAgent;
