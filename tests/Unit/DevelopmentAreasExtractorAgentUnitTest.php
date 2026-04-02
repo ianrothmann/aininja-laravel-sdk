@@ -11,13 +11,17 @@ it('can build development areas extractor agent with candidate context', functio
         ->candidateContext([
             'bio' => ['name' => 'Sam', 'surname' => 'Taylor'],
             'experience' => 'Manager with 6 years experience.',
+            'output_language_name' => 'British English',
+            'output_language_code' => 'en',
         ]);
 
     expect($agent)->toBeInstanceOf(DevelopmentAreasExtractorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_development_areas_extractor');
-    expect($data['input']['input'])->toBeArray();
+    expect($data['input'])->toBeArray();
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with development areas', function () {

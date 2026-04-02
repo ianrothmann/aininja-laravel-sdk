@@ -12,14 +12,18 @@ it('can build career aspiration extractor agent with candidate context', functio
             'bio' => ['name' => 'Alex', 'surname' => 'Morgan'],
             'experience' => 'Senior software engineer with 8 years experience.',
             'qualifications' => 'BSc Computer Science.',
+            'output_language_name' => 'British English',
+            'output_language_code' => 'en',
         ]);
 
     expect($agent)->toBeInstanceOf(CareerAspirationExtractorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_career_aspiration_extractor');
-    expect($data['input']['input'])->toBeArray();
-    expect($data['input']['input']['bio']['name'])->toBe('Alex');
+    expect($data['input'])->toBeArray();
+    expect($data['input']['bio']['name'])->toBe('Alex');
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with aspirations', function () {

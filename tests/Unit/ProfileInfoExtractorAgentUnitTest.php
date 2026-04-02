@@ -12,14 +12,18 @@ it('can build profile info extractor agent with candidate context', function () 
             'bio' => ['name' => 'Alex', 'surname' => 'Morgan', 'country' => 'New Zealand'],
             'experience' => '2019 - Present: Senior Software Engineer.',
             'qualifications' => 'BSc Computer Science, Westfield University, 2015.',
+            'output_language_name' => 'British English',
+            'output_language_code' => 'en',
         ]);
 
     expect($agent)->toBeInstanceOf(ProfileInfoExtractorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_profile_info_extractor');
-    expect($data['input']['input'])->toBeArray();
-    expect($data['input']['input']['bio']['name'])->toBe('Alex');
+    expect($data['input'])->toBeArray();
+    expect($data['input']['bio']['name'])->toBe('Alex');
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with person profile extract', function () {

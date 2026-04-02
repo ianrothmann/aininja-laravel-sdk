@@ -84,6 +84,8 @@ class DevelopmentAreasExtractorAgent extends AINinjaAgent
             'experience' => 'string|nullable',
             'qualifications' => 'string|nullable',
             'assessments' => 'array|nullable',
+            'output_language_name' => 'string|nullable',
+            'output_language_code' => 'string|nullable',
         ];
     }
 

@@ -72,6 +72,20 @@ class PersonalityScriptGeneratorAgent extends AINinjaAgent
         return $this;
     }
 
+    public function outputLanguageName(string $name): self
+    {
+        $this->input['output_language_name'] = $name;
+
+        return $this;
+    }
+
+    public function outputLanguageCode(string $code): self
+    {
+        $this->input['output_language_code'] = $code;
+
+        return $this;
+    }
+
     protected function getValidationRules(): array
     {
         return [
@@ -79,6 +93,8 @@ class PersonalityScriptGeneratorAgent extends AINinjaAgent
             'candidate_context' => 'required|string',
             'full_profile' => 'required|string',
             'personality_levels' => 'required|array',
+            'output_language_name' => 'nullable|string',
+            'output_language_code' => 'nullable|string',
         ];
     }
 

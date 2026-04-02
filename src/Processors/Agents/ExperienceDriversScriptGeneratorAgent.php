@@ -100,6 +100,20 @@ class ExperienceDriversScriptGeneratorAgent extends AINinjaAgent
         return $this;
     }
 
+    public function outputLanguageName(string $name): self
+    {
+        $this->input['output_language_name'] = $name;
+
+        return $this;
+    }
+
+    public function outputLanguageCode(string $code): self
+    {
+        $this->input['output_language_code'] = $code;
+
+        return $this;
+    }
+
     protected function getValidationRules(): array
     {
         return [
@@ -110,6 +124,8 @@ class ExperienceDriversScriptGeneratorAgent extends AINinjaAgent
             'top_3_driver_codes.driver1' => 'required|string',
             'top_3_driver_codes.driver2' => 'required|string',
             'top_3_driver_codes.driver3' => 'required|string',
+            'output_language_name' => 'nullable|string',
+            'output_language_code' => 'nullable|string',
         ];
     }
 

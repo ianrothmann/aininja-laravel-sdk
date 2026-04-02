@@ -15,16 +15,20 @@ it('can build experience drivers script generator agent', function () {
             'GRW' => ['label' => 'Growth', 'definition' => 'Drive to learn and develop skills.'],
             'PRP' => ['label' => 'Purpose', 'definition' => 'Need for meaningful, impactful work.'],
         ])
-        ->top3DriverCodes('AUT', 'GRW', 'PRP');
+        ->top3DriverCodes('AUT', 'GRW', 'PRP')
+        ->outputLanguageName('British English')
+        ->outputLanguageCode('en');
 
     expect($agent)->toBeInstanceOf(ExperienceDriversScriptGeneratorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_experience_drivers_script_generator');
-    expect($data['input']['input']['first_name'])->toBe('Sam');
-    expect($data['input']['input']['top_3_driver_codes']['driver1'])->toBe('AUT');
-    expect($data['input']['input']['top_3_driver_codes']['driver2'])->toBe('GRW');
-    expect($data['input']['input']['top_3_driver_codes']['driver3'])->toBe('PRP');
+    expect($data['input']['first_name'])->toBe('Sam');
+    expect($data['input']['top_3_driver_codes']['driver1'])->toBe('AUT');
+    expect($data['input']['top_3_driver_codes']['driver2'])->toBe('GRW');
+    expect($data['input']['top_3_driver_codes']['driver3'])->toBe('PRP');
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with script and title', function () {

@@ -30,14 +30,18 @@ it('can build personality script generator agent', function () use ($sampleLevel
         ->firstName('Casey')
         ->candidateContext('Casey is an extraverted leader who thrives in social environments.')
         ->fullProfile('High extraversion, warm and collaborative, conscientious and detail-oriented.')
-        ->personalityLevels($sampleLevels);
+        ->personalityLevels($sampleLevels)
+        ->outputLanguageName('British English')
+        ->outputLanguageCode('en');
 
     expect($agent)->toBeInstanceOf(PersonalityScriptGeneratorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_personality_script_generator');
-    expect($data['input']['input']['first_name'])->toBe('Casey');
-    expect($data['input']['input']['personality_levels'])->toBeArray();
+    expect($data['input']['first_name'])->toBe('Casey');
+    expect($data['input']['personality_levels'])->toBeArray();
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with four scripts', function () {

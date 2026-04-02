@@ -11,13 +11,17 @@ it('can build profile strength extractor agent with candidate context', function
         ->candidateContext([
             'bio' => ['name' => 'Alex', 'surname' => 'Morgan'],
             'experience' => 'Senior engineer with strong leadership track record.',
+            'output_language_name' => 'British English',
+            'output_language_code' => 'en',
         ]);
 
     expect($agent)->toBeInstanceOf(ProfileStrengthExtractorAgent::class);
 
     $data = $agent->toArray();
     expect($data['endpoint'])->toBe('/agent_profile_strength_extractor');
-    expect($data['input']['input'])->toBeArray();
+    expect($data['input'])->toBeArray();
+    expect($data['input']['output_language_name'])->toBe('British English');
+    expect($data['input']['output_language_code'])->toBe('en');
 });
 
 it('returns mocked result with strengths', function () {

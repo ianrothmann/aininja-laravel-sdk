@@ -3,6 +3,8 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
+use IanRothmann\AINinja\Processors\Agents\LearningActionsGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\LearningDomainGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
@@ -117,5 +119,15 @@ class AINinjaAgent
     public function generateStoryboard(): StoryboardGeneratorAgent
     {
         return new StoryboardGeneratorAgent;
+    }
+
+    public function generateLearningDomains(): LearningDomainGeneratorAgent
+    {
+        return new LearningDomainGeneratorAgent;
+    }
+
+    public function generateLearningActions(): LearningActionsGeneratorAgent
+    {
+        return new LearningActionsGeneratorAgent;
     }
 }
