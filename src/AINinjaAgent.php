@@ -7,6 +7,7 @@ use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
 use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\DevelopmentGoalsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
@@ -129,5 +130,10 @@ class AINinjaAgent
     public function generateLearningActions(): LearningActionsGeneratorAgent
     {
         return new LearningActionsGeneratorAgent;
+    }
+
+    public function generateDevelopmentGoals(): DevelopmentGoalsGeneratorAgent
+    {
+        return new DevelopmentGoalsGeneratorAgent;
     }
 }
