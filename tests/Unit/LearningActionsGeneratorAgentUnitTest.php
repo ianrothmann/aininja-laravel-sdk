@@ -81,6 +81,7 @@ it('returns mocked result with weekly learning actions', function () {
     expect($mocked['output'])->toHaveKey('weekly_plan_summary');
     expect($mocked['output'])->toHaveKey('person_id');
     expect($mocked['output'])->toHaveKey('run_date');
+    expect($mocked['output']['weekly_learning_actions'][0])->toHaveKey('image_url');
 });
 
 it('result class can parse mocked data', function () {
