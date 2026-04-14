@@ -6,8 +6,11 @@ use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
 use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
+use IanRothmann\AINinja\Processors\Agents\CurrentAffairsExtractorAgent;
+use IanRothmann\AINinja\Processors\Agents\DevelopmentActionProposalsGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\DevelopmentAreasExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\DevelopmentGoalsGeneratorAgent;
+use IanRothmann\AINinja\Processors\Agents\DevelopmentProposalMatcherAgent;
 use IanRothmann\AINinja\Processors\Agents\ExperienceDriversScriptGeneratorAgent;
 use IanRothmann\AINinja\Processors\Agents\FittGrowInitialisationAgent;
 use IanRothmann\AINinja\Processors\Agents\GenerateFeedbackVideoAgent;
@@ -135,5 +138,20 @@ class AINinjaAgent
     public function generateDevelopmentGoals(): DevelopmentGoalsGeneratorAgent
     {
         return new DevelopmentGoalsGeneratorAgent;
+    }
+
+    public function extractCurrentAffairs(): CurrentAffairsExtractorAgent
+    {
+        return new CurrentAffairsExtractorAgent;
+    }
+
+    public function generateDevelopmentActionProposals(): DevelopmentActionProposalsGeneratorAgent
+    {
+        return new DevelopmentActionProposalsGeneratorAgent;
+    }
+
+    public function matchDevelopmentProposals(): DevelopmentProposalMatcherAgent
+    {
+        return new DevelopmentProposalMatcherAgent;
     }
 }

@@ -40,7 +40,6 @@ it('can run learning actions generator agent', function () {
     if ($result->isSuccessful()) {
         expect($result->getWeeklyLearningActions())->toBeInstanceOf(Collection::class);
         expect($result->getWeeklyPlanSummary())->toBeInstanceOf(Collection::class);
-        expect($result->getPersonId())->toBeString();
         expect($result->getRunDate())->toBeString();
     }
 });

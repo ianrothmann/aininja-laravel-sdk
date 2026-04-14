@@ -79,7 +79,6 @@ it('returns mocked result with weekly learning actions', function () {
     expect($mocked['output']['weekly_learning_actions'])->toBeArray();
     expect(count($mocked['output']['weekly_learning_actions']))->toBeGreaterThan(0);
     expect($mocked['output'])->toHaveKey('weekly_plan_summary');
-    expect($mocked['output'])->toHaveKey('person_id');
     expect($mocked['output'])->toHaveKey('run_date');
     expect($mocked['output']['weekly_learning_actions'][0])->toHaveKey('image_url');
 });
@@ -93,7 +92,6 @@ it('result class can parse mocked data', function () {
     ]);
 
     expect($result->isSuccessful())->toBeTrue();
-    expect($result->getPersonId())->toBeString();
     expect($result->getRunDate())->toBeString();
     expect($result->getWeeklyPlanSummary())->toBeInstanceOf(Collection::class);
     expect($result->getWeeklyLearningActions())->toBeInstanceOf(Collection::class);

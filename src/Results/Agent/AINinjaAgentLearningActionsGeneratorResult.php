@@ -12,11 +12,6 @@ class AINinjaAgentLearningActionsGeneratorResult extends AINinjaRunResult
         return collect($this->result)->get('output', []);
     }
 
-    public function getPersonId(): ?string
-    {
-        return collect($this->getFinalResult())->get('person_id');
-    }
-
     public function getRunDate(): ?string
     {
         return collect($this->getFinalResult())->get('run_date');

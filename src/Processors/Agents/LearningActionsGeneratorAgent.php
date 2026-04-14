@@ -26,7 +26,6 @@ class LearningActionsGeneratorAgent extends AINinjaAgent
     {
         return [
             'output' => [
-                'person_id' => 'person_001',
                 'run_date' => '2026-03-31',
                 'weekly_plan_summary' => [
                     'target_total_items' => 5,
@@ -119,10 +118,6 @@ class LearningActionsGeneratorAgent extends AINinjaAgent
     {
         return [
             'person' => 'required|array',
-            'person.id' => 'required|string',
-            'person.country' => 'required|string',
-            'person.timezone' => 'required|string',
-            'person.language' => 'required|string',
             'resource_preferences' => 'required|array',
             'active_learning_domains' => 'required|array',
             'existing_learning_items' => 'nullable|array',
