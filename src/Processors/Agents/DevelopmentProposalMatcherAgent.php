@@ -73,11 +73,11 @@ class DevelopmentProposalMatcherAgent extends AINinjaAgent
     protected function getValidationRules(): array
     {
         return [
-            'development_goals'               => 'nullable|array',
-            'development_goals.*.id'          => 'required_with:development_goals|string',
-            'development_goals.*.name'        => 'required_with:development_goals|string',
+            'development_goals' => 'nullable|array',
+            'development_goals.*.id' => 'required_with:development_goals|string',
+            'development_goals.*.name' => 'required_with:development_goals|string',
             'development_goals.*.description' => 'required_with:development_goals|string',
-            'development_proposals'           => 'nullable|array',
+            'development_proposals' => 'nullable|array',
         ];
     }
 

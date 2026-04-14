@@ -118,14 +118,14 @@ class DevelopmentActionProposalsGeneratorAgent extends AINinjaAgent
     protected function getValidationRules(): array
     {
         return [
-            'profile'                  => 'required|array',
-            'contexts'                 => 'nullable|array',
-            'development_goals'        => 'required|array',
-            'development_goals.*.id'   => 'required|string',
+            'profile' => 'required|array',
+            'contexts' => 'nullable|array',
+            'development_goals' => 'required|array',
+            'development_goals.*.id' => 'required|string',
             'development_goals.*.name' => 'required|string',
-            'existing_proposals'       => 'nullable|array',
-            'existing_actions'         => 'nullable|array',
-            'generation_request'       => 'required|array',
+            'existing_proposals' => 'nullable|array',
+            'existing_actions' => 'nullable|array',
+            'generation_request' => 'required|array',
         ];
     }
 

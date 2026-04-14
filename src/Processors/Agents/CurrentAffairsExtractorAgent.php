@@ -104,8 +104,8 @@ class CurrentAffairsExtractorAgent extends AINinjaAgent
     {
         return [
             'person_context' => 'required|array',
-            'prior_state'    => 'nullable|array',
-            'run_date'       => 'nullable|string',
+            'prior_state' => 'nullable|array',
+            'run_date' => 'nullable|string',
         ];
     }
 
