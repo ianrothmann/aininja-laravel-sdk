@@ -3,6 +3,7 @@
 namespace IanRothmann\AINinja;
 
 use IanRothmann\AINinja\Processors\Agents\AssessmentMatrixAgent;
+use IanRothmann\AINinja\Processors\Agents\AssessmentProfileUpdateAgent;
 use IanRothmann\AINinja\Processors\Agents\CareerAspirationExtractorAgent;
 use IanRothmann\AINinja\Processors\Agents\CompetencyDevelopmentCuratorAgent;
 use IanRothmann\AINinja\Processors\Agents\CreateDubAgent;
@@ -153,5 +154,10 @@ class AINinjaAgent
     public function matchDevelopmentProposals(): DevelopmentProposalMatcherAgent
     {
         return new DevelopmentProposalMatcherAgent;
+    }
+
+    public function updateAssessmentProfile(): AssessmentProfileUpdateAgent
+    {
+        return new AssessmentProfileUpdateAgent;
     }
 }
