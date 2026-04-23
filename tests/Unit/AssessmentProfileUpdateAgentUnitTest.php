@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 $sampleSnapshot = [
     'assessments' => [['sources' => ['source_id' => 'fitt', 'external_id' => '22153']]],
-    'contexts'    => [],
+    'contexts' => [],
 ];
 
 $sampleAssessment = [
@@ -67,7 +67,7 @@ it('result class can parse mocked data', function () {
     $agent = (new AINinja)->agent()->updateAssessmentProfile();
 
     $result = new AINinjaAgentAssessmentProfileUpdateResult([
-        'status'   => 'success',
+        'status' => 'success',
         'response' => $agent->getMocked(),
     ]);
 
