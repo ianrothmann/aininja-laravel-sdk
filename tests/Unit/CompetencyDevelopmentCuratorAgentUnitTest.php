@@ -126,6 +126,19 @@ it('can access individual resource and development items', function () {
     }
 });
 
+it('can set output language', function () {
+    $agent = (new AINinja)->agent()
+        ->curateCompetencyDevelopment()
+        ->competencyName('Test Competency')
+        ->competencyDescription('Test description')
+        ->targetLevel('managerial')
+        ->outputInLanguage('af', 'Afrikaans');
+
+    $data = $agent->toArray();
+    expect($data['input']['output_language_name'])->toBe('Afrikaans');
+    expect($data['input']['output_language_code'])->toBe('af');
+});
+
 it('can build complex agent configuration', function () {
     $handler = new AINinja;
 

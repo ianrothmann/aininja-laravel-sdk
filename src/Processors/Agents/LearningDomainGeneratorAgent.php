@@ -119,6 +119,8 @@ class LearningDomainGeneratorAgent extends AINinjaAgent
             'development_goals.*.name' => 'required|string',
             'existing_learning_domains' => 'nullable|array',
             'generation_context' => 'nullable|array',
+            'generation_context.output_language_name' => 'nullable|string',
+            'generation_context.output_language_code' => 'nullable|string',
         ];
     }
 

@@ -3,10 +3,12 @@
 namespace IanRothmann\AINinja\Processors\Agents;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaAgentRun;
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentCompetencyDevelopmentCuratorResult;
 
 class CompetencyDevelopmentCuratorAgent extends AINinjaAgent
 {
+    use OutputsInLanguage;
     public function __construct()
     {
         parent::__construct();
@@ -193,6 +195,8 @@ class CompetencyDevelopmentCuratorAgent extends AINinjaAgent
             'include.eee' => 'array',
             'include.eee.*' => 'in:experience,exposure,education',
             'locale' => 'string',
+            'output_language_name' => 'nullable|string',
+            'output_language_code' => 'nullable|string',
             'constraints' => 'array',
             'constraints.per_type_min' => 'integer|min:1',
             'constraints.per_type_max' => 'integer|min:1',

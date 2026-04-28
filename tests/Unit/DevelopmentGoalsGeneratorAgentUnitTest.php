@@ -61,6 +61,18 @@ it('returns mocked result with development goals', function () {
     expect($mocked['output'])->toHaveKey('development_goal_generation_version');
 });
 
+it('can set output language', function () use ($sampleCurrentState, $sampleFutureState) {
+    $agent = (new AINinja)->agent()
+        ->generateDevelopmentGoals()
+        ->currentState($sampleCurrentState)
+        ->futureState($sampleFutureState)
+        ->outputInLanguage('af', 'Afrikaans');
+
+    $data = $agent->toArray();
+    expect($data['input']['output_language_name'])->toBe('Afrikaans');
+    expect($data['input']['output_language_code'])->toBe('af');
+});
+
 it('result class can parse mocked data', function () {
     $agent = (new AINinja)->agent()->generateDevelopmentGoals();
 

@@ -52,6 +52,17 @@ it('returns mocked result with issues and summary', function () {
     expect(count($mocked['output']['issues']))->toBeGreaterThan(0);
 });
 
+it('can set output language', function () use ($samplePersonContext) {
+    $agent = (new AINinja)->agent()
+        ->extractCurrentAffairs()
+        ->personContext($samplePersonContext)
+        ->outputInLanguage('af', 'Afrikaans');
+
+    $data = $agent->toArray();
+    expect($data['input']['output_language_name'])->toBe('Afrikaans');
+    expect($data['input']['output_language_code'])->toBe('af');
+});
+
 it('result class can parse mocked data', function () {
     $agent = (new AINinja)->agent()->extractCurrentAffairs();
 

@@ -83,6 +83,20 @@ it('returns mocked result with weekly learning actions', function () {
     expect($mocked['output']['weekly_learning_actions'][0])->toHaveKey('image_url');
 });
 
+it('can set output language', function () use ($samplePerson, $samplePreferences, $sampleDomains, $sampleRunContext) {
+    $agent = (new AINinja)->agent()
+        ->generateLearningActions()
+        ->person($samplePerson)
+        ->resourcePreferences($samplePreferences)
+        ->activeLearningDomains($sampleDomains)
+        ->runContext($sampleRunContext)
+        ->outputInLanguage('af', 'Afrikaans');
+
+    $data = $agent->toArray();
+    expect($data['input']['output_language_name'])->toBe('Afrikaans');
+    expect($data['input']['output_language_code'])->toBe('af');
+});
+
 it('result class can parse mocked data', function () {
     $agent = (new AINinja)->agent()->generateLearningActions();
 

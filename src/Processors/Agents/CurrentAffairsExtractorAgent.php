@@ -3,10 +3,12 @@
 namespace IanRothmann\AINinja\Processors\Agents;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaAgentRun;
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentCurrentAffairsExtractorResult;
 
 class CurrentAffairsExtractorAgent extends AINinjaAgent
 {
+    use OutputsInLanguage;
     public function __construct()
     {
         parent::__construct();
@@ -106,6 +108,8 @@ class CurrentAffairsExtractorAgent extends AINinjaAgent
             'person_context' => 'required|array',
             'prior_state' => 'nullable|array',
             'run_date' => 'nullable|string',
+            'output_language_name' => 'nullable|string',
+            'output_language_code' => 'nullable|string',
         ];
     }
 

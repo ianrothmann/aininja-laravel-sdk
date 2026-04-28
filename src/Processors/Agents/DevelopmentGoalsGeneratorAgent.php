@@ -3,10 +3,12 @@
 namespace IanRothmann\AINinja\Processors\Agents;
 
 use IanRothmann\AINinja\Processors\Agents\Run\AINinjaAgentRun;
+use IanRothmann\AINinja\Processors\Traits\OutputsInLanguage;
 use IanRothmann\AINinja\Results\Agent\AINinjaAgentDevelopmentGoalsGeneratorResult;
 
 class DevelopmentGoalsGeneratorAgent extends AINinjaAgent
 {
+    use OutputsInLanguage;
     public function __construct()
     {
         parent::__construct();
@@ -112,6 +114,8 @@ class DevelopmentGoalsGeneratorAgent extends AINinjaAgent
             'future_state' => 'required|array',
             'future_state.aspirations' => 'required|array',
             'optional_context' => 'nullable|array',
+            'output_language_name' => 'nullable|string',
+            'output_language_code' => 'nullable|string',
         ];
     }
 

@@ -126,6 +126,9 @@ class DevelopmentActionProposalsGeneratorAgent extends AINinjaAgent
             'existing_proposals' => 'nullable|array',
             'existing_actions' => 'nullable|array',
             'generation_request' => 'required|array',
+            'generation_request.language' => 'nullable|string',
+            'generation_request.output_language_name' => 'nullable|string',
+            'generation_request.output_language_code' => 'nullable|string',
         ];
     }
 
