@@ -9,6 +9,7 @@ use IanRothmann\AINinja\Results\Agent\AINinjaAgentCurrentAffairsExtractorResult;
 class CurrentAffairsExtractorAgent extends AINinjaAgent
 {
     use OutputsInLanguage;
+
     public function __construct()
     {
         parent::__construct();

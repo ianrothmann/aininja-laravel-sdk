@@ -9,6 +9,7 @@ use IanRothmann\AINinja\Results\Agent\AINinjaAgentCompetencyDevelopmentCuratorRe
 class CompetencyDevelopmentCuratorAgent extends AINinjaAgent
 {
     use OutputsInLanguage;
+
     public function __construct()
     {
         parent::__construct();

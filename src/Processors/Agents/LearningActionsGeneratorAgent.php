@@ -9,6 +9,7 @@ use IanRothmann\AINinja\Results\Agent\AINinjaAgentLearningActionsGeneratorResult
 class LearningActionsGeneratorAgent extends AINinjaAgent
 {
     use OutputsInLanguage;
+
     public function __construct()
     {
         parent::__construct();
